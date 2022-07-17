@@ -1,4 +1,4 @@
-# ocm-python-client
+ ocm-python-client
 
 The generated code is based on code in [Kubernetes client gen ](https://github.com/kubernetes-client/gen)
 
