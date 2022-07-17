@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **creation_timestamp** | **datetime** | Date and time when the add-on was initially installed in the cluster. | [optional] 
 **operator_version** | **str** | Version of the operator installed by the add-on. | [optional] 
 **parameters** | [**[AddOnInstallationParameter]**](AddOnInstallationParameter.md) | List of add-on parameters for this add-on installation. | [optional] 
-**role_arn** | **str** | Role ARN used to authenticate the addon operator | [optional] 
 **state** | [**AddOnInstallationState**](AddOnInstallationState.md) |  | [optional] 
 **state_description** | **str** | Reason for the current State. | [optional] 
 **updated_timestamp** | **datetime** | Date and time when the add-on installation information was last updated. | [optional] 

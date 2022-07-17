@@ -1,4 +1,4 @@
-# ocm_cluster_management_client.DefaultApi
+# ocm_python_client.DefaultApi
 
 All URIs are relative to *https://api.openshift.com*
 
@@ -16,7 +16,9 @@ Method | HTTP request | Description
 [**api_clusters_mgmt_v1_addons_post**](DefaultApi.md#api_clusters_mgmt_v1_addons_post) | **POST** /api/clusters_mgmt/v1/addons | 
 [**api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get**](DefaultApi.md#api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get) | **GET** /api/clusters_mgmt/v1/aws_infrastructure_access_roles/{aws_infrastructure_access_role_id} | 
 [**api_clusters_mgmt_v1_aws_infrastructure_access_roles_get**](DefaultApi.md#api_clusters_mgmt_v1_aws_infrastructure_access_roles_get) | **GET** /api/clusters_mgmt/v1/aws_infrastructure_access_roles | 
+[**api_clusters_mgmt_v1_aws_inquiries_machine_types_post**](DefaultApi.md#api_clusters_mgmt_v1_aws_inquiries_machine_types_post) | **POST** /api/clusters_mgmt/v1/aws_inquiries/machine_types | 
 [**api_clusters_mgmt_v1_aws_inquiries_regions_post**](DefaultApi.md#api_clusters_mgmt_v1_aws_inquiries_regions_post) | **POST** /api/clusters_mgmt/v1/aws_inquiries/regions | 
+[**api_clusters_mgmt_v1_aws_inquiries_sts_credential_requests_get**](DefaultApi.md#api_clusters_mgmt_v1_aws_inquiries_sts_credential_requests_get) | **GET** /api/clusters_mgmt/v1/aws_inquiries/sts_credential_requests | 
 [**api_clusters_mgmt_v1_aws_inquiries_sts_policies_get**](DefaultApi.md#api_clusters_mgmt_v1_aws_inquiries_sts_policies_get) | **GET** /api/clusters_mgmt/v1/aws_inquiries/sts_policies | 
 [**api_clusters_mgmt_v1_aws_inquiries_vpcs_post**](DefaultApi.md#api_clusters_mgmt_v1_aws_inquiries_vpcs_post) | **POST** /api/clusters_mgmt/v1/aws_inquiries/vpcs | 
 [**api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post**](DefaultApi.md#api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post) | **POST** /api/clusters_mgmt/v1/cloud_providers/{cloud_provider_id}/available_regions | 
@@ -154,13 +156,13 @@ Deletes the add-on.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -170,12 +172,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     addon_id = "addon_id_example" # str |  (optional)
@@ -184,7 +186,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_addons_addon_id_delete(addon_id=addon_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_addon_id_delete: %s\n" % e)
 ```
 
@@ -231,14 +233,14 @@ Retrieves the details of the add-on.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.add_on import AddOn
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on import AddOn
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -248,12 +250,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     addon_id = "addon_id_example" # str |  (optional)
@@ -263,7 +265,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_addons_addon_id_get(addon_id=addon_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_addon_id_get: %s\n" % e)
 ```
 
@@ -310,14 +312,14 @@ Updates the add-on.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.add_on import AddOn
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on import AddOn
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -327,12 +329,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     addon_id = "addon_id_example" # str |  (optional)
@@ -343,7 +345,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_addons_addon_id_patch(addon_id=addon_id, add_on=add_on)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_addon_id_patch: %s\n" % e)
 ```
 
@@ -391,14 +393,14 @@ Retrieves the list of add-on versions.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_addons_addon_id_versions_get200_response import ApiClustersMgmtV1AddonsAddonIdVersionsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_addons_addon_id_versions_get200_response import ApiClustersMgmtV1AddonsAddonIdVersionsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -408,12 +410,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     addon_id = "addon_id_example" # str |  (optional)
@@ -427,7 +429,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_addons_addon_id_versions_get(addon_id=addon_id, order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_addon_id_versions_get: %s\n" % e)
 ```
 
@@ -478,14 +480,14 @@ Create a new add-on version and add it to the collection of add-ons.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.add_on_version import AddOnVersion
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on_version import AddOnVersion
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -495,12 +497,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     addon_id = "addon_id_example" # str |  (optional)
@@ -511,7 +513,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_addons_addon_id_versions_post(addon_id=addon_id, add_on_version=add_on_version)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_addon_id_versions_post: %s\n" % e)
 ```
 
@@ -559,13 +561,13 @@ Deletes the add-on version.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -575,12 +577,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     addon_id = "addon_id_example" # str |  (optional)
@@ -590,7 +592,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_delete(addon_id=addon_id, version_id=version_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_addon_id_versions_version_id_delete: %s\n" % e)
 ```
 
@@ -638,14 +640,14 @@ Retrieves the details of the add-on version.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.add_on_version import AddOnVersion
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on_version import AddOnVersion
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -655,12 +657,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     addon_id = "addon_id_example" # str |  (optional)
@@ -671,7 +673,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_get(addon_id=addon_id, version_id=version_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_addon_id_versions_version_id_get: %s\n" % e)
 ```
 
@@ -719,14 +721,14 @@ Updates the add-on version.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.add_on_version import AddOnVersion
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on_version import AddOnVersion
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -736,12 +738,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     addon_id = "addon_id_example" # str |  (optional)
@@ -753,7 +755,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_patch(addon_id=addon_id, version_id=version_id, add_on_version=add_on_version)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_addon_id_versions_version_id_patch: %s\n" % e)
 ```
 
@@ -802,14 +804,14 @@ Retrieves the list of add-ons.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_addons_get200_response import ApiClustersMgmtV1AddonsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_addons_get200_response import ApiClustersMgmtV1AddonsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -819,12 +821,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the add-on instead of the names of the columns of a table. For example, in order to sort the add-ons descending by name the value should be:  ```sql name desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -837,7 +839,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_addons_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_get: %s\n" % e)
 ```
 
@@ -887,14 +889,14 @@ Create a new add-on and add it to the collection of add-ons.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.add_on import AddOn
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on import AddOn
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -904,12 +906,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     add_on = AddOn(None) # AddOn |  (optional)
@@ -919,7 +921,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_addons_post(add_on=add_on)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_addons_post: %s\n" % e)
 ```
 
@@ -966,14 +968,14 @@ Retrieves the details of the aws infrastructure access role.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.aws_infrastructure_access_role import AWSInfrastructureAccessRole
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.aws_infrastructure_access_role import AWSInfrastructureAccessRole
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -983,12 +985,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     aws_infrastructure_access_role_id = "aws_infrastructure_access_role_id_example" # str |  (optional)
@@ -998,7 +1000,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get(aws_infrastructure_access_role_id=aws_infrastructure_access_role_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get: %s\n" % e)
 ```
 
@@ -1043,14 +1045,14 @@ Name | Type | Description  | Notes
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_aws_infrastructure_access_roles_get200_response import ApiClustersMgmtV1AwsInfrastructureAccessRolesGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_aws_infrastructure_access_roles_get200_response import ApiClustersMgmtV1AwsInfrastructureAccessRolesGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1060,12 +1062,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the role instead of the names of the columns of a table. For example, in order to sort the roles descending by dislay_name the value should be:  ```sql display_name desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -1078,7 +1080,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_aws_infrastructure_access_roles_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_aws_infrastructure_access_roles_get: %s\n" % e)
 ```
 
@@ -1115,6 +1117,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **api_clusters_mgmt_v1_aws_inquiries_machine_types_post**
+> ApiClustersMgmtV1AwsInquiriesMachineTypesPost200Response api_clusters_mgmt_v1_aws_inquiries_machine_types_post()
+
+
+
+Retrieves the list of machine types in the provided region.
+
+### Example
+
+* Bearer (JWT) Authentication (bearer):
+
+```python
+import time
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_aws_inquiries_machine_types_post200_response import ApiClustersMgmtV1AwsInquiriesMachineTypesPost200Response
+from ocm_python_client.model.cloud_provider_data import CloudProviderData
+from ocm_python_client.model.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.openshift.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ocm_python_client.Configuration(
+    host = "https://api.openshift.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearer
+configuration = ocm_python_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with ocm_python_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = default_api.DefaultApi(api_client)
+    page = 1 # int | Index of the requested page, where one corresponds to the first page. (optional)
+    size = 1 # int | Maximum number of items that will be contained in the returned page. (optional)
+    cloud_provider_data = CloudProviderData(None) # CloudProviderData |  (optional)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        api_response = api_instance.api_clusters_mgmt_v1_aws_inquiries_machine_types_post(page=page, size=size, cloud_provider_data=cloud_provider_data)
+        pprint(api_response)
+    except ocm_python_client.ApiException as e:
+        print("Exception when calling DefaultApi->api_clusters_mgmt_v1_aws_inquiries_machine_types_post: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| Index of the requested page, where one corresponds to the first page. | [optional]
+ **size** | **int**| Maximum number of items that will be contained in the returned page. | [optional]
+ **cloud_provider_data** | [**CloudProviderData**](CloudProviderData.md)|  | [optional]
+
+### Return type
+
+[**ApiClustersMgmtV1AwsInquiriesMachineTypesPost200Response**](ApiClustersMgmtV1AwsInquiriesMachineTypesPost200Response.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success. |  -  |
+**0** | Error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **api_clusters_mgmt_v1_aws_inquiries_regions_post**
 > ApiClustersMgmtV1AwsInquiriesRegionsPost200Response api_clusters_mgmt_v1_aws_inquiries_regions_post()
 
@@ -1128,15 +1214,15 @@ Retrieves the list of available regions of the cloud provider. IMPORTANT: This l
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cloud_provider_data import CloudProviderData
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_aws_inquiries_regions_post200_response import ApiClustersMgmtV1AwsInquiriesRegionsPost200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_aws_inquiries_regions_post200_response import ApiClustersMgmtV1AwsInquiriesRegionsPost200Response
+from ocm_python_client.model.cloud_provider_data import CloudProviderData
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1146,12 +1232,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int | Index of the returned page, where one corresponds to the first page. As this collection doesn't support paging the result will always be `1`. (optional)
@@ -1163,7 +1249,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_aws_inquiries_regions_post(page=page, size=size, cloud_provider_data=cloud_provider_data)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_aws_inquiries_regions_post: %s\n" % e)
 ```
 
@@ -1199,6 +1285,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **api_clusters_mgmt_v1_aws_inquiries_sts_credential_requests_get**
+> ApiClustersMgmtV1AwsInquiriesStsCredentialRequestsGet200Response api_clusters_mgmt_v1_aws_inquiries_sts_credential_requests_get()
+
+
+
+Retrieves the list of policies.
+
+### Example
+
+* Bearer (JWT) Authentication (bearer):
+
+```python
+import time
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_aws_inquiries_sts_credential_requests_get200_response import ApiClustersMgmtV1AwsInquiriesStsCredentialRequestsGet200Response
+from ocm_python_client.model.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.openshift.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ocm_python_client.Configuration(
+    host = "https://api.openshift.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearer
+configuration = ocm_python_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with ocm_python_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = default_api.DefaultApi(api_client)
+    page = 1 # int | Index of the requested page, where one corresponds to the first page. (optional)
+    size = 1 # int | Maximum number of items that will be contained in the returned page. (optional)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        api_response = api_instance.api_clusters_mgmt_v1_aws_inquiries_sts_credential_requests_get(page=page, size=size)
+        pprint(api_response)
+    except ocm_python_client.ApiException as e:
+        print("Exception when calling DefaultApi->api_clusters_mgmt_v1_aws_inquiries_sts_credential_requests_get: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| Index of the requested page, where one corresponds to the first page. | [optional]
+ **size** | **int**| Maximum number of items that will be contained in the returned page. | [optional]
+
+### Return type
+
+[**ApiClustersMgmtV1AwsInquiriesStsCredentialRequestsGet200Response**](ApiClustersMgmtV1AwsInquiriesStsCredentialRequestsGet200Response.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success. |  -  |
+**0** | Error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **api_clusters_mgmt_v1_aws_inquiries_sts_policies_get**
 > ApiClustersMgmtV1AwsInquiriesStsPoliciesGet200Response api_clusters_mgmt_v1_aws_inquiries_sts_policies_get()
 
@@ -1212,14 +1379,14 @@ Retrieves the list of policies.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_aws_inquiries_sts_policies_get200_response import ApiClustersMgmtV1AwsInquiriesStsPoliciesGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_aws_inquiries_sts_policies_get200_response import ApiClustersMgmtV1AwsInquiriesStsPoliciesGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1229,12 +1396,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the awsstspolicies instead of the names of the columns of a table. For example, in order to sort the policies descending by operator type identifier the value should be:  ```sql orderBy id desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -1247,7 +1414,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_aws_inquiries_sts_policies_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_aws_inquiries_sts_policies_get: %s\n" % e)
 ```
 
@@ -1297,15 +1464,15 @@ Retrieves the list of available vpcs of the cloud provider for specific region. 
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cloud_provider_data import CloudProviderData
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_aws_inquiries_vpcs_post200_response import ApiClustersMgmtV1AwsInquiriesVpcsPost200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_aws_inquiries_vpcs_post200_response import ApiClustersMgmtV1AwsInquiriesVpcsPost200Response
+from ocm_python_client.model.cloud_provider_data import CloudProviderData
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1315,12 +1482,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int | Index of the returned page, where one corresponds to the first page. As this collection doesn't support paging the result will always be `1`. (optional)
@@ -1332,7 +1499,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_aws_inquiries_vpcs_post(page=page, size=size, cloud_provider_data=cloud_provider_data)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_aws_inquiries_vpcs_post: %s\n" % e)
 ```
 
@@ -1381,15 +1548,15 @@ Retrieves the list of available regions of the cloud provider.  IMPORTANT: This 
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.aws import AWS
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post200_response import ApiClustersMgmtV1CloudProvidersCloudProviderIdAvailableRegionsPost200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post200_response import ApiClustersMgmtV1CloudProvidersCloudProviderIdAvailableRegionsPost200Response
+from ocm_python_client.model.aws import AWS
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1399,12 +1566,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cloud_provider_id = "cloud_provider_id_example" # str |  (optional)
@@ -1417,7 +1584,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post(cloud_provider_id=cloud_provider_id, page=page, size=size, aws=aws)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post: %s\n" % e)
 ```
 
@@ -1467,14 +1634,14 @@ Retrieves the details of the cloud provider.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cloud_provider import CloudProvider
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cloud_provider import CloudProvider
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1484,12 +1651,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cloud_provider_id = "cloud_provider_id_example" # str |  (optional)
@@ -1499,7 +1666,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_get(cloud_provider_id=cloud_provider_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_get: %s\n" % e)
 ```
 
@@ -1546,14 +1713,14 @@ Retrieves the list of regions of the cloud provider.  IMPORTANT: This collection
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get200_response import ApiClustersMgmtV1CloudProvidersCloudProviderIdRegionsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
+from ocm_python_client.model.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get200_response import ApiClustersMgmtV1CloudProvidersCloudProviderIdRegionsGet200Response
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1563,12 +1730,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cloud_provider_id = "cloud_provider_id_example" # str |  (optional)
@@ -1580,7 +1747,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get(cloud_provider_id=cloud_provider_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get: %s\n" % e)
 ```
 
@@ -1629,14 +1796,14 @@ Retrieves the details of the region.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cloud_region import CloudRegion
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cloud_region import CloudRegion
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1646,12 +1813,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cloud_provider_id = "cloud_provider_id_example" # str |  (optional)
@@ -1662,7 +1829,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_region_id_get(cloud_provider_id=cloud_provider_id, region_id=region_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_region_id_get: %s\n" % e)
 ```
 
@@ -1710,14 +1877,14 @@ Retrieves the list of cloud providers.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_cloud_providers_get200_response import ApiClustersMgmtV1CloudProvidersGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_cloud_providers_get200_response import ApiClustersMgmtV1CloudProvidersGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1727,12 +1894,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the cloud provider instead of the names of the columns of a table. For example, in order to sort the clusters descending by name identifier the value should be:  ```sql name desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -1745,7 +1912,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_cloud_providers_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_cloud_providers_get: %s\n" % e)
 ```
 
@@ -1793,14 +1960,14 @@ Name | Type | Description  | Notes
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.add_on import AddOn
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on import AddOn
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1810,12 +1977,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -1826,7 +1993,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_addon_inquiry_id_get(cluster_id=cluster_id, addon_inquiry_id=addon_inquiry_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_addon_inquiry_id_get: %s\n" % e)
 ```
 
@@ -1872,14 +2039,14 @@ Name | Type | Description  | Notes
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_addons_get200_response import ApiClustersMgmtV1AddonsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_addons_get200_response import ApiClustersMgmtV1AddonsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1889,12 +2056,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -1908,7 +2075,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_get(cluster_id=cluster_id, order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_get: %s\n" % e)
 ```
 
@@ -1959,13 +2126,13 @@ Delete an add-on installation and remove it from the collection of add-on instal
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -1975,12 +2142,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -1990,7 +2157,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete(cluster_id=cluster_id, addoninstallation_id=addoninstallation_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete: %s\n" % e)
 ```
 
@@ -2038,14 +2205,14 @@ Retrieves the details of the add-on installation.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.add_on_installation import AddOnInstallation
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on_installation import AddOnInstallation
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2055,12 +2222,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2071,7 +2238,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_get(cluster_id=cluster_id, addoninstallation_id=addoninstallation_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_get: %s\n" % e)
 ```
 
@@ -2119,14 +2286,14 @@ Updates the add-on installation.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.add_on_installation import AddOnInstallation
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on_installation import AddOnInstallation
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2136,12 +2303,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2153,7 +2320,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_patch(cluster_id=cluster_id, addoninstallation_id=addoninstallation_id, add_on_installation=add_on_installation)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_patch: %s\n" % e)
 ```
 
@@ -2202,14 +2369,14 @@ Retrieves the list of add-on installations.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_addons_get200_response import ApiClustersMgmtV1ClustersClusterIdAddonsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_addons_get200_response import ApiClustersMgmtV1ClustersClusterIdAddonsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2219,12 +2386,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2238,7 +2405,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_addons_get(cluster_id=cluster_id, order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_addons_get: %s\n" % e)
 ```
 
@@ -2289,14 +2456,14 @@ Create a new add-on installation and add it to the collection of add-on installa
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.add_on_installation import AddOnInstallation
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.add_on_installation import AddOnInstallation
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2306,12 +2473,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2322,7 +2489,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_addons_post(cluster_id=cluster_id, add_on_installation=add_on_installation)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_addons_post: %s\n" % e)
 ```
 
@@ -2370,13 +2537,13 @@ Deletes the AWS infrastructure access role grant.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2386,12 +2553,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2401,7 +2568,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_delete(cluster_id=cluster_id, aws_infrastructure_access_role_grant_id=aws_infrastructure_access_role_grant_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_delete: %s\n" % e)
 ```
 
@@ -2449,14 +2616,14 @@ Retrieves the details of the AWS infrastructure access role grant.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.aws_infrastructure_access_role_grant import AWSInfrastructureAccessRoleGrant
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.aws_infrastructure_access_role_grant import AWSInfrastructureAccessRoleGrant
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2466,12 +2633,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2482,7 +2649,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_get(cluster_id=cluster_id, aws_infrastructure_access_role_grant_id=aws_infrastructure_access_role_grant_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_get: %s\n" % e)
 ```
 
@@ -2530,14 +2697,14 @@ Retrieves the list of AWS infrastructure access role grants.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get200_response import ApiClustersMgmtV1ClustersClusterIdAwsInfrastructureAccessRoleGrantsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get200_response import ApiClustersMgmtV1ClustersClusterIdAwsInfrastructureAccessRoleGrantsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2547,12 +2714,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2566,7 +2733,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get(cluster_id=cluster_id, order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get: %s\n" % e)
 ```
 
@@ -2617,14 +2784,14 @@ Create a new AWS infrastructure access role grant and add it to the collection o
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.aws_infrastructure_access_role_grant import AWSInfrastructureAccessRoleGrant
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.aws_infrastructure_access_role_grant import AWSInfrastructureAccessRoleGrant
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2634,12 +2801,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2650,7 +2817,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_post(cluster_id=cluster_id, aws_infrastructure_access_role_grant=aws_infrastructure_access_role_grant)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_post: %s\n" % e)
 ```
 
@@ -2698,13 +2865,13 @@ Deletes the clusterdeployment.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2714,12 +2881,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2728,7 +2895,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete(cluster_id=cluster_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete: %s\n" % e)
 ```
 
@@ -2775,14 +2942,14 @@ Retrieves the details of the credentials of a cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cluster_credentials import ClusterCredentials
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cluster_credentials import ClusterCredentials
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2792,12 +2959,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2807,7 +2974,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_credentials_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_credentials_get: %s\n" % e)
 ```
 
@@ -2854,13 +3021,13 @@ Deletes the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2870,22 +3037,23 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
     deprovision = True # bool | If false it will only delete from OCM but not the actual cluster resources. false is only allowed for OCP clusters. true by default. (optional)
+    dry_run = True # bool | Dry run flag is used to check if the operation can be completed, but won't delete. (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_instance.api_clusters_mgmt_v1_clusters_cluster_id_delete(cluster_id=cluster_id, deprovision=deprovision)
-    except ocm_cluster_management_client.ApiException as e:
+        api_instance.api_clusters_mgmt_v1_clusters_cluster_id_delete(cluster_id=cluster_id, deprovision=deprovision, dry_run=dry_run)
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_delete: %s\n" % e)
 ```
 
@@ -2896,6 +3064,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **str**|  | [optional]
  **deprovision** | **bool**| If false it will only delete from OCM but not the actual cluster resources. false is only allowed for OCP clusters. true by default. | [optional]
+ **dry_run** | **bool**| Dry run flag is used to check if the operation can be completed, but won&#39;t delete. | [optional]
 
 ### Return type
 
@@ -2933,14 +3102,14 @@ Retrieves the details of the external configuration.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.external_configuration import ExternalConfiguration
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.external_configuration import ExternalConfiguration
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -2950,12 +3119,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -2965,7 +3134,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_get: %s\n" % e)
 ```
 
@@ -3012,14 +3181,14 @@ Retrieves the list of labels.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get200_response import ApiClustersMgmtV1ClustersClusterIdExternalConfigurationLabelsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get200_response import ApiClustersMgmtV1ClustersClusterIdExternalConfigurationLabelsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3029,12 +3198,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3046,7 +3215,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get: %s\n" % e)
 ```
 
@@ -3095,13 +3264,13 @@ Deletes the label.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3111,12 +3280,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3126,7 +3295,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_delete(cluster_id=cluster_id, label_id=label_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_delete: %s\n" % e)
 ```
 
@@ -3174,14 +3343,14 @@ Retrieves the details of the label.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.label import Label
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.label import Label
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3191,12 +3360,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3207,7 +3376,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_get(cluster_id=cluster_id, label_id=label_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_get: %s\n" % e)
 ```
 
@@ -3255,14 +3424,14 @@ Update the label.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.label import Label
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.label import Label
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3272,12 +3441,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3289,7 +3458,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_patch(cluster_id=cluster_id, label_id=label_id, label=label)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_patch: %s\n" % e)
 ```
 
@@ -3338,14 +3507,14 @@ Adds a new label to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.label import Label
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.label import Label
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3355,12 +3524,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3371,7 +3540,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_post(cluster_id=cluster_id, label=label)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_post: %s\n" % e)
 ```
 
@@ -3419,14 +3588,14 @@ Retrieves the list of syncsets.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get200_response import ApiClustersMgmtV1ClustersClusterIdExternalConfigurationSyncsetsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get200_response import ApiClustersMgmtV1ClustersClusterIdExternalConfigurationSyncsetsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3436,12 +3605,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3453,7 +3622,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get: %s\n" % e)
 ```
 
@@ -3502,14 +3671,14 @@ Adds a new syncset to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.syncset import Syncset
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.syncset import Syncset
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3519,12 +3688,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3535,7 +3704,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_post(cluster_id=cluster_id, syncset=syncset)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_post: %s\n" % e)
 ```
 
@@ -3583,13 +3752,13 @@ Deletes the syncset.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3599,12 +3768,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3614,7 +3783,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_delete(cluster_id=cluster_id, syncset_id=syncset_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_delete: %s\n" % e)
 ```
 
@@ -3662,14 +3831,14 @@ Retrieves the details of the syncset.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.syncset import Syncset
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.syncset import Syncset
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3679,12 +3848,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3695,7 +3864,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_get(cluster_id=cluster_id, syncset_id=syncset_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_get: %s\n" % e)
 ```
 
@@ -3743,14 +3912,14 @@ Update the syncset.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.syncset import Syncset
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.syncset import Syncset
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3760,12 +3929,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3777,7 +3946,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_patch(cluster_id=cluster_id, syncset_id=syncset_id, syncset=syncset)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_patch: %s\n" % e)
 ```
 
@@ -3826,14 +3995,14 @@ Retrieves the list of reasons.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get200_response import ApiClustersMgmtV1ClustersClusterIdGateAgreementsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get200_response import ApiClustersMgmtV1ClustersClusterIdGateAgreementsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3843,12 +4012,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3860,7 +4029,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get: %s\n" % e)
 ```
 
@@ -3909,14 +4078,14 @@ Adds a new agreed version gate to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.version_gate_agreement import VersionGateAgreement
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.version_gate_agreement import VersionGateAgreement
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -3926,12 +4095,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -3942,7 +4111,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_post(cluster_id=cluster_id, version_gate_agreement=version_gate_agreement)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_post: %s\n" % e)
 ```
 
@@ -3990,13 +4159,13 @@ Deletes the version gate agreement.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4006,12 +4175,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4021,7 +4190,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_delete(cluster_id=cluster_id, version_gate_agreement_id=version_gate_agreement_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_delete: %s\n" % e)
 ```
 
@@ -4069,14 +4238,14 @@ Retrieves the details of the version gate agreement.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.version_gate_agreement import VersionGateAgreement
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.version_gate_agreement import VersionGateAgreement
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4086,12 +4255,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4102,7 +4271,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_get(cluster_id=cluster_id, version_gate_agreement_id=version_gate_agreement_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_get: %s\n" % e)
 ```
 
@@ -4150,14 +4319,14 @@ Retrieves the details of the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cluster import Cluster
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cluster import Cluster
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4167,12 +4336,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4182,7 +4351,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_get: %s\n" % e)
 ```
 
@@ -4229,14 +4398,14 @@ Retrieves the list of groups.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_groups_get200_response import ApiClustersMgmtV1ClustersClusterIdGroupsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_groups_get200_response import ApiClustersMgmtV1ClustersClusterIdGroupsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4246,12 +4415,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4263,7 +4432,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_groups_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_groups_get: %s\n" % e)
 ```
 
@@ -4312,14 +4481,14 @@ Retrieves the details of the group.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.group import Group
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.group import Group
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4329,12 +4498,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4345,7 +4514,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_get(cluster_id=cluster_id, group_id=group_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_get: %s\n" % e)
 ```
 
@@ -4393,14 +4562,14 @@ Retrieves the list of users.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get200_response import ApiClustersMgmtV1ClustersClusterIdGroupsGroupIdUsersGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get200_response import ApiClustersMgmtV1ClustersClusterIdGroupsGroupIdUsersGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4410,12 +4579,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4428,7 +4597,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get(cluster_id=cluster_id, group_id=group_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get: %s\n" % e)
 ```
 
@@ -4478,14 +4647,14 @@ Adds a new user to the group.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.user import User
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.user import User
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4495,12 +4664,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4512,7 +4681,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_post(cluster_id=cluster_id, group_id=group_id, user=user)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_post: %s\n" % e)
 ```
 
@@ -4561,13 +4730,13 @@ Deletes the user.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4577,12 +4746,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4593,7 +4762,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_delete(cluster_id=cluster_id, group_id=group_id, user_id=user_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_delete: %s\n" % e)
 ```
 
@@ -4642,14 +4811,14 @@ Retrieves the details of the user.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.user import User
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.user import User
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4659,12 +4828,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4676,7 +4845,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_get(cluster_id=cluster_id, group_id=group_id, user_id=user_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_get: %s\n" % e)
 ```
 
@@ -4725,13 +4894,13 @@ Initiates cluster hibernation. While hibernating a cluster will not consume any 
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4741,12 +4910,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4755,7 +4924,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_hibernate_post(cluster_id=cluster_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_hibernate_post: %s\n" % e)
 ```
 
@@ -4802,14 +4971,14 @@ Retrieves the list of identity providers.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get200_response import ApiClustersMgmtV1ClustersClusterIdIdentityProvidersGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get200_response import ApiClustersMgmtV1ClustersClusterIdIdentityProvidersGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4819,12 +4988,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4836,7 +5005,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get: %s\n" % e)
 ```
 
@@ -4885,13 +5054,13 @@ Deletes the identity provider.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4901,12 +5070,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4916,7 +5085,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_delete(cluster_id=cluster_id, identity_provider_id=identity_provider_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_delete: %s\n" % e)
 ```
 
@@ -4964,14 +5133,14 @@ Retrieves the details of the identity provider.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.identity_provider import IdentityProvider
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.identity_provider import IdentityProvider
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -4981,12 +5150,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -4997,7 +5166,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_get(cluster_id=cluster_id, identity_provider_id=identity_provider_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_get: %s\n" % e)
 ```
 
@@ -5045,14 +5214,14 @@ Retrieves the list of _HTPasswd_ IDP users.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get200_response import ApiClustersMgmtV1ClustersClusterIdIdentityProvidersIdentityProviderIdHtpasswdUsersGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get200_response import ApiClustersMgmtV1ClustersClusterIdIdentityProvidersIdentityProviderIdHtpasswdUsersGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5062,12 +5231,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5080,7 +5249,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get(cluster_id=cluster_id, identity_provider_id=identity_provider_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get: %s\n" % e)
 ```
 
@@ -5130,13 +5299,13 @@ Deletes the user.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5146,12 +5315,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5162,7 +5331,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_delete(cluster_id=cluster_id, identity_provider_id=identity_provider_id, htpasswd_user_id=htpasswd_user_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_delete: %s\n" % e)
 ```
 
@@ -5211,14 +5380,14 @@ Retrieves the details of the user.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.ht_passwd_user import HTPasswdUser
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.ht_passwd_user import HTPasswdUser
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5228,12 +5397,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5245,7 +5414,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_get(cluster_id=cluster_id, identity_provider_id=identity_provider_id, htpasswd_user_id=htpasswd_user_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_get: %s\n" % e)
 ```
 
@@ -5294,14 +5463,14 @@ Updates the user's password. The username is not editable
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.ht_passwd_user import HTPasswdUser
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.ht_passwd_user import HTPasswdUser
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5311,12 +5480,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5329,7 +5498,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_patch(cluster_id=cluster_id, identity_provider_id=identity_provider_id, htpasswd_user_id=htpasswd_user_id, ht_passwd_user=ht_passwd_user)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_patch: %s\n" % e)
 ```
 
@@ -5379,15 +5548,15 @@ Adds multiple new users to the _HTPasswd_ file.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post200_response import ApiClustersMgmtV1ClustersClusterIdIdentityProvidersIdentityProviderIdHtpasswdUsersImportPost200Response
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post_request import ApiClustersMgmtV1ClustersClusterIdIdentityProvidersIdentityProviderIdHtpasswdUsersImportPostRequest
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post200_response import ApiClustersMgmtV1ClustersClusterIdIdentityProvidersIdentityProviderIdHtpasswdUsersImportPost200Response
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post_request import ApiClustersMgmtV1ClustersClusterIdIdentityProvidersIdentityProviderIdHtpasswdUsersImportPostRequest
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5397,12 +5566,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5420,7 +5589,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post(cluster_id=cluster_id, identity_provider_id=identity_provider_id, api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post_request=api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post_request)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post: %s\n" % e)
 ```
 
@@ -5469,14 +5638,14 @@ Adds a new user to the _HTPasswd_ file.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.ht_passwd_user import HTPasswdUser
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.ht_passwd_user import HTPasswdUser
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5486,12 +5655,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5503,7 +5672,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_post(cluster_id=cluster_id, identity_provider_id=identity_provider_id, ht_passwd_user=ht_passwd_user)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_post: %s\n" % e)
 ```
 
@@ -5552,14 +5721,14 @@ Update identity provider in the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.identity_provider import IdentityProvider
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.identity_provider import IdentityProvider
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5569,12 +5738,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5586,7 +5755,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_patch(cluster_id=cluster_id, identity_provider_id=identity_provider_id, identity_provider=identity_provider)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_patch: %s\n" % e)
 ```
 
@@ -5635,14 +5804,14 @@ Adds a new identity provider to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.identity_provider import IdentityProvider
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.identity_provider import IdentityProvider
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5652,12 +5821,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5668,7 +5837,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_post(cluster_id=cluster_id, identity_provider=identity_provider)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_post: %s\n" % e)
 ```
 
@@ -5716,14 +5885,14 @@ Retrieves the list of ingresses.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get200_response import ApiClustersMgmtV1ClustersClusterIdIngressesGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get200_response import ApiClustersMgmtV1ClustersClusterIdIngressesGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5733,12 +5902,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5750,7 +5919,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get: %s\n" % e)
 ```
 
@@ -5799,13 +5968,13 @@ Deletes the ingress.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5815,12 +5984,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5830,7 +5999,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_delete(cluster_id=cluster_id, ingress_id=ingress_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_delete: %s\n" % e)
 ```
 
@@ -5878,14 +6047,14 @@ Retrieves the details of the ingress.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.ingress import Ingress
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.ingress import Ingress
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5895,12 +6064,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5911,7 +6080,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_get(cluster_id=cluster_id, ingress_id=ingress_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_get: %s\n" % e)
 ```
 
@@ -5959,14 +6128,14 @@ Updates the ingress.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.ingress import Ingress
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.ingress import Ingress
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -5976,12 +6145,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -5993,7 +6162,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_patch(cluster_id=cluster_id, ingress_id=ingress_id, ingress=ingress)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_patch: %s\n" % e)
 ```
 
@@ -6042,14 +6211,14 @@ Updates all ingresses
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.ingress import Ingress
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.ingress import Ingress
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6059,12 +6228,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6077,7 +6246,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_patch(cluster_id=cluster_id, ingress=ingress)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_ingresses_patch: %s\n" % e)
 ```
 
@@ -6125,14 +6294,14 @@ Adds a new ingress to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.ingress import Ingress
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.ingress import Ingress
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6142,12 +6311,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6158,7 +6327,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_post(cluster_id=cluster_id, ingress=ingress)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_ingresses_post: %s\n" % e)
 ```
 
@@ -6206,14 +6375,14 @@ Retrieves the list of reasons.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get200_response import ApiClustersMgmtV1ClustersClusterIdLimitedSupportReasonsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get200_response import ApiClustersMgmtV1ClustersClusterIdLimitedSupportReasonsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6223,12 +6392,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6240,7 +6409,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get: %s\n" % e)
 ```
 
@@ -6289,13 +6458,13 @@ Deletes the reason.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6305,12 +6474,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6320,7 +6489,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_delete(cluster_id=cluster_id, limited_support_reason_id=limited_support_reason_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_delete: %s\n" % e)
 ```
 
@@ -6368,14 +6537,14 @@ Retrieves the details of the reason.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.limited_support_reason import LimitedSupportReason
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.limited_support_reason import LimitedSupportReason
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6385,12 +6554,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6401,7 +6570,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_get(cluster_id=cluster_id, limited_support_reason_id=limited_support_reason_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_get: %s\n" % e)
 ```
 
@@ -6449,14 +6618,14 @@ Adds a new reason to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.limited_support_reason import LimitedSupportReason
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.limited_support_reason import LimitedSupportReason
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6466,12 +6635,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6482,7 +6651,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_post(cluster_id=cluster_id, limited_support_reason=limited_support_reason)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_post: %s\n" % e)
 ```
 
@@ -6530,14 +6699,14 @@ Retrieves the list of log links.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_logs_get200_response import ApiClustersMgmtV1ClustersClusterIdLogsGet200Response
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_logs_get200_response import ApiClustersMgmtV1ClustersClusterIdLogsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6547,12 +6716,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6564,7 +6733,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_logs_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_logs_get: %s\n" % e)
 ```
 
@@ -6613,14 +6782,14 @@ Retrieves the details of the log.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.log import Log
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.log import Log
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6630,12 +6799,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6647,7 +6816,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_logs_install_get(cluster_id=cluster_id, offset=offset, tail=tail)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_logs_install_get: %s\n" % e)
 ```
 
@@ -6696,14 +6865,14 @@ Retrieves the details of the log.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.log import Log
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.log import Log
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6713,12 +6882,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6730,7 +6899,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_logs_uninstall_get(cluster_id=cluster_id, offset=offset, tail=tail)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_logs_uninstall_get: %s\n" % e)
 ```
 
@@ -6779,14 +6948,14 @@ Retrieves the list of machine pools.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get200_response import ApiClustersMgmtV1ClustersClusterIdMachinePoolsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get200_response import ApiClustersMgmtV1ClustersClusterIdMachinePoolsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6796,12 +6965,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6813,7 +6982,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get: %s\n" % e)
 ```
 
@@ -6862,13 +7031,13 @@ Deletes the machine pool.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6878,12 +7047,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6893,7 +7062,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_delete(cluster_id=cluster_id, machine_pool_id=machine_pool_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_delete: %s\n" % e)
 ```
 
@@ -6941,14 +7110,14 @@ Retrieves the details of the machine pool.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.machine_pool import MachinePool
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.machine_pool import MachinePool
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -6958,12 +7127,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -6974,7 +7143,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_get(cluster_id=cluster_id, machine_pool_id=machine_pool_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_get: %s\n" % e)
 ```
 
@@ -7022,14 +7191,14 @@ Updates the machine pool.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.machine_pool import MachinePool
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.machine_pool import MachinePool
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7039,12 +7208,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7056,7 +7225,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_patch(cluster_id=cluster_id, machine_pool_id=machine_pool_id, machine_pool=machine_pool)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_patch: %s\n" % e)
 ```
 
@@ -7105,14 +7274,14 @@ Adds a new machine pool to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.machine_pool import MachinePool
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.machine_pool import MachinePool
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7122,12 +7291,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7138,7 +7307,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_post(cluster_id=cluster_id, machine_pool=machine_pool)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_post: %s\n" % e)
 ```
 
@@ -7184,14 +7353,14 @@ Name | Type | Description  | Notes
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.alerts_info import AlertsInfo
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.alerts_info import AlertsInfo
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7201,12 +7370,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7216,7 +7385,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_alerts_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_alerts_get: %s\n" % e)
 ```
 
@@ -7261,14 +7430,14 @@ Name | Type | Description  | Notes
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cluster_operators_info import ClusterOperatorsInfo
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cluster_operators_info import ClusterOperatorsInfo
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7278,12 +7447,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7293,7 +7462,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cluster_operators_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cluster_operators_get: %s\n" % e)
 ```
 
@@ -7340,14 +7509,14 @@ Retrieves the metrics.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cpu_totals_node_role_os_metric_node import CPUTotalsNodeRoleOSMetricNode
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cpu_totals_node_role_os_metric_node import CPUTotalsNodeRoleOSMetricNode
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7357,12 +7526,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7372,7 +7541,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cpu_total_by_node_roles_os_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cpu_total_by_node_roles_os_get: %s\n" % e)
 ```
 
@@ -7417,14 +7586,14 @@ Name | Type | Description  | Notes
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.nodes_info import NodesInfo
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.nodes_info import NodesInfo
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7434,12 +7603,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7449,7 +7618,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_nodes_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_nodes_get: %s\n" % e)
 ```
 
@@ -7496,14 +7665,14 @@ Retrieves the metrics.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.socket_totals_node_role_os_metric_node import SocketTotalsNodeRoleOSMetricNode
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.socket_totals_node_role_os_metric_node import SocketTotalsNodeRoleOSMetricNode
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7513,12 +7682,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7528,7 +7697,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_socket_total_by_node_roles_os_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_socket_total_by_node_roles_os_get: %s\n" % e)
 ```
 
@@ -7575,14 +7744,14 @@ Updates the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cluster import Cluster
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cluster import Cluster
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7592,12 +7761,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7608,7 +7777,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_patch(cluster_id=cluster_id, cluster=cluster)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_patch: %s\n" % e)
 ```
 
@@ -7656,14 +7825,14 @@ Retrieves the details of the product.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.product import Product
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.product import Product
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7673,12 +7842,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7688,7 +7857,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_product_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_product_get: %s\n" % e)
 ```
 
@@ -7735,14 +7904,14 @@ Retrieves the details of the provision shard.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.provision_shard import ProvisionShard
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.provision_shard import ProvisionShard
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7752,12 +7921,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7767,7 +7936,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get: %s\n" % e)
 ```
 
@@ -7814,14 +7983,14 @@ Retrieves a list of resources for a cluster in error state
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cluster_resources import ClusterResources
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cluster_resources import ClusterResources
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7831,12 +8000,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7846,7 +8015,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_resources_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_resources_get: %s\n" % e)
 ```
 
@@ -7893,14 +8062,14 @@ Retrieves currently available cluster resources
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cluster_resources import ClusterResources
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cluster_resources import ClusterResources
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7910,12 +8079,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -7925,7 +8094,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get: %s\n" % e)
 ```
 
@@ -7972,13 +8141,13 @@ Resumes from Hibernation.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -7988,12 +8157,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8002,7 +8171,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_resume_post(cluster_id=cluster_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_resume_post: %s\n" % e)
 ```
 
@@ -8047,14 +8216,14 @@ void (empty response body)
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cluster_status import ClusterStatus
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cluster_status import ClusterStatus
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8064,12 +8233,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8079,7 +8248,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_status_get(cluster_id=cluster_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_status_get: %s\n" % e)
 ```
 
@@ -8126,14 +8295,14 @@ Retrieves the list of operator roles.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get200_response import ApiClustersMgmtV1ClustersClusterIdStsOperatorRolesGet200Response
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get200_response import ApiClustersMgmtV1ClustersClusterIdStsOperatorRolesGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8143,12 +8312,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8160,7 +8329,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get: %s\n" % e)
 ```
 
@@ -8209,13 +8378,13 @@ Deletes the operator role.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8225,12 +8394,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8240,7 +8409,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_operator_iam_role_id_delete(cluster_id=cluster_id, operator_iam_role_id=operator_iam_role_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_operator_iam_role_id_delete: %s\n" % e)
 ```
 
@@ -8288,14 +8457,14 @@ Adds a new operator role to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.operator_iam_role import OperatorIAMRole
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.operator_iam_role import OperatorIAMRole
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8305,12 +8474,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8321,7 +8490,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_post(cluster_id=cluster_id, operator_iam_role=operator_iam_role)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_post: %s\n" % e)
 ```
 
@@ -8369,14 +8538,14 @@ Retrieves the list of upgrade policies.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get200_response import ApiClustersMgmtV1ClustersClusterIdUpgradePoliciesGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get200_response import ApiClustersMgmtV1ClustersClusterIdUpgradePoliciesGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8386,12 +8555,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8403,7 +8572,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get(cluster_id=cluster_id, page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get: %s\n" % e)
 ```
 
@@ -8452,14 +8621,14 @@ Adds a new upgrade policy to the cluster.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.upgrade_policy import UpgradePolicy
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.upgrade_policy import UpgradePolicy
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8469,12 +8638,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8485,7 +8654,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_post(cluster_id=cluster_id, upgrade_policy=upgrade_policy)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_post: %s\n" % e)
 ```
 
@@ -8533,13 +8702,13 @@ Deletes the upgrade policy.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8549,12 +8718,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8564,7 +8733,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_delete(cluster_id=cluster_id, upgrade_policy_id=upgrade_policy_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_delete: %s\n" % e)
 ```
 
@@ -8612,14 +8781,14 @@ Retrieves the details of the upgrade policy.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.upgrade_policy import UpgradePolicy
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.upgrade_policy import UpgradePolicy
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8629,12 +8798,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8645,7 +8814,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_get(cluster_id=cluster_id, upgrade_policy_id=upgrade_policy_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_get: %s\n" % e)
 ```
 
@@ -8693,14 +8862,14 @@ Update the upgrade policy.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.upgrade_policy import UpgradePolicy
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.upgrade_policy import UpgradePolicy
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8710,12 +8879,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8727,7 +8896,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_patch(cluster_id=cluster_id, upgrade_policy_id=upgrade_policy_id, upgrade_policy=upgrade_policy)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_patch: %s\n" % e)
 ```
 
@@ -8776,14 +8945,14 @@ Retrieves the details of the upgrade policy state.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.upgrade_policy_state import UpgradePolicyState
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.upgrade_policy_state import UpgradePolicyState
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8793,12 +8962,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8809,7 +8978,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_get(cluster_id=cluster_id, upgrade_policy_id=upgrade_policy_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_get: %s\n" % e)
 ```
 
@@ -8857,14 +9026,14 @@ Update the upgrade policy state.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.upgrade_policy_state import UpgradePolicyState
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.upgrade_policy_state import UpgradePolicyState
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8874,12 +9043,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster_id = "cluster_id_example" # str |  (optional)
@@ -8891,7 +9060,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_patch(cluster_id=cluster_id, upgrade_policy_id=upgrade_policy_id, upgrade_policy_state=upgrade_policy_state)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_patch: %s\n" % e)
 ```
 
@@ -8940,14 +9109,14 @@ Retrieves the list of clusters.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_clusters_get200_response import ApiClustersMgmtV1ClustersGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_get200_response import ApiClustersMgmtV1ClustersGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -8957,12 +9126,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the cluster instead of the names of the columns of a table. For example, in order to sort the clusters descending by region identifier the value should be:  ```sql region.id desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -8975,7 +9144,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_get: %s\n" % e)
 ```
 
@@ -9025,14 +9194,14 @@ Provision a new cluster and add it to the collection of clusters.  See the `regi
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cluster import Cluster
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.cluster import Cluster
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9042,12 +9211,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     cluster = Cluster(None) # Cluster |  (optional)
@@ -9057,7 +9226,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_clusters_post(cluster=cluster)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_clusters_post: %s\n" % e)
 ```
 
@@ -9104,14 +9273,14 @@ Retrieves the details of the environment.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.environment import Environment
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.environment import Environment
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9121,12 +9290,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
 
@@ -9134,7 +9303,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_environment_get()
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_environment_get: %s\n" % e)
 ```
 
@@ -9178,14 +9347,14 @@ Updates the environment.  Attributes that can be updated are:  - `last_upgrade_a
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.environment import Environment
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.environment import Environment
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9195,12 +9364,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     environment = Environment(None) # Environment |  (optional)
@@ -9210,7 +9379,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_environment_patch(environment=environment)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_environment_patch: %s\n" % e)
 ```
 
@@ -9257,14 +9426,14 @@ Adds a new event to be tracked. When sending a new event request, it gets tracke
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.event import Event
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
+from ocm_python_client.model.event import Event
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9274,12 +9443,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     event = Event(None) # Event |  (optional)
@@ -9289,7 +9458,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_events_post(event=event)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_events_post: %s\n" % e)
 ```
 
@@ -9336,14 +9505,14 @@ Retrieves the details of the cluster flavour.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.flavour import Flavour
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.flavour import Flavour
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9353,12 +9522,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     flavour_id = "flavour_id_example" # str |  (optional)
@@ -9368,7 +9537,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_flavours_flavour_id_get(flavour_id=flavour_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_flavours_flavour_id_get: %s\n" % e)
 ```
 
@@ -9415,14 +9584,14 @@ Updates the flavour.  Attributes that can be updated are:  - `aws.infra_volume` 
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.flavour import Flavour
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.flavour import Flavour
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9432,12 +9601,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     flavour_id = "flavour_id_example" # str |  (optional)
@@ -9448,7 +9617,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_flavours_flavour_id_patch(flavour_id=flavour_id, flavour=flavour)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_flavours_flavour_id_patch: %s\n" % e)
 ```
 
@@ -9494,14 +9663,14 @@ Name | Type | Description  | Notes
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_flavours_get200_response import ApiClustersMgmtV1FlavoursGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_flavours_get200_response import ApiClustersMgmtV1FlavoursGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9511,12 +9680,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the flavour instead of the names of the columns of a table. For example, in order to sort the flavours descending by name the value should be:  ```sql name desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -9529,7 +9698,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_flavours_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_flavours_get: %s\n" % e)
 ```
 
@@ -9579,14 +9748,14 @@ Adds a new cluster flavour.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.flavour import Flavour
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.flavour import Flavour
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9596,12 +9765,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     flavour = Flavour(None) # Flavour |  (optional)
@@ -9611,7 +9780,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_flavours_post(flavour=flavour)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_flavours_post: %s\n" % e)
 ```
 
@@ -9658,15 +9827,15 @@ Retrieves the list of encryption keys. IMPORTANT: This collection doesn't curren
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cloud_provider_data import CloudProviderData
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_gcp_inquiries_encryption_keys_post200_response import ApiClustersMgmtV1GcpInquiriesEncryptionKeysPost200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_gcp_inquiries_encryption_keys_post200_response import ApiClustersMgmtV1GcpInquiriesEncryptionKeysPost200Response
+from ocm_python_client.model.cloud_provider_data import CloudProviderData
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9676,12 +9845,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int | Index of the returned page, where one corresponds to the first page. As this collection doesn't support paging the result will always be `1`. (optional)
@@ -9693,7 +9862,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_gcp_inquiries_encryption_keys_post(page=page, size=size, cloud_provider_data=cloud_provider_data)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_gcp_inquiries_encryption_keys_post: %s\n" % e)
 ```
 
@@ -9742,15 +9911,15 @@ Retrieves the list of available key rings of the cloud provider. IMPORTANT: This
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cloud_provider_data import CloudProviderData
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_gcp_inquiries_key_rings_post200_response import ApiClustersMgmtV1GcpInquiriesKeyRingsPost200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_gcp_inquiries_key_rings_post200_response import ApiClustersMgmtV1GcpInquiriesKeyRingsPost200Response
+from ocm_python_client.model.cloud_provider_data import CloudProviderData
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9760,12 +9929,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int | Index of the returned page, where one corresponds to the first page. As this collection doesn't support paging the result will always be `1`. (optional)
@@ -9777,7 +9946,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_gcp_inquiries_key_rings_post(page=page, size=size, cloud_provider_data=cloud_provider_data)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_gcp_inquiries_key_rings_post: %s\n" % e)
 ```
 
@@ -9826,15 +9995,15 @@ Retrieves the list of available regions of the cloud provider. IMPORTANT: This l
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cloud_provider_data import CloudProviderData
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_aws_inquiries_regions_post200_response import ApiClustersMgmtV1AwsInquiriesRegionsPost200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_aws_inquiries_regions_post200_response import ApiClustersMgmtV1AwsInquiriesRegionsPost200Response
+from ocm_python_client.model.cloud_provider_data import CloudProviderData
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9844,12 +10013,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int | Index of the returned page, where one corresponds to the first page. As this collection doesn't support paging the result will always be `1`. (optional)
@@ -9861,7 +10030,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_gcp_inquiries_regions_post(page=page, size=size, cloud_provider_data=cloud_provider_data)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_gcp_inquiries_regions_post: %s\n" % e)
 ```
 
@@ -9910,15 +10079,15 @@ Retrieves the list of available vpcs of the cloud provider for specific region. 
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.cloud_provider_data import CloudProviderData
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_aws_inquiries_vpcs_post200_response import ApiClustersMgmtV1AwsInquiriesVpcsPost200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_aws_inquiries_vpcs_post200_response import ApiClustersMgmtV1AwsInquiriesVpcsPost200Response
+from ocm_python_client.model.cloud_provider_data import CloudProviderData
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -9928,12 +10097,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int | Index of the returned page, where one corresponds to the first page. As this collection doesn't support paging the result will always be `1`. (optional)
@@ -9945,7 +10114,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_gcp_inquiries_vpcs_post(page=page, size=size, cloud_provider_data=cloud_provider_data)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_gcp_inquiries_vpcs_post: %s\n" % e)
 ```
 
@@ -9994,14 +10163,14 @@ Retrieves the version metadata.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.metadata import Metadata
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.metadata import Metadata
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10011,12 +10180,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
 
@@ -10024,7 +10193,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_get()
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_get: %s\n" % e)
 ```
 
@@ -10068,14 +10237,14 @@ Retrieves the list of templates.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_limited_support_reason_templates_get200_response import ApiClustersMgmtV1LimitedSupportReasonTemplatesGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_limited_support_reason_templates_get200_response import ApiClustersMgmtV1LimitedSupportReasonTemplatesGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10085,12 +10254,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int | Index of the requested page, where one corresponds to the first page. (optional)
@@ -10101,7 +10270,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_limited_support_reason_templates_get(page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_limited_support_reason_templates_get: %s\n" % e)
 ```
 
@@ -10149,14 +10318,14 @@ Retrieves the details of the template.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.limited_support_reason_template import LimitedSupportReasonTemplate
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.limited_support_reason_template import LimitedSupportReasonTemplate
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10166,12 +10335,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     limited_support_reason_template_id = "limited_support_reason_template_id_example" # str |  (optional)
@@ -10181,7 +10350,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_limited_support_reason_templates_limited_support_reason_template_id_get(limited_support_reason_template_id=limited_support_reason_template_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_limited_support_reason_templates_limited_support_reason_template_id_get: %s\n" % e)
 ```
 
@@ -10228,14 +10397,14 @@ Retrieves the list of machine types.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_machine_types_get200_response import ApiClustersMgmtV1MachineTypesGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_machine_types_get200_response import ApiClustersMgmtV1MachineTypesGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10245,12 +10414,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the machine type instead of the names of the columns of a table. For example, in order to sort the machine types descending by name identifier the value should be:  ```sql name desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -10263,7 +10432,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_machine_types_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_machine_types_get: %s\n" % e)
 ```
 
@@ -10313,14 +10482,14 @@ Retrieves the list of products.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_products_get200_response import ApiClustersMgmtV1ProductsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_products_get200_response import ApiClustersMgmtV1ProductsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10330,12 +10499,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the product instead of the names of the columns of a table. For example, in order to sort the products descending by name the value should be:  ```sql name desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -10348,7 +10517,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_products_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_products_get: %s\n" % e)
 ```
 
@@ -10398,14 +10567,14 @@ Retrieves the details of the product.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.product import Product
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.product import Product
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10415,12 +10584,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     product_id = "product_id_example" # str |  (optional)
@@ -10430,7 +10599,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_products_product_id_get(product_id=product_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_products_product_id_get: %s\n" % e)
 ```
 
@@ -10475,14 +10644,14 @@ Name | Type | Description  | Notes
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_provision_shards_get200_response import ApiClustersMgmtV1ProvisionShardsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_provision_shards_get200_response import ApiClustersMgmtV1ProvisionShardsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10492,12 +10661,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int | Index of the requested page, where one corresponds to the first page. (optional)
@@ -10508,7 +10677,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_provision_shards_get(page=page, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_provision_shards_get: %s\n" % e)
 ```
 
@@ -10556,14 +10725,14 @@ Retrieves the details of the provision shard.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.provision_shard import ProvisionShard
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.provision_shard import ProvisionShard
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10573,12 +10742,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     provision_shard_id = "provision_shard_id_example" # str |  (optional)
@@ -10588,7 +10757,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_provision_shards_provision_shard_id_get(provision_shard_id=provision_shard_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_provision_shards_provision_shard_id_get: %s\n" % e)
 ```
 
@@ -10635,14 +10804,14 @@ Retrieves a list of version gates.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_version_gates_get200_response import ApiClustersMgmtV1VersionGatesGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_version_gates_get200_response import ApiClustersMgmtV1VersionGatesGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10652,12 +10821,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement, but using the names of the attributes of the version gate instead of the names of the columns of a table. For example, in order to sort the version gates descending by identifier the value should be:  ```sql id desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -10670,7 +10839,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_version_gates_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_version_gates_get: %s\n" % e)
 ```
 
@@ -10720,14 +10889,14 @@ Adds a new version gate
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.version_gate import VersionGate
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.version_gate import VersionGate
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10737,12 +10906,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     version_gate = VersionGate(None) # VersionGate |  (optional)
@@ -10752,7 +10921,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_version_gates_post(version_gate=version_gate)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_version_gates_post: %s\n" % e)
 ```
 
@@ -10799,13 +10968,13 @@ Deletes the version gate.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10815,12 +10984,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     version_gate_id = "version_gate_id_example" # str |  (optional)
@@ -10829,7 +10998,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         api_instance.api_clusters_mgmt_v1_version_gates_version_gate_id_delete(version_gate_id=version_gate_id)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_version_gates_version_gate_id_delete: %s\n" % e)
 ```
 
@@ -10876,14 +11045,14 @@ Retrieves the details of the version gate.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.version_gate import VersionGate
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.version_gate import VersionGate
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10893,12 +11062,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     version_gate_id = "version_gate_id_example" # str |  (optional)
@@ -10908,7 +11077,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_version_gates_version_gate_id_get(version_gate_id=version_gate_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_version_gates_version_gate_id_get: %s\n" % e)
 ```
 
@@ -10955,14 +11124,14 @@ Retrieves a list of versions.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.api_clusters_mgmt_v1_versions_get200_response import ApiClustersMgmtV1VersionsGet200Response
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.api_clusters_mgmt_v1_versions_get200_response import ApiClustersMgmtV1VersionsGet200Response
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -10972,12 +11141,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     order = "order_example" # str | Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the version instead of the names of the columns of a table. For example, in order to sort the versions descending by identifier the value should be:  ```sql id desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined. (optional)
@@ -10990,7 +11159,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_versions_get(order=order, page=page, search=search, size=size)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_versions_get: %s\n" % e)
 ```
 
@@ -11040,14 +11209,14 @@ Retrieves the details of the version.
 
 ```python
 import time
-import ocm_cluster_management_client
-from ocm_cluster_management_client.api import default_api
-from ocm_cluster_management_client.model.error import Error
-from ocm_cluster_management_client.model.version import Version
+import ocm_python_client
+from ocm_python_client.api import default_api
+from ocm_python_client.model.version import Version
+from ocm_python_client.model.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.openshift.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     host = "https://api.openshift.com"
 )
 
@@ -11057,12 +11226,12 @@ configuration = ocm_cluster_management_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearer
-configuration = ocm_cluster_management_client.Configuration(
+configuration = ocm_python_client.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with ocm_cluster_management_client.ApiClient(configuration) as api_client:
+with ocm_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     version_id = "version_id_example" # str |  (optional)
@@ -11072,7 +11241,7 @@ with ocm_cluster_management_client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.api_clusters_mgmt_v1_versions_version_id_get(version_id=version_id)
         pprint(api_response)
-    except ocm_cluster_management_client.ApiException as e:
+    except ocm_python_client.ApiException as e:
         print("Exception when calling DefaultApi->api_clusters_mgmt_v1_versions_version_id_get: %s\n" % e)
 ```
 
