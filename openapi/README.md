@@ -1,4 +1,4 @@
-# OCM Python Client - openApi code geneartion 
+# OCM Python Client - openApi code generation 
 
 Generation code is based on code in [Kubernetes client gen ](https://github.com/kubernetes-client/gen)
 

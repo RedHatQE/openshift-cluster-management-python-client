@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **compute_machine_type** | [**MachineType**](MachineType.md) |  | [optional] 
 **infra** | **int** | Number of infrastructure nodes of the cluster. | [optional] 
 **master** | **int** | Number of master nodes of the cluster. | [optional] 
+**security_group_filters** | [**[MachinePoolSecurityGroupFilter]**](MachinePoolSecurityGroupFilter.md) | List of security groups to be applied to nodes (Optional) | [optional] 
 **total** | **int** | Total number of nodes of the cluster. | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

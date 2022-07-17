@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **flavour** | [**Flavour**](Flavour.md) |  | [optional] 
 **groups** | [**[Group]**](Group.md) | Link to the collection of groups of user of the cluster. | [optional] 
 **health_state** | [**ClusterHealthState**](ClusterHealthState.md) |  | [optional] 
+**hypershift** | [**HyperShift**](HyperShift.md) |  | [optional] 
 **identity_providers** | [**[IdentityProvider]**](IdentityProvider.md) | Link to the collection of identity providers of the cluster. | [optional] 
 **inflight_checks** | [**[InflightCheck]**](InflightCheck.md) | List of inflight checks on this cluster. | [optional] 
 **ingresses** | [**[Ingress]**](Ingress.md) | List of ingresses on this cluster. | [optional] 
