@@ -35,7 +35,6 @@ RUN chmod -R go+rwx /root && umask 0 && cd /source/openapi-generator && \
 
 # Copy required files
 COPY openapi-generator/generate_client_in_container.sh /generate_client.sh
-COPY clusters-mgmt-v1-swagger.json swagger.json
 COPY python.xml /generation_params.xml
 
 ENTRYPOINT ["mvn-entrypoint.sh", "/generate_client.sh"]

@@ -24,3 +24,5 @@
 setup.cfg
 setup.py
 README.md
+.flake8
+.openapi-generator/*

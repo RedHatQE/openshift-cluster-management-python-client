@@ -8,6 +8,7 @@ exclude =
     Pipfile.*,
     docs/*,
     .cache/*
+    ocm_python_client/*
 
 enable-extensions =
     FCFN,
