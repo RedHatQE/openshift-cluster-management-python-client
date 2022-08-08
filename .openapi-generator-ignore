@@ -24,5 +24,6 @@
 setup.cfg
 setup.py
 README.md
-.flake8
+tox.ini
 .openapi-generator/*
+test-requirements.txt
