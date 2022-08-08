@@ -24,3 +24,6 @@
 setup.cfg
 setup.py
 README.md
+tox.ini
+.openapi-generator/*
+test-requirements.txt
