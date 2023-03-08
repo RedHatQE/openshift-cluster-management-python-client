@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **default** | **bool** | Indicates if this should be selected as the default version when a cluster is created without specifying explicitly the version. | [optional] 
 **enabled** | **bool** | Indicates if this version can be used to create clusters. | [optional] 
 **end_of_life_timestamp** | **datetime** | EndOfLifeTimestamp is the date and time when the version will get to End of Life, using the format defined in https://www.ietf.org/rfc/rfc3339.txt[RC3339]. | [optional] 
+**hypershift_enabled** | **bool** | HypershiftEnabled indicates whether this version can be used to create Hypershift clusters. | [optional] 
 **raw_id** | **str** | RawID is the id of the version - without channel group and prefix. | [optional] 
 **release_image** | **str** | ReleaseImage contains the URI of Openshift release image | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

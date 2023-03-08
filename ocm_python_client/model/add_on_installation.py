@@ -32,11 +32,13 @@ from ocm_python_client.exceptions import ApiAttributeError
 
 def lazy_import():
     from ocm_python_client.model.add_on import AddOn
+    from ocm_python_client.model.add_on_installation_billing import AddOnInstallationBilling
     from ocm_python_client.model.add_on_installation_parameter import AddOnInstallationParameter
     from ocm_python_client.model.add_on_installation_state import AddOnInstallationState
     from ocm_python_client.model.add_on_version import AddOnVersion
     from ocm_python_client.model.cluster import Cluster
     globals()['AddOn'] = AddOn
+    globals()['AddOnInstallationBilling'] = AddOnInstallationBilling
     globals()['AddOnInstallationParameter'] = AddOnInstallationParameter
     globals()['AddOnInstallationState'] = AddOnInstallationState
     globals()['AddOnVersion'] = AddOnVersion
@@ -101,6 +103,7 @@ class AddOnInstallation(ModelNormal):
             'href': (str,),  # noqa: E501
             'addon': (AddOn,),  # noqa: E501
             'addon_version': (AddOnVersion,),  # noqa: E501
+            'billing': (AddOnInstallationBilling,),  # noqa: E501
             'cluster': (Cluster,),  # noqa: E501
             'creation_timestamp': (datetime,),  # noqa: E501
             'operator_version': (str,),  # noqa: E501
@@ -121,6 +124,7 @@ class AddOnInstallation(ModelNormal):
         'href': 'href',  # noqa: E501
         'addon': 'addon',  # noqa: E501
         'addon_version': 'addon_version',  # noqa: E501
+        'billing': 'billing',  # noqa: E501
         'cluster': 'cluster',  # noqa: E501
         'creation_timestamp': 'creation_timestamp',  # noqa: E501
         'operator_version': 'operator_version',  # noqa: E501
@@ -176,6 +180,7 @@ class AddOnInstallation(ModelNormal):
             href (str): Self link.. [optional]  # noqa: E501
             addon (AddOn): [optional]  # noqa: E501
             addon_version (AddOnVersion): [optional]  # noqa: E501
+            billing (AddOnInstallationBilling): [optional]  # noqa: E501
             cluster (Cluster): [optional]  # noqa: E501
             creation_timestamp (datetime): Date and time when the add-on was initially installed in the cluster.. [optional]  # noqa: E501
             operator_version (str): Version of the operator installed by the add-on.. [optional]  # noqa: E501
@@ -273,6 +278,7 @@ class AddOnInstallation(ModelNormal):
             href (str): Self link.. [optional]  # noqa: E501
             addon (AddOn): [optional]  # noqa: E501
             addon_version (AddOnVersion): [optional]  # noqa: E501
+            billing (AddOnInstallationBilling): [optional]  # noqa: E501
             cluster (Cluster): [optional]  # noqa: E501
             creation_timestamp (datetime): Date and time when the add-on was initially installed in the cluster.. [optional]  # noqa: E501
             operator_version (str): Version of the operator installed by the add-on.. [optional]  # noqa: E501

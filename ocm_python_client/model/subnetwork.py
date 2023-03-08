@@ -84,6 +84,7 @@ class Subnetwork(ModelNormal):
         return {
             'availability_zone': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
             'subnet_id': (str,),  # noqa: E501
         }
 
@@ -95,6 +96,7 @@ class Subnetwork(ModelNormal):
     attribute_map = {
         'availability_zone': 'availability_zone',  # noqa: E501
         'name': 'name',  # noqa: E501
+        'public': 'public',  # noqa: E501
         'subnet_id': 'subnet_id',  # noqa: E501
     }
 
@@ -141,6 +143,7 @@ class Subnetwork(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             availability_zone (str): The availability zone to which the subnet is related. [optional]  # noqa: E501
             name (str): Name of the subnet according to its `Name` tag on AWS. [optional]  # noqa: E501
+            public (bool): Whether it is a public subnet. [optional]  # noqa: E501
             subnet_id (str): The subnet id to be used while installing a cluster. [optional]  # noqa: E501
         """
 
@@ -229,6 +232,7 @@ class Subnetwork(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             availability_zone (str): The availability zone to which the subnet is related. [optional]  # noqa: E501
             name (str): Name of the subnet according to its `Name` tag on AWS. [optional]  # noqa: E501
+            public (bool): Whether it is a public subnet. [optional]  # noqa: E501
             subnet_id (str): The subnet id to be used while installing a cluster. [optional]  # noqa: E501
         """
 

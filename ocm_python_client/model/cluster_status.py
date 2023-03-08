@@ -96,6 +96,7 @@ class ClusterStatus(ModelNormal):
             'dns_ready': (bool,),  # noqa: E501
             'oidc_ready': (bool,),  # noqa: E501
             'configuration_mode': (ClusterConfigurationMode,),  # noqa: E501
+            'current_compute': (int,),  # noqa: E501
             'description': (str,),  # noqa: E501
             'limited_support_reason_count': (int,),  # noqa: E501
             'provision_error_code': (str,),  # noqa: E501
@@ -115,6 +116,7 @@ class ClusterStatus(ModelNormal):
         'dns_ready': 'dns_ready',  # noqa: E501
         'oidc_ready': 'oidc_ready',  # noqa: E501
         'configuration_mode': 'configuration_mode',  # noqa: E501
+        'current_compute': 'current_compute',  # noqa: E501
         'description': 'description',  # noqa: E501
         'limited_support_reason_count': 'limited_support_reason_count',  # noqa: E501
         'provision_error_code': 'provision_error_code',  # noqa: E501
@@ -169,6 +171,7 @@ class ClusterStatus(ModelNormal):
             dns_ready (bool): DNSReady from Provisioner. [optional]  # noqa: E501
             oidc_ready (bool): OIDCReady from user configuration.. [optional]  # noqa: E501
             configuration_mode (ClusterConfigurationMode): [optional]  # noqa: E501
+            current_compute (int): Current Replicas available for a Hosted Cluster. [optional]  # noqa: E501
             description (str): Detailed description of the cluster status.. [optional]  # noqa: E501
             limited_support_reason_count (int): Limited Support Reason Count. [optional]  # noqa: E501
             provision_error_code (str): Provisioning Error Code. [optional]  # noqa: E501
@@ -265,6 +268,7 @@ class ClusterStatus(ModelNormal):
             dns_ready (bool): DNSReady from Provisioner. [optional]  # noqa: E501
             oidc_ready (bool): OIDCReady from user configuration.. [optional]  # noqa: E501
             configuration_mode (ClusterConfigurationMode): [optional]  # noqa: E501
+            current_compute (int): Current Replicas available for a Hosted Cluster. [optional]  # noqa: E501
             description (str): Detailed description of the cluster status.. [optional]  # noqa: E501
             limited_support_reason_count (int): Limited Support Reason Count. [optional]  # noqa: E501
             provision_error_code (str): Provisioning Error Code. [optional]  # noqa: E501

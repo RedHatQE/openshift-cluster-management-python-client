@@ -33,8 +33,10 @@ from ocm_python_client.exceptions import ApiAttributeError
 def lazy_import():
     from ocm_python_client.model.add_on import AddOn
     from ocm_python_client.model.add_on_parameter_option import AddOnParameterOption
+    from ocm_python_client.model.add_on_requirement import AddOnRequirement
     globals()['AddOn'] = AddOn
     globals()['AddOnParameterOption'] = AddOnParameterOption
+    globals()['AddOnRequirement'] = AddOnRequirement
 
 
 class AddOnParameter(ModelNormal):
@@ -94,9 +96,11 @@ class AddOnParameter(ModelNormal):
             'id': (str,),  # noqa: E501
             'href': (str,),  # noqa: E501
             'addon': (AddOn,),  # noqa: E501
+            'conditions': ([AddOnRequirement],),  # noqa: E501
             'default_value': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
             'editable': (bool,),  # noqa: E501
+            'editable_direction': (str,),  # noqa: E501
             'enabled': (bool,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'options': ([AddOnParameterOption],),  # noqa: E501
@@ -116,9 +120,11 @@ class AddOnParameter(ModelNormal):
         'id': 'id',  # noqa: E501
         'href': 'href',  # noqa: E501
         'addon': 'addon',  # noqa: E501
+        'conditions': 'conditions',  # noqa: E501
         'default_value': 'default_value',  # noqa: E501
         'description': 'description',  # noqa: E501
         'editable': 'editable',  # noqa: E501
+        'editable_direction': 'editable_direction',  # noqa: E501
         'enabled': 'enabled',  # noqa: E501
         'name': 'name',  # noqa: E501
         'options': 'options',  # noqa: E501
@@ -173,9 +179,11 @@ class AddOnParameter(ModelNormal):
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
             addon (AddOn): [optional]  # noqa: E501
+            conditions ([AddOnRequirement]): Conditions in which this parameter is valid for. [optional]  # noqa: E501
             default_value (str): Indicates the value default for the add-on parameter.. [optional]  # noqa: E501
             description (str): Description of the add-on parameter.. [optional]  # noqa: E501
             editable (bool): Indicates if this parameter can be edited after creation.. [optional]  # noqa: E501
+            editable_direction (str): Restricts if the parameter can be upscaled/downscaled Expected values are \"up\", \"down\", or \"\" (no restriction).. [optional]  # noqa: E501
             enabled (bool): Indicates if this parameter is enabled for the add-on.. [optional]  # noqa: E501
             name (str): Name of the add-on parameter.. [optional]  # noqa: E501
             options ([AddOnParameterOption]): List of options for the add-on parameter value.. [optional]  # noqa: E501
@@ -272,9 +280,11 @@ class AddOnParameter(ModelNormal):
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
             addon (AddOn): [optional]  # noqa: E501
+            conditions ([AddOnRequirement]): Conditions in which this parameter is valid for. [optional]  # noqa: E501
             default_value (str): Indicates the value default for the add-on parameter.. [optional]  # noqa: E501
             description (str): Description of the add-on parameter.. [optional]  # noqa: E501
             editable (bool): Indicates if this parameter can be edited after creation.. [optional]  # noqa: E501
+            editable_direction (str): Restricts if the parameter can be upscaled/downscaled Expected values are \"up\", \"down\", or \"\" (no restriction).. [optional]  # noqa: E501
             enabled (bool): Indicates if this parameter is enabled for the add-on.. [optional]  # noqa: E501
             name (str): Name of the add-on parameter.. [optional]  # noqa: E501
             options ([AddOnParameterOption]): List of options for the add-on parameter value.. [optional]  # noqa: E501

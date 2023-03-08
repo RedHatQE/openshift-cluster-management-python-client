@@ -82,6 +82,7 @@ class AWSSTSPolicy(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'arn': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'details': (str,),  # noqa: E501
             'type': (str,),  # noqa: E501
@@ -93,6 +94,7 @@ class AWSSTSPolicy(ModelNormal):
 
 
     attribute_map = {
+        'arn': 'arn',  # noqa: E501
         'id': 'id',  # noqa: E501
         'details': 'details',  # noqa: E501
         'type': 'type',  # noqa: E501
@@ -139,6 +141,7 @@ class AWSSTSPolicy(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            arn (str): The ARN of the managed policy. [optional]  # noqa: E501
             id (str): Policy ID. [optional]  # noqa: E501
             details (str): Policy Details. [optional]  # noqa: E501
             type (str): Type of policy operator/account role. [optional]  # noqa: E501
@@ -227,6 +230,7 @@ class AWSSTSPolicy(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            arn (str): The ARN of the managed policy. [optional]  # noqa: E501
             id (str): Policy ID. [optional]  # noqa: E501
             details (str): Policy Details. [optional]  # noqa: E501
             type (str): Type of policy operator/account role. [optional]  # noqa: E501

@@ -100,9 +100,13 @@ class ProvisionShard(ModelNormal):
             'gcp_base_domain': (str,),  # noqa: E501
             'gcp_project_operator': (ServerConfig,),  # noqa: E501
             'cloud_provider': (CloudProvider,),  # noqa: E501
+            'creation_timestamp': (datetime,),  # noqa: E501
             'hive_config': (ServerConfig,),  # noqa: E501
+            'hypershift_config': (ServerConfig,),  # noqa: E501
+            'last_update_timestamp': (datetime,),  # noqa: E501
             'management_cluster': (str,),  # noqa: E501
             'region': (CloudRegion,),  # noqa: E501
+            'status': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -119,9 +123,13 @@ class ProvisionShard(ModelNormal):
         'gcp_base_domain': 'gcp_base_domain',  # noqa: E501
         'gcp_project_operator': 'gcp_project_operator',  # noqa: E501
         'cloud_provider': 'cloud_provider',  # noqa: E501
+        'creation_timestamp': 'creation_timestamp',  # noqa: E501
         'hive_config': 'hive_config',  # noqa: E501
+        'hypershift_config': 'hypershift_config',  # noqa: E501
+        'last_update_timestamp': 'last_update_timestamp',  # noqa: E501
         'management_cluster': 'management_cluster',  # noqa: E501
         'region': 'region',  # noqa: E501
+        'status': 'status',  # noqa: E501
     }
 
     read_only_vars = {
@@ -169,13 +177,17 @@ class ProvisionShard(ModelNormal):
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
             aws_account_operator_config (ServerConfig): [optional]  # noqa: E501
-            aws_base_domain (str): Contains the AWS base domain. [optional]  # noqa: E501
-            gcp_base_domain (str): Contains the GCP base domain. [optional]  # noqa: E501
+            aws_base_domain (str): Contains the AWS base domain.. [optional]  # noqa: E501
+            gcp_base_domain (str): Contains the GCP base domain.. [optional]  # noqa: E501
             gcp_project_operator (ServerConfig): [optional]  # noqa: E501
             cloud_provider (CloudProvider): [optional]  # noqa: E501
+            creation_timestamp (datetime): Date and time when the provision shard was initially created, using the format defined in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt).. [optional]  # noqa: E501
             hive_config (ServerConfig): [optional]  # noqa: E501
-            management_cluster (str): Contains the name of the managment cluster for Hypershift clusters that are assigned to this shard. This field is populated by OCM, and must not be overwritten via API.. [optional]  # noqa: E501
+            hypershift_config (ServerConfig): [optional]  # noqa: E501
+            last_update_timestamp (datetime): Date and time when the provision shard was last updated, using the format defined in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt).. [optional]  # noqa: E501
+            management_cluster (str): Contains the name of the management cluster for Hypershift clusters that are assigned to this shard. This field is populated by OCM, and must not be overwritten via API.. [optional]  # noqa: E501
             region (CloudRegion): [optional]  # noqa: E501
+            status (str): Status of the provision shard. Possible values: active/maintenance/offline.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -265,13 +277,17 @@ class ProvisionShard(ModelNormal):
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
             aws_account_operator_config (ServerConfig): [optional]  # noqa: E501
-            aws_base_domain (str): Contains the AWS base domain. [optional]  # noqa: E501
-            gcp_base_domain (str): Contains the GCP base domain. [optional]  # noqa: E501
+            aws_base_domain (str): Contains the AWS base domain.. [optional]  # noqa: E501
+            gcp_base_domain (str): Contains the GCP base domain.. [optional]  # noqa: E501
             gcp_project_operator (ServerConfig): [optional]  # noqa: E501
             cloud_provider (CloudProvider): [optional]  # noqa: E501
+            creation_timestamp (datetime): Date and time when the provision shard was initially created, using the format defined in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt).. [optional]  # noqa: E501
             hive_config (ServerConfig): [optional]  # noqa: E501
-            management_cluster (str): Contains the name of the managment cluster for Hypershift clusters that are assigned to this shard. This field is populated by OCM, and must not be overwritten via API.. [optional]  # noqa: E501
+            hypershift_config (ServerConfig): [optional]  # noqa: E501
+            last_update_timestamp (datetime): Date and time when the provision shard was last updated, using the format defined in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt).. [optional]  # noqa: E501
+            management_cluster (str): Contains the name of the management cluster for Hypershift clusters that are assigned to this shard. This field is populated by OCM, and must not be overwritten via API.. [optional]  # noqa: E501
             region (CloudRegion): [optional]  # noqa: E501
+            status (str): Status of the provision shard. Possible values: active/maintenance/offline.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

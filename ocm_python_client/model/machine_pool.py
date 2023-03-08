@@ -107,6 +107,7 @@ class MachinePool(ModelNormal):
             'labels': ({str: (str,)},),  # noqa: E501
             'replicas': (int,),  # noqa: E501
             'security_group_filters': ([MachinePoolSecurityGroupFilter],),  # noqa: E501
+            'subnets': ([str],),  # noqa: E501
             'taints': ([Taint],),  # noqa: E501
         }
 
@@ -127,6 +128,7 @@ class MachinePool(ModelNormal):
         'labels': 'labels',  # noqa: E501
         'replicas': 'replicas',  # noqa: E501
         'security_group_filters': 'security_group_filters',  # noqa: E501
+        'subnets': 'subnets',  # noqa: E501
         'taints': 'taints',  # noqa: E501
     }
 
@@ -182,6 +184,7 @@ class MachinePool(ModelNormal):
             labels ({str: (str,)}): The labels set on the Nodes created.. [optional]  # noqa: E501
             replicas (int): The number of Machines (and Nodes) to create. Replicas and autoscaling cannot be used together.    . [optional]  # noqa: E501
             security_group_filters ([MachinePoolSecurityGroupFilter]): List of security groups to be applied to MachinePool (Optional). [optional]  # noqa: E501
+            subnets ([str]): The subnets upon which the nodes are created.. [optional]  # noqa: E501
             taints ([Taint]): The taints set on the Nodes created.. [optional]  # noqa: E501
         """
 
@@ -279,6 +282,7 @@ class MachinePool(ModelNormal):
             labels ({str: (str,)}): The labels set on the Nodes created.. [optional]  # noqa: E501
             replicas (int): The number of Machines (and Nodes) to create. Replicas and autoscaling cannot be used together.    . [optional]  # noqa: E501
             security_group_filters ([MachinePoolSecurityGroupFilter]): List of security groups to be applied to MachinePool (Optional). [optional]  # noqa: E501
+            subnets ([str]): The subnets upon which the nodes are created.. [optional]  # noqa: E501
             taints ([Taint]): The taints set on the Nodes created.. [optional]  # noqa: E501
         """
 

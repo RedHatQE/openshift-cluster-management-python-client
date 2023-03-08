@@ -32,7 +32,9 @@ from ocm_python_client.exceptions import ApiAttributeError
 
 def lazy_import():
     from ocm_python_client.model.add_on_environment_variable import AddOnEnvironmentVariable
+    from ocm_python_client.model.add_on_secret_propagation import AddOnSecretPropagation
     globals()['AddOnEnvironmentVariable'] = AddOnEnvironmentVariable
+    globals()['AddOnSecretPropagation'] = AddOnSecretPropagation
 
 
 class AddOnConfig(ModelNormal):
@@ -92,6 +94,7 @@ class AddOnConfig(ModelNormal):
             'id': (str,),  # noqa: E501
             'href': (str,),  # noqa: E501
             'add_on_environment_variables': ([AddOnEnvironmentVariable],),  # noqa: E501
+            'secret_propagations': ([AddOnSecretPropagation],),  # noqa: E501
         }
 
     @cached_property
@@ -104,6 +107,7 @@ class AddOnConfig(ModelNormal):
         'id': 'id',  # noqa: E501
         'href': 'href',  # noqa: E501
         'add_on_environment_variables': 'add_on_environment_variables',  # noqa: E501
+        'secret_propagations': 'secret_propagations',  # noqa: E501
     }
 
     read_only_vars = {
@@ -151,6 +155,7 @@ class AddOnConfig(ModelNormal):
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
             add_on_environment_variables ([AddOnEnvironmentVariable]): List of environment variables for the addon. [optional]  # noqa: E501
+            secret_propagations ([AddOnSecretPropagation]): List of secret propagations for the addon. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -240,6 +245,7 @@ class AddOnConfig(ModelNormal):
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
             add_on_environment_variables ([AddOnEnvironmentVariable]): List of environment variables for the addon. [optional]  # noqa: E501
+            secret_propagations ([AddOnSecretPropagation]): List of secret propagations for the addon. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

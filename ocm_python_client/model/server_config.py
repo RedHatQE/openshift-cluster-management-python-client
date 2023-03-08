@@ -85,6 +85,7 @@ class ServerConfig(ModelNormal):
             'kind': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'href': (str,),  # noqa: E501
+            'kubeconfig': (str,),  # noqa: E501
             'server': (str,),  # noqa: E501
         }
 
@@ -97,6 +98,7 @@ class ServerConfig(ModelNormal):
         'kind': 'kind',  # noqa: E501
         'id': 'id',  # noqa: E501
         'href': 'href',  # noqa: E501
+        'kubeconfig': 'kubeconfig',  # noqa: E501
         'server': 'server',  # noqa: E501
     }
 
@@ -144,6 +146,7 @@ class ServerConfig(ModelNormal):
             kind (str): Indicates the type of this object. Will be 'ServerConfig' if this is a complete object or 'ServerConfigLink' if it is just a link.. [optional]  # noqa: E501
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
+            kubeconfig (str): The kubeconfig of the server. [optional]  # noqa: E501
             server (str): The URL of the server. [optional]  # noqa: E501
         """
 
@@ -233,6 +236,7 @@ class ServerConfig(ModelNormal):
             kind (str): Indicates the type of this object. Will be 'ServerConfig' if this is a complete object or 'ServerConfigLink' if it is just a link.. [optional]  # noqa: E501
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
+            kubeconfig (str): The kubeconfig of the server. [optional]  # noqa: E501
             server (str): The URL of the server. [optional]  # noqa: E501
         """
 

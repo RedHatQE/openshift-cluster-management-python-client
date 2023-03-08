@@ -31,7 +31,11 @@ from ocm_python_client.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from ocm_python_client.model.aws_etcd_encryption import AwsEtcdEncryption
+    from ocm_python_client.model.private_link_cluster_configuration import PrivateLinkClusterConfiguration
     from ocm_python_client.model.sts import STS
+    globals()['AwsEtcdEncryption'] = AwsEtcdEncryption
+    globals()['PrivateLinkClusterConfiguration'] = PrivateLinkClusterConfiguration
     globals()['STS'] = STS
 
 
@@ -92,7 +96,9 @@ class AWS(ModelNormal):
             'sts': (STS,),  # noqa: E501
             'access_key_id': (str,),  # noqa: E501
             'account_id': (str,),  # noqa: E501
+            'etcd_encryption': (AwsEtcdEncryption,),  # noqa: E501
             'private_link': (bool,),  # noqa: E501
+            'private_link_configuration': (PrivateLinkClusterConfiguration,),  # noqa: E501
             'secret_access_key': (str,),  # noqa: E501
             'subnet_ids': ([str],),  # noqa: E501
             'tags': ({str: (str,)},),  # noqa: E501
@@ -108,7 +114,9 @@ class AWS(ModelNormal):
         'sts': 'sts',  # noqa: E501
         'access_key_id': 'access_key_id',  # noqa: E501
         'account_id': 'account_id',  # noqa: E501
+        'etcd_encryption': 'etcd_encryption',  # noqa: E501
         'private_link': 'private_link',  # noqa: E501
+        'private_link_configuration': 'private_link_configuration',  # noqa: E501
         'secret_access_key': 'secret_access_key',  # noqa: E501
         'subnet_ids': 'subnet_ids',  # noqa: E501
         'tags': 'tags',  # noqa: E501
@@ -159,7 +167,9 @@ class AWS(ModelNormal):
             sts (STS): [optional]  # noqa: E501
             access_key_id (str): AWS access key identifier.. [optional]  # noqa: E501
             account_id (str): AWS account identifier.. [optional]  # noqa: E501
+            etcd_encryption (AwsEtcdEncryption): [optional]  # noqa: E501
             private_link (bool): Sets cluster to be inaccessible externally.. [optional]  # noqa: E501
+            private_link_configuration (PrivateLinkClusterConfiguration): [optional]  # noqa: E501
             secret_access_key (str): AWS secret access key.. [optional]  # noqa: E501
             subnet_ids ([str]): The subnet ids to be used when installing the cluster.. [optional]  # noqa: E501
             tags ({str: (str,)}): Optional keys and values that the installer will add as tags to all AWS resources it creates. [optional]  # noqa: E501
@@ -252,7 +262,9 @@ class AWS(ModelNormal):
             sts (STS): [optional]  # noqa: E501
             access_key_id (str): AWS access key identifier.. [optional]  # noqa: E501
             account_id (str): AWS account identifier.. [optional]  # noqa: E501
+            etcd_encryption (AwsEtcdEncryption): [optional]  # noqa: E501
             private_link (bool): Sets cluster to be inaccessible externally.. [optional]  # noqa: E501
+            private_link_configuration (PrivateLinkClusterConfiguration): [optional]  # noqa: E501
             secret_access_key (str): AWS secret access key.. [optional]  # noqa: E501
             subnet_ids ([str]): The subnet ids to be used when installing the cluster.. [optional]  # noqa: E501
             tags ({str: (str,)}): Optional keys and values that the installer will add as tags to all AWS resources it creates. [optional]  # noqa: E501

@@ -92,8 +92,11 @@ class STS(ModelNormal):
         return {
             'oidc_endpoint_url': (str,),  # noqa: E501
             'auto_mode': (bool,),  # noqa: E501
+            'enabled': (bool,),  # noqa: E501
             'external_id': (str,),  # noqa: E501
             'instance_iam_roles': (InstanceIAMRoles,),  # noqa: E501
+            'managed_policies': (bool,),  # noqa: E501
+            'oidc_private_key_secret_arn': (str,),  # noqa: E501
             'operator_iam_roles': ([OperatorIAMRole],),  # noqa: E501
             'operator_role_prefix': (str,),  # noqa: E501
             'permission_boundary': (str,),  # noqa: E501
@@ -109,8 +112,11 @@ class STS(ModelNormal):
     attribute_map = {
         'oidc_endpoint_url': 'oidc_endpoint_url',  # noqa: E501
         'auto_mode': 'auto_mode',  # noqa: E501
+        'enabled': 'enabled',  # noqa: E501
         'external_id': 'external_id',  # noqa: E501
         'instance_iam_roles': 'instance_iam_roles',  # noqa: E501
+        'managed_policies': 'managed_policies',  # noqa: E501
+        'oidc_private_key_secret_arn': 'oidc_private_key_secret_arn',  # noqa: E501
         'operator_iam_roles': 'operator_iam_roles',  # noqa: E501
         'operator_role_prefix': 'operator_role_prefix',  # noqa: E501
         'permission_boundary': 'permission_boundary',  # noqa: E501
@@ -161,8 +167,11 @@ class STS(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             oidc_endpoint_url (str): URL of the location where OIDC configuration and keys are available. [optional]  # noqa: E501
             auto_mode (bool): Auto creation mode for cluster - OCM will create the operator roles and OIDC provider. false by default.. [optional]  # noqa: E501
+            enabled (bool): If STS is enabled or disabled. [optional]  # noqa: E501
             external_id (str): Optional unique identifier when assuming role in another account. [optional]  # noqa: E501
             instance_iam_roles (InstanceIAMRoles): [optional]  # noqa: E501
+            managed_policies (bool): If true, cluster account and operator roles have managed policies attached.. [optional]  # noqa: E501
+            oidc_private_key_secret_arn (str): Secrets Manager ARN for the OIDC private key key.. [optional]  # noqa: E501
             operator_iam_roles ([OperatorIAMRole]): List of roles necessary to access the AWS resources of the various operators used during installation. [optional]  # noqa: E501
             operator_role_prefix (str): Optional user provided prefix for operator roles.. [optional]  # noqa: E501
             permission_boundary (str): Optional user provided permission boundary.. [optional]  # noqa: E501
@@ -255,8 +264,11 @@ class STS(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             oidc_endpoint_url (str): URL of the location where OIDC configuration and keys are available. [optional]  # noqa: E501
             auto_mode (bool): Auto creation mode for cluster - OCM will create the operator roles and OIDC provider. false by default.. [optional]  # noqa: E501
+            enabled (bool): If STS is enabled or disabled. [optional]  # noqa: E501
             external_id (str): Optional unique identifier when assuming role in another account. [optional]  # noqa: E501
             instance_iam_roles (InstanceIAMRoles): [optional]  # noqa: E501
+            managed_policies (bool): If true, cluster account and operator roles have managed policies attached.. [optional]  # noqa: E501
+            oidc_private_key_secret_arn (str): Secrets Manager ARN for the OIDC private key key.. [optional]  # noqa: E501
             operator_iam_roles ([OperatorIAMRole]): List of roles necessary to access the AWS resources of the various operators used during installation. [optional]  # noqa: E501
             operator_role_prefix (str): Optional user provided prefix for operator roles.. [optional]  # noqa: E501
             permission_boundary (str): Optional user provided permission boundary.. [optional]  # noqa: E501

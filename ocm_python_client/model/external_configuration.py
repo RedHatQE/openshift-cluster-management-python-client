@@ -32,8 +32,10 @@ from ocm_python_client.exceptions import ApiAttributeError
 
 def lazy_import():
     from ocm_python_client.model.label import Label
+    from ocm_python_client.model.manifest import Manifest
     from ocm_python_client.model.syncset import Syncset
     globals()['Label'] = Label
+    globals()['Manifest'] = Manifest
     globals()['Syncset'] = Syncset
 
 
@@ -91,6 +93,7 @@ class ExternalConfiguration(ModelNormal):
         lazy_import()
         return {
             'labels': ([Label],),  # noqa: E501
+            'manifests': ([Manifest],),  # noqa: E501
             'syncsets': ([Syncset],),  # noqa: E501
         }
 
@@ -101,6 +104,7 @@ class ExternalConfiguration(ModelNormal):
 
     attribute_map = {
         'labels': 'labels',  # noqa: E501
+        'manifests': 'manifests',  # noqa: E501
         'syncsets': 'syncsets',  # noqa: E501
     }
 
@@ -146,6 +150,7 @@ class ExternalConfiguration(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             labels ([Label]): list of labels externally configured on the clusterdeployment.. [optional]  # noqa: E501
+            manifests ([Manifest]): list of manifest externally configured for a hosted cluster.. [optional]  # noqa: E501
             syncsets ([Syncset]): list of syncsets externally configured on the cluster.. [optional]  # noqa: E501
         """
 
@@ -233,6 +238,7 @@ class ExternalConfiguration(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             labels ([Label]): list of labels externally configured on the clusterdeployment.. [optional]  # noqa: E501
+            manifests ([Manifest]): list of manifest externally configured for a hosted cluster.. [optional]  # noqa: E501
             syncsets ([Syncset]): list of syncsets externally configured on the cluster.. [optional]  # noqa: E501
         """
 

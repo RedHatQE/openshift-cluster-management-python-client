@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **labels** | **{str: (str,)}** | The labels set on the Nodes created. | [optional] 
 **replicas** | **int** | The number of Machines (and Nodes) to create. Replicas and autoscaling cannot be used together.     | [optional] 
 **security_group_filters** | [**[MachinePoolSecurityGroupFilter]**](MachinePoolSecurityGroupFilter.md) | List of security groups to be applied to MachinePool (Optional) | [optional] 
+**subnets** | **[str]** | The subnets upon which the nodes are created. | [optional] 
 **taints** | [**[Taint]**](Taint.md) | The taints set on the Nodes created. | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

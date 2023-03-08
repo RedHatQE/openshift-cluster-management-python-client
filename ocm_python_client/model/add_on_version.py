@@ -35,10 +35,12 @@ def lazy_import():
     from ocm_python_client.model.add_on_parameter import AddOnParameter
     from ocm_python_client.model.add_on_requirement import AddOnRequirement
     from ocm_python_client.model.add_on_sub_operator import AddOnSubOperator
+    from ocm_python_client.model.additional_catalog_source import AdditionalCatalogSource
     globals()['AddOnConfig'] = AddOnConfig
     globals()['AddOnParameter'] = AddOnParameter
     globals()['AddOnRequirement'] = AddOnRequirement
     globals()['AddOnSubOperator'] = AddOnSubOperator
+    globals()['AdditionalCatalogSource'] = AdditionalCatalogSource
 
 
 class AddOnVersion(ModelNormal):
@@ -97,11 +99,13 @@ class AddOnVersion(ModelNormal):
             'kind': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'href': (str,),  # noqa: E501
+            'additional_catalog_sources': ([AdditionalCatalogSource],),  # noqa: E501
             'available_upgrades': ([str],),  # noqa: E501
             'channel': (str,),  # noqa: E501
             'config': (AddOnConfig,),  # noqa: E501
             'enabled': (bool,),  # noqa: E501
             'parameters': ([AddOnParameter],),  # noqa: E501
+            'pull_secret_name': (str,),  # noqa: E501
             'requirements': ([AddOnRequirement],),  # noqa: E501
             'source_image': (str,),  # noqa: E501
             'sub_operators': ([AddOnSubOperator],),  # noqa: E501
@@ -116,11 +120,13 @@ class AddOnVersion(ModelNormal):
         'kind': 'kind',  # noqa: E501
         'id': 'id',  # noqa: E501
         'href': 'href',  # noqa: E501
+        'additional_catalog_sources': 'additional_catalog_sources',  # noqa: E501
         'available_upgrades': 'available_upgrades',  # noqa: E501
         'channel': 'channel',  # noqa: E501
         'config': 'config',  # noqa: E501
         'enabled': 'enabled',  # noqa: E501
         'parameters': 'parameters',  # noqa: E501
+        'pull_secret_name': 'pull_secret_name',  # noqa: E501
         'requirements': 'requirements',  # noqa: E501
         'source_image': 'source_image',  # noqa: E501
         'sub_operators': 'sub_operators',  # noqa: E501
@@ -170,11 +176,13 @@ class AddOnVersion(ModelNormal):
             kind (str): Indicates the type of this object. Will be 'AddOnVersion' if this is a complete object or 'AddOnVersionLink' if it is just a link.. [optional]  # noqa: E501
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
+            additional_catalog_sources ([AdditionalCatalogSource]): Additional catalog sources associated with this addon version. [optional]  # noqa: E501
             available_upgrades ([str]): AvailableUpgrades is the list of versions this version can be upgraded to.. [optional]  # noqa: E501
             channel (str): The specific addon catalog source channel of packages. [optional]  # noqa: E501
             config (AddOnConfig): [optional]  # noqa: E501
             enabled (bool): Indicates if this add-on version can be added to clusters.. [optional]  # noqa: E501
             parameters ([AddOnParameter]): List of parameters for this add-on version.. [optional]  # noqa: E501
+            pull_secret_name (str): The pull secret name used for this addon version.. [optional]  # noqa: E501
             requirements ([AddOnRequirement]): List of requirements for this add-on version.. [optional]  # noqa: E501
             source_image (str): The catalog source image for this add-on version.. [optional]  # noqa: E501
             sub_operators ([AddOnSubOperator]): List of sub operators for this add-on version.. [optional]  # noqa: E501
@@ -266,11 +274,13 @@ class AddOnVersion(ModelNormal):
             kind (str): Indicates the type of this object. Will be 'AddOnVersion' if this is a complete object or 'AddOnVersionLink' if it is just a link.. [optional]  # noqa: E501
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
+            additional_catalog_sources ([AdditionalCatalogSource]): Additional catalog sources associated with this addon version. [optional]  # noqa: E501
             available_upgrades ([str]): AvailableUpgrades is the list of versions this version can be upgraded to.. [optional]  # noqa: E501
             channel (str): The specific addon catalog source channel of packages. [optional]  # noqa: E501
             config (AddOnConfig): [optional]  # noqa: E501
             enabled (bool): Indicates if this add-on version can be added to clusters.. [optional]  # noqa: E501
             parameters ([AddOnParameter]): List of parameters for this add-on version.. [optional]  # noqa: E501
+            pull_secret_name (str): The pull secret name used for this addon version.. [optional]  # noqa: E501
             requirements ([AddOnRequirement]): List of requirements for this add-on version.. [optional]  # noqa: E501
             source_image (str): The catalog source image for this add-on version.. [optional]  # noqa: E501
             sub_operators ([AddOnSubOperator]): List of sub operators for this add-on version.. [optional]  # noqa: E501

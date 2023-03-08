@@ -28,6 +28,8 @@ from ocm_python_client.model.aws_infrastructure_access_role_grant import AWSInfr
 from ocm_python_client.model.add_on import AddOn
 from ocm_python_client.model.add_on_installation import AddOnInstallation
 from ocm_python_client.model.add_on_version import AddOnVersion
+from ocm_python_client.model.addon_upgrade_policy import AddonUpgradePolicy
+from ocm_python_client.model.addon_upgrade_policy_state import AddonUpgradePolicyState
 from ocm_python_client.model.alerts_info import AlertsInfo
 from ocm_python_client.model.api_clusters_mgmt_v1_addons_addon_id_versions_get200_response import ApiClustersMgmtV1AddonsAddonIdVersionsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_addons_get200_response import ApiClustersMgmtV1AddonsGet200Response
@@ -40,9 +42,13 @@ from ocm_python_client.model.api_clusters_mgmt_v1_aws_inquiries_vpcs_post200_res
 from ocm_python_client.model.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post200_response import ApiClustersMgmtV1CloudProvidersCloudProviderIdAvailableRegionsPost200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get200_response import ApiClustersMgmtV1CloudProvidersCloudProviderIdRegionsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_cloud_providers_get200_response import ApiClustersMgmtV1CloudProvidersGet200Response
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_get200_response import ApiClustersMgmtV1ClustersClusterIdAddonUpgradePoliciesGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_addons_get200_response import ApiClustersMgmtV1ClustersClusterIdAddonsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get200_response import ApiClustersMgmtV1ClustersClusterIdAwsInfrastructureAccessRoleGrantsGet200Response
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_get200_response import ApiClustersMgmtV1ClustersClusterIdAwsPrivateLinkConfigurationPrincipalsGet200Response
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_get200_response import ApiClustersMgmtV1ClustersClusterIdControlPlaneUpgradePoliciesGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get200_response import ApiClustersMgmtV1ClustersClusterIdExternalConfigurationLabelsGet200Response
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_get200_response import ApiClustersMgmtV1ClustersClusterIdExternalConfigurationManifestsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get200_response import ApiClustersMgmtV1ClustersClusterIdExternalConfigurationSyncsetsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get200_response import ApiClustersMgmtV1ClustersClusterIdGateAgreementsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_groups_get200_response import ApiClustersMgmtV1ClustersClusterIdGroupsGet200Response
@@ -55,6 +61,7 @@ from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get200_response import ApiClustersMgmtV1ClustersClusterIdLimitedSupportReasonsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_logs_get200_response import ApiClustersMgmtV1ClustersClusterIdLogsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get200_response import ApiClustersMgmtV1ClustersClusterIdMachinePoolsGet200Response
+from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_get200_response import ApiClustersMgmtV1ClustersClusterIdNodePoolsGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get200_response import ApiClustersMgmtV1ClustersClusterIdStsOperatorRolesGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get200_response import ApiClustersMgmtV1ClustersClusterIdUpgradePoliciesGet200Response
 from ocm_python_client.model.api_clusters_mgmt_v1_clusters_get200_response import ApiClustersMgmtV1ClustersGet200Response
@@ -76,6 +83,7 @@ from ocm_python_client.model.cluster_credentials import ClusterCredentials
 from ocm_python_client.model.cluster_operators_info import ClusterOperatorsInfo
 from ocm_python_client.model.cluster_resources import ClusterResources
 from ocm_python_client.model.cluster_status import ClusterStatus
+from ocm_python_client.model.control_plane_upgrade_policy import ControlPlaneUpgradePolicy
 from ocm_python_client.model.environment import Environment
 from ocm_python_client.model.error import Error
 from ocm_python_client.model.event import Event
@@ -83,6 +91,7 @@ from ocm_python_client.model.external_configuration import ExternalConfiguration
 from ocm_python_client.model.flavour import Flavour
 from ocm_python_client.model.group import Group
 from ocm_python_client.model.ht_passwd_user import HTPasswdUser
+from ocm_python_client.model.hypershift_config import HypershiftConfig
 from ocm_python_client.model.identity_provider import IdentityProvider
 from ocm_python_client.model.ingress import Ingress
 from ocm_python_client.model.label import Label
@@ -90,9 +99,14 @@ from ocm_python_client.model.limited_support_reason import LimitedSupportReason
 from ocm_python_client.model.limited_support_reason_template import LimitedSupportReasonTemplate
 from ocm_python_client.model.log import Log
 from ocm_python_client.model.machine_pool import MachinePool
+from ocm_python_client.model.machine_type import MachineType
+from ocm_python_client.model.manifest import Manifest
 from ocm_python_client.model.metadata import Metadata
+from ocm_python_client.model.node_pool import NodePool
 from ocm_python_client.model.nodes_info import NodesInfo
 from ocm_python_client.model.operator_iam_role import OperatorIAMRole
+from ocm_python_client.model.private_link_configuration import PrivateLinkConfiguration
+from ocm_python_client.model.private_link_principal import PrivateLinkPrincipal
 from ocm_python_client.model.product import Product
 from ocm_python_client.model.provision_shard import ProvisionShard
 from ocm_python_client.model.socket_totals_node_role_os_metric_node import SocketTotalsNodeRoleOSMetricNode
@@ -131,7 +145,9 @@ class DefaultApi(object):
                 'all': [
                     'addon_id',
                 ],
-                'required': [],
+                'required': [
+                    'addon_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -180,7 +196,9 @@ class DefaultApi(object):
                 'all': [
                     'addon_id',
                 ],
-                'required': [],
+                'required': [
+                    'addon_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -230,7 +248,9 @@ class DefaultApi(object):
                     'addon_id',
                     'add_on',
                 ],
-                'required': [],
+                'required': [
+                    'addon_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -288,7 +308,9 @@ class DefaultApi(object):
                     'search',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'addon_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -354,7 +376,9 @@ class DefaultApi(object):
                     'addon_id',
                     'add_on_version',
                 ],
-                'required': [],
+                'required': [
+                    'addon_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -409,7 +433,10 @@ class DefaultApi(object):
                     'addon_id',
                     'version_id',
                 ],
-                'required': [],
+                'required': [
+                    'addon_id',
+                    'version_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -463,7 +490,10 @@ class DefaultApi(object):
                     'addon_id',
                     'version_id',
                 ],
-                'required': [],
+                'required': [
+                    'addon_id',
+                    'version_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -518,7 +548,10 @@ class DefaultApi(object):
                     'version_id',
                     'add_on_version',
                 ],
-                'required': [],
+                'required': [
+                    'addon_id',
+                    'version_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -690,7 +723,9 @@ class DefaultApi(object):
                 'all': [
                     'aws_infrastructure_access_role_id',
                 ],
-                'required': [],
+                'required': [
+                    'aws_infrastructure_access_role_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1104,7 +1139,9 @@ class DefaultApi(object):
                     'size',
                     'aws',
                 ],
-                'required': [],
+                'required': [
+                    'cloud_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1166,7 +1203,9 @@ class DefaultApi(object):
                 'all': [
                     'cloud_provider_id',
                 ],
-                'required': [],
+                'required': [
+                    'cloud_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1217,7 +1256,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cloud_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1275,7 +1316,10 @@ class DefaultApi(object):
                     'cloud_provider_id',
                     'region_id',
                 ],
-                'required': [],
+                'required': [
+                    'cloud_provider_id',
+                    'region_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1393,7 +1437,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'addon_inquiry_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'addon_inquiry_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1450,7 +1497,9 @@ class DefaultApi(object):
                     'search',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1500,6 +1549,421 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_delete_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/addon_upgrade_policies/{addon_upgrade_policy_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_delete',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'addon_upgrade_policy_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'addon_upgrade_policy_id': 'addon_upgrade_policy_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'addon_upgrade_policy_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (AddonUpgradePolicy,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/addon_upgrade_policies/{addon_upgrade_policy_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'addon_upgrade_policy_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'addon_upgrade_policy_id': 'addon_upgrade_policy_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'addon_upgrade_policy_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_patch_endpoint = _Endpoint(
+            settings={
+                'response_type': (AddonUpgradePolicy,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/addon_upgrade_policies/{addon_upgrade_policy_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_patch',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                    'addon_upgrade_policy',
+                ],
+                'required': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'addon_upgrade_policy_id':
+                        (str,),
+                    'addon_upgrade_policy':
+                        (AddonUpgradePolicy,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'addon_upgrade_policy_id': 'addon_upgrade_policy_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'addon_upgrade_policy_id': 'path',
+                    'addon_upgrade_policy': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (AddonUpgradePolicyState,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/addon_upgrade_policies/{addon_upgrade_policy_id}/state',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'addon_upgrade_policy_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'addon_upgrade_policy_id': 'addon_upgrade_policy_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'addon_upgrade_policy_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_patch_endpoint = _Endpoint(
+            settings={
+                'response_type': (AddonUpgradePolicyState,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/addon_upgrade_policies/{addon_upgrade_policy_id}/state',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_patch',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                    'addon_upgrade_policy_state',
+                ],
+                'required': [
+                    'cluster_id',
+                    'addon_upgrade_policy_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'addon_upgrade_policy_id':
+                        (str,),
+                    'addon_upgrade_policy_state':
+                        (AddonUpgradePolicyState,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'addon_upgrade_policy_id': 'addon_upgrade_policy_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'addon_upgrade_policy_id': 'path',
+                    'addon_upgrade_policy_state': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (ApiClustersMgmtV1ClustersClusterIdAddonUpgradePoliciesGet200Response,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/addon_upgrade_policies',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'page',
+                    'size',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_post_endpoint = _Endpoint(
+            settings={
+                'response_type': (AddonUpgradePolicy,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/addon_upgrade_policies',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_post',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'addon_upgrade_policy',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'addon_upgrade_policy':
+                        (AddonUpgradePolicy,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'addon_upgrade_policy': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete_endpoint = _Endpoint(
             settings={
                 'response_type': None,
@@ -1516,7 +1980,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'addoninstallation_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'addoninstallation_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1570,7 +2037,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'addoninstallation_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'addoninstallation_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1625,7 +2095,10 @@ class DefaultApi(object):
                     'addoninstallation_id',
                     'add_on_installation',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'addoninstallation_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1687,7 +2160,9 @@ class DefaultApi(object):
                     'search',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1753,7 +2228,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'add_on_installation',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1808,7 +2285,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'aws_infrastructure_access_role_grant_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'aws_infrastructure_access_role_grant_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1862,7 +2342,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'aws_infrastructure_access_role_grant_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'aws_infrastructure_access_role_grant_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1919,7 +2402,9 @@ class DefaultApi(object):
                     'search',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -1985,7 +2470,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'aws_infrastructure_access_role_grant',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2024,22 +2511,24 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
-        self.api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete_endpoint = _Endpoint(
+        self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_get_endpoint = _Endpoint(
             settings={
-                'response_type': None,
+                'response_type': (PrivateLinkConfiguration,),
                 'auth': [
                     'bearer'
                 ],
-                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/clusterdeployment',
-                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete',
-                'http_method': 'DELETE',
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/aws/private_link_configuration',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_get',
+                'http_method': 'GET',
                 'servers': None,
             },
             params_map={
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2073,6 +2562,589 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (ApiClustersMgmtV1ClustersClusterIdAwsPrivateLinkConfigurationPrincipalsGet200Response,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/aws/private_link_configuration/principals',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'page',
+                    'search',
+                    'size',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'page':
+                        (int,),
+                    'search':
+                        (str,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'page': 'page',
+                    'search': 'search',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'page': 'query',
+                    'search': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_post_endpoint = _Endpoint(
+            settings={
+                'response_type': (PrivateLinkPrincipal,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/aws/private_link_configuration/principals',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_post',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'private_link_principal',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'private_link_principal':
+                        (PrivateLinkPrincipal,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'private_link_principal': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_delete_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/aws/private_link_configuration/principals/{principal_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_delete',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'principal_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'principal_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'principal_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'principal_id': 'principal_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'principal_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (PrivateLinkPrincipal,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/aws/private_link_configuration/principals/{principal_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'principal_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'principal_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'principal_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'principal_id': 'principal_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'principal_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/clusterdeployment',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_delete_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/control_plane/upgrade_policies/{control_plane_upgrade_policy_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_delete',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'control_plane_upgrade_policy_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'control_plane_upgrade_policy_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'control_plane_upgrade_policy_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'control_plane_upgrade_policy_id': 'control_plane_upgrade_policy_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'control_plane_upgrade_policy_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (ControlPlaneUpgradePolicy,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/control_plane/upgrade_policies/{control_plane_upgrade_policy_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'control_plane_upgrade_policy_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'control_plane_upgrade_policy_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'control_plane_upgrade_policy_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'control_plane_upgrade_policy_id': 'control_plane_upgrade_policy_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'control_plane_upgrade_policy_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_patch_endpoint = _Endpoint(
+            settings={
+                'response_type': (ControlPlaneUpgradePolicy,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/control_plane/upgrade_policies/{control_plane_upgrade_policy_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_patch',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'control_plane_upgrade_policy_id',
+                    'control_plane_upgrade_policy',
+                ],
+                'required': [
+                    'cluster_id',
+                    'control_plane_upgrade_policy_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'control_plane_upgrade_policy_id':
+                        (str,),
+                    'control_plane_upgrade_policy':
+                        (ControlPlaneUpgradePolicy,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'control_plane_upgrade_policy_id': 'control_plane_upgrade_policy_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'control_plane_upgrade_policy_id': 'path',
+                    'control_plane_upgrade_policy': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (ApiClustersMgmtV1ClustersClusterIdControlPlaneUpgradePoliciesGet200Response,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/control_plane/upgrade_policies',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'page',
+                    'size',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_post_endpoint = _Endpoint(
+            settings={
+                'response_type': (ControlPlaneUpgradePolicy,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/control_plane/upgrade_policies',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_post',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'control_plane_upgrade_policy',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'control_plane_upgrade_policy':
+                        (ControlPlaneUpgradePolicy,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'control_plane_upgrade_policy': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.api_clusters_mgmt_v1_clusters_cluster_id_credentials_get_endpoint = _Endpoint(
             settings={
                 'response_type': (ClusterCredentials,),
@@ -2088,7 +3160,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2139,7 +3213,9 @@ class DefaultApi(object):
                     'deprovision',
                     'dry_run',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2196,7 +3272,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2247,7 +3325,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2305,7 +3385,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'label_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'label_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2359,7 +3442,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'label_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'label_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2414,7 +3500,10 @@ class DefaultApi(object):
                     'label_id',
                     'label',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'label_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2473,7 +3562,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'label',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2512,6 +3603,301 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (ApiClustersMgmtV1ClustersClusterIdExternalConfigurationManifestsGet200Response,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/external_configuration/manifests',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'page',
+                    'size',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_delete_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/external_configuration/manifests/{manifest_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_delete',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'manifest_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'manifest_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'manifest_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'manifest_id': 'manifest_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'manifest_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (Manifest,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/external_configuration/manifests/{manifest_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'manifest_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'manifest_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'manifest_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'manifest_id': 'manifest_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'manifest_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_patch_endpoint = _Endpoint(
+            settings={
+                'response_type': (Manifest,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/external_configuration/manifests/{manifest_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_patch',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'manifest_id',
+                    'manifest',
+                ],
+                'required': [
+                    'cluster_id',
+                    'manifest_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'manifest_id':
+                        (str,),
+                    'manifest':
+                        (Manifest,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'manifest_id': 'manifest_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'manifest_id': 'path',
+                    'manifest': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_post_endpoint = _Endpoint(
+            settings={
+                'response_type': (Manifest,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/external_configuration/manifests',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_post',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'manifest',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'manifest':
+                        (Manifest,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'manifest': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get_endpoint = _Endpoint(
             settings={
                 'response_type': (ApiClustersMgmtV1ClustersClusterIdExternalConfigurationSyncsetsGet200Response,),
@@ -2529,7 +3915,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2587,7 +3975,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'syncset',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2642,7 +4032,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'syncset_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'syncset_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2696,7 +4089,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'syncset_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'syncset_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2751,7 +4147,10 @@ class DefaultApi(object):
                     'syncset_id',
                     'syncset',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'syncset_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2811,7 +4210,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2869,7 +4270,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'version_gate_agreement',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2924,7 +4327,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'version_gate_agreement_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'version_gate_agreement_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -2978,7 +4384,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'version_gate_agreement_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'version_gate_agreement_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3031,7 +4440,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3082,7 +4493,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3140,7 +4553,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'group_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'group_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3196,7 +4612,10 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'group_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3259,7 +4678,10 @@ class DefaultApi(object):
                     'group_id',
                     'user',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'group_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3319,7 +4741,11 @@ class DefaultApi(object):
                     'group_id',
                     'user_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'group_id',
+                    'user_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3378,7 +4804,11 @@ class DefaultApi(object):
                     'group_id',
                     'user_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'group_id',
+                    'user_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3435,7 +4865,60 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_hypershift_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (HypershiftConfig,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/hypershift',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_hypershift_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3486,7 +4969,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3544,7 +5029,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'identity_provider_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3598,7 +5086,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'identity_provider_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3654,7 +5145,10 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3717,7 +5211,11 @@ class DefaultApi(object):
                     'identity_provider_id',
                     'htpasswd_user_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                    'htpasswd_user_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3776,7 +5274,11 @@ class DefaultApi(object):
                     'identity_provider_id',
                     'htpasswd_user_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                    'htpasswd_user_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3836,7 +5338,11 @@ class DefaultApi(object):
                     'htpasswd_user_id',
                     'ht_passwd_user',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                    'htpasswd_user_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3900,7 +5406,10 @@ class DefaultApi(object):
                     'identity_provider_id',
                     'api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post_request',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -3960,7 +5469,10 @@ class DefaultApi(object):
                     'identity_provider_id',
                     'ht_passwd_user',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4020,7 +5532,10 @@ class DefaultApi(object):
                     'identity_provider_id',
                     'identity_provider',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'identity_provider_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4079,7 +5594,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'identity_provider',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4135,7 +5652,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4193,7 +5712,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'ingress_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'ingress_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4247,7 +5769,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'ingress_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'ingress_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4302,7 +5827,10 @@ class DefaultApi(object):
                     'ingress_id',
                     'ingress',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'ingress_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4361,7 +5889,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'ingress',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4416,7 +5946,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'ingress',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4472,7 +6004,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4530,7 +6064,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'limited_support_reason_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'limited_support_reason_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4584,7 +6121,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'limited_support_reason_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'limited_support_reason_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4638,7 +6178,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'limited_support_reason',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4694,7 +6236,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4753,7 +6297,9 @@ class DefaultApi(object):
                     'offset',
                     'tail',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4812,7 +6358,9 @@ class DefaultApi(object):
                     'offset',
                     'tail',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4871,7 +6419,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4929,7 +6479,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'machine_pool_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'machine_pool_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -4983,7 +6536,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'machine_pool_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'machine_pool_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5038,7 +6594,10 @@ class DefaultApi(object):
                     'machine_pool_id',
                     'machine_pool',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'machine_pool_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5097,7 +6656,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'machine_pool',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5151,7 +6712,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5200,7 +6763,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5249,7 +6814,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5298,7 +6865,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5347,7 +6916,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5381,6 +6952,301 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (ApiClustersMgmtV1ClustersClusterIdNodePoolsGet200Response,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/node_pools',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_node_pools_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'page',
+                    'size',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_delete_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/node_pools/{node_pool_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_delete',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'node_pool_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'node_pool_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'node_pool_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'node_pool_id': 'node_pool_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'node_pool_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (NodePool,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/node_pools/{node_pool_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'node_pool_id',
+                ],
+                'required': [
+                    'cluster_id',
+                    'node_pool_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'node_pool_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'node_pool_id': 'node_pool_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'node_pool_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_patch_endpoint = _Endpoint(
+            settings={
+                'response_type': (NodePool,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/node_pools/{node_pool_id}',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_patch',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'node_pool_id',
+                    'node_pool',
+                ],
+                'required': [
+                    'cluster_id',
+                    'node_pool_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'node_pool_id':
+                        (str,),
+                    'node_pool':
+                        (NodePool,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                    'node_pool_id': 'node_pool_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'node_pool_id': 'path',
+                    'node_pool': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_post_endpoint = _Endpoint(
+            settings={
+                'response_type': (NodePool,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/node_pools',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_node_pools_post',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'node_pool',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'node_pool':
+                        (NodePool,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'node_pool': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.api_clusters_mgmt_v1_clusters_cluster_id_patch_endpoint = _Endpoint(
             settings={
                 'response_type': (Cluster,),
@@ -5397,7 +7263,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'cluster',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5451,7 +7319,60 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_delete_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/provision_shard',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_delete',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5500,7 +7421,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5534,6 +7457,63 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
+        self.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_patch_endpoint = _Endpoint(
+            settings={
+                'response_type': (ProvisionShard,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/clusters/{cluster_id}/provision_shard',
+                'operation_id': 'api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_patch',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cluster_id',
+                    'provision_shard',
+                ],
+                'required': [
+                    'cluster_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cluster_id':
+                        (str,),
+                    'provision_shard':
+                        (ProvisionShard,),
+                },
+                'attribute_map': {
+                    'cluster_id': 'cluster_id',
+                },
+                'location_map': {
+                    'cluster_id': 'path',
+                    'provision_shard': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.api_clusters_mgmt_v1_clusters_cluster_id_resources_get_endpoint = _Endpoint(
             settings={
                 'response_type': (ClusterResources,),
@@ -5549,7 +7529,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5598,7 +7580,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5647,7 +7631,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5696,7 +7682,9 @@ class DefaultApi(object):
                 'all': [
                     'cluster_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5747,7 +7735,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5805,7 +7795,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'operator_iam_role_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'operator_iam_role_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5859,7 +7852,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'operator_iam_role',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5915,7 +7910,9 @@ class DefaultApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -5973,7 +7970,9 @@ class DefaultApi(object):
                     'cluster_id',
                     'upgrade_policy',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -6028,7 +8027,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'upgrade_policy_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'upgrade_policy_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -6082,7 +8084,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'upgrade_policy_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'upgrade_policy_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -6137,7 +8142,10 @@ class DefaultApi(object):
                     'upgrade_policy_id',
                     'upgrade_policy',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'upgrade_policy_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -6196,7 +8204,10 @@ class DefaultApi(object):
                     'cluster_id',
                     'upgrade_policy_id',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'upgrade_policy_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -6251,7 +8262,10 @@ class DefaultApi(object):
                     'upgrade_policy_id',
                     'upgrade_policy_state',
                 ],
-                'required': [],
+                'required': [
+                    'cluster_id',
+                    'upgrade_policy_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -6567,7 +8581,9 @@ class DefaultApi(object):
                 'all': [
                     'flavour_id',
                 ],
-                'required': [],
+                'required': [
+                    'flavour_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -6617,7 +8633,9 @@ class DefaultApi(object):
                     'flavour_id',
                     'flavour',
                 ],
-                'required': [],
+                'required': [
+                    'flavour_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -7123,7 +9141,9 @@ class DefaultApi(object):
                 'all': [
                     'limited_support_reason_template_id',
                 ],
-                'required': [],
+                'required': [
+                    'limited_support_reason_template_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -7221,6 +9241,57 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
+        self.api_clusters_mgmt_v1_machine_types_machine_type_id_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (MachineType,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/machine_types/{machine_type_id}',
+                'operation_id': 'api_clusters_mgmt_v1_machine_types_machine_type_id_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'machine_type_id',
+                ],
+                'required': [
+                    'machine_type_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'machine_type_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'machine_type_id': 'machine_type_id',
+                },
+                'location_map': {
+                    'machine_type_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.api_clusters_mgmt_v1_products_get_endpoint = _Endpoint(
             settings={
                 'response_type': (ApiClustersMgmtV1ProductsGet200Response,),
@@ -7300,7 +9371,9 @@ class DefaultApi(object):
                 'all': [
                     'product_id',
                 ],
-                'required': [],
+                'required': [
+                    'product_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -7348,6 +9421,7 @@ class DefaultApi(object):
             params_map={
                 'all': [
                     'page',
+                    'search',
                     'size',
                 ],
                 'required': [],
@@ -7366,15 +9440,19 @@ class DefaultApi(object):
                 'openapi_types': {
                     'page':
                         (int,),
+                    'search':
+                        (str,),
                     'size':
                         (int,),
                 },
                 'attribute_map': {
                     'page': 'page',
+                    'search': 'search',
                     'size': 'size',
                 },
                 'location_map': {
                     'page': 'query',
+                    'search': 'query',
                     'size': 'query',
                 },
                 'collection_format_map': {
@@ -7388,22 +9466,74 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
-        self.api_clusters_mgmt_v1_provision_shards_provision_shard_id_get_endpoint = _Endpoint(
+        self.api_clusters_mgmt_v1_provision_shards_post_endpoint = _Endpoint(
             settings={
                 'response_type': (ProvisionShard,),
                 'auth': [
                     'bearer'
                 ],
+                'endpoint_path': '/api/clusters_mgmt/v1/provision_shards',
+                'operation_id': 'api_clusters_mgmt_v1_provision_shards_post',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'provision_shard',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'provision_shard':
+                        (ProvisionShard,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'provision_shard': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_provision_shards_provision_shard_id_delete_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearer'
+                ],
                 'endpoint_path': '/api/clusters_mgmt/v1/provision_shards/{provision_shard_id}',
-                'operation_id': 'api_clusters_mgmt_v1_provision_shards_provision_shard_id_get',
-                'http_method': 'GET',
+                'operation_id': 'api_clusters_mgmt_v1_provision_shards_provision_shard_id_delete',
+                'http_method': 'DELETE',
                 'servers': None,
             },
             params_map={
                 'all': [
                     'provision_shard_id',
                 ],
-                'required': [],
+                'required': [
+                    'provision_shard_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -7434,6 +9564,114 @@ class DefaultApi(object):
                     'application/json'
                 ],
                 'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_provision_shards_provision_shard_id_get_endpoint = _Endpoint(
+            settings={
+                'response_type': (ProvisionShard,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/provision_shards/{provision_shard_id}',
+                'operation_id': 'api_clusters_mgmt_v1_provision_shards_provision_shard_id_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'provision_shard_id',
+                ],
+                'required': [
+                    'provision_shard_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'provision_shard_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'provision_shard_id': 'provision_shard_id',
+                },
+                'location_map': {
+                    'provision_shard_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.api_clusters_mgmt_v1_provision_shards_provision_shard_id_patch_endpoint = _Endpoint(
+            settings={
+                'response_type': (ProvisionShard,),
+                'auth': [
+                    'bearer'
+                ],
+                'endpoint_path': '/api/clusters_mgmt/v1/provision_shards/{provision_shard_id}',
+                'operation_id': 'api_clusters_mgmt_v1_provision_shards_provision_shard_id_patch',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'provision_shard_id',
+                    'provision_shard',
+                ],
+                'required': [
+                    'provision_shard_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'provision_shard_id':
+                        (str,),
+                    'provision_shard':
+                        (ProvisionShard,),
+                },
+                'attribute_map': {
+                    'provision_shard_id': 'provision_shard_id',
+                },
+                'location_map': {
+                    'provision_shard_id': 'path',
+                    'provision_shard': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
             },
             api_client=api_client
         )
@@ -7566,7 +9804,9 @@ class DefaultApi(object):
                 'all': [
                     'version_gate_id',
                 ],
-                'required': [],
+                'required': [
+                    'version_gate_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -7615,7 +9855,9 @@ class DefaultApi(object):
                 'all': [
                     'version_gate_id',
                 ],
-                'required': [],
+                'required': [
+                    'version_gate_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -7728,7 +9970,9 @@ class DefaultApi(object):
                 'all': [
                     'version_id',
                 ],
-                'required': [],
+                'required': [
+                    'version_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -7765,6 +10009,7 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_addons_addon_id_delete(
         self,
+        addon_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_addons_addon_id_delete  # noqa: E501
@@ -7773,12 +10018,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_delete(addon_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            addon_id (str):
 
         Keyword Args:
-            addon_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -7840,10 +10086,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['addon_id'] = \
+            addon_id
         return self.api_clusters_mgmt_v1_addons_addon_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_addons_addon_id_get(
         self,
+        addon_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_addons_addon_id_get  # noqa: E501
@@ -7852,12 +10101,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_get(addon_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            addon_id (str):
 
         Keyword Args:
-            addon_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -7919,10 +10169,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['addon_id'] = \
+            addon_id
         return self.api_clusters_mgmt_v1_addons_addon_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_addons_addon_id_patch(
         self,
+        addon_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_addons_addon_id_patch  # noqa: E501
@@ -7931,12 +10184,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_patch(addon_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            addon_id (str):
 
         Keyword Args:
-            addon_id (str): [optional]
             add_on (AddOn): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -7999,10 +10253,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['addon_id'] = \
+            addon_id
         return self.api_clusters_mgmt_v1_addons_addon_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_addons_addon_id_versions_get(
         self,
+        addon_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_addons_addon_id_versions_get  # noqa: E501
@@ -8011,12 +10268,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_get(addon_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            addon_id (str):
 
         Keyword Args:
-            addon_id (str): [optional]
             order (str): Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the add-on instead of the names of the columns of a table. For example, in order to sort the add-on versions descending by id the value should be:  ```sql id desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined.. [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             search (str): Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, but using the names of the attributes of the add-on version instead of the names of the columns of a table. For example, in order to retrieve all the add-on versions with an id starting with `0.1` the value should be:  ```sql id like '0.1.%' ```  If the parameter isn't provided, or if the value is empty, then all the add-on versions that the user has permission to see will be returned.. [optional]
@@ -8082,10 +10340,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['addon_id'] = \
+            addon_id
         return self.api_clusters_mgmt_v1_addons_addon_id_versions_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_addons_addon_id_versions_post(
         self,
+        addon_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_addons_addon_id_versions_post  # noqa: E501
@@ -8094,12 +10355,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_post(addon_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            addon_id (str):
 
         Keyword Args:
-            addon_id (str): [optional]
             add_on_version (AddOnVersion): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -8162,10 +10424,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['addon_id'] = \
+            addon_id
         return self.api_clusters_mgmt_v1_addons_addon_id_versions_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_addons_addon_id_versions_version_id_delete(
         self,
+        addon_id,
+        version_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_addons_addon_id_versions_version_id_delete  # noqa: E501
@@ -8174,13 +10440,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_delete(addon_id, version_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            addon_id (str):
+            version_id (str):
 
         Keyword Args:
-            addon_id (str): [optional]
-            version_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -8242,10 +10509,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['addon_id'] = \
+            addon_id
+        kwargs['version_id'] = \
+            version_id
         return self.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_addons_addon_id_versions_version_id_get(
         self,
+        addon_id,
+        version_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_addons_addon_id_versions_version_id_get  # noqa: E501
@@ -8254,13 +10527,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_get(addon_id, version_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            addon_id (str):
+            version_id (str):
 
         Keyword Args:
-            addon_id (str): [optional]
-            version_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -8322,10 +10596,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['addon_id'] = \
+            addon_id
+        kwargs['version_id'] = \
+            version_id
         return self.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_addons_addon_id_versions_version_id_patch(
         self,
+        addon_id,
+        version_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_addons_addon_id_versions_version_id_patch  # noqa: E501
@@ -8334,13 +10614,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_patch(addon_id, version_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            addon_id (str):
+            version_id (str):
 
         Keyword Args:
-            addon_id (str): [optional]
-            version_id (str): [optional]
             add_on_version (AddOnVersion): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -8403,6 +10684,10 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['addon_id'] = \
+            addon_id
+        kwargs['version_id'] = \
+            version_id
         return self.api_clusters_mgmt_v1_addons_addon_id_versions_version_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_addons_get(
@@ -8568,6 +10853,7 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get(
         self,
+        aws_infrastructure_access_role_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get  # noqa: E501
@@ -8576,12 +10862,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get(aws_infrastructure_access_role_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            aws_infrastructure_access_role_id (str):
 
         Keyword Args:
-            aws_infrastructure_access_role_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -8643,6 +10930,8 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['aws_infrastructure_access_role_id'] = \
+            aws_infrastructure_access_role_id
         return self.api_clusters_mgmt_v1_aws_infrastructure_access_roles_aws_infrastructure_access_role_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_aws_infrastructure_access_roles_get(
@@ -9133,6 +11422,7 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post(
         self,
+        cloud_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post  # noqa: E501
@@ -9141,12 +11431,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post(cloud_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cloud_provider_id (str):
 
         Keyword Args:
-            cloud_provider_id (str): [optional]
             page (int): Index of the returned page, where one corresponds to the first page. As this collection doesn't support paging the result will always be `1`.. [optional]
             size (int): Number of items that will be contained in the returned page. As this collection doesn't support paging or searching the result will always be the total number of regions of the provider.. [optional]
             aws (AWS): [optional]
@@ -9211,10 +11502,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cloud_provider_id'] = \
+            cloud_provider_id
         return self.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_available_regions_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_get(
         self,
+        cloud_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_get  # noqa: E501
@@ -9223,12 +11517,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_get(cloud_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cloud_provider_id (str):
 
         Keyword Args:
-            cloud_provider_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -9290,10 +11585,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cloud_provider_id'] = \
+            cloud_provider_id
         return self.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get(
         self,
+        cloud_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get  # noqa: E501
@@ -9302,12 +11600,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get(cloud_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cloud_provider_id (str):
 
         Keyword Args:
-            cloud_provider_id (str): [optional]
             page (int): Index of the returned page, where one corresponds to the first page. As this collection doesn't support paging the result will always be `1`.. [optional]
             size (int): Number of items that will be contained in the returned page. As this collection doesn't support paging or searching the result will always be the total number of regions of the provider.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -9371,10 +11670,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cloud_provider_id'] = \
+            cloud_provider_id
         return self.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_region_id_get(
         self,
+        cloud_provider_id,
+        region_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_region_id_get  # noqa: E501
@@ -9383,13 +11686,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_region_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_region_id_get(cloud_provider_id, region_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cloud_provider_id (str):
+            region_id (str):
 
         Keyword Args:
-            cloud_provider_id (str): [optional]
-            region_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -9451,6 +11755,10 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cloud_provider_id'] = \
+            cloud_provider_id
+        kwargs['region_id'] = \
+            region_id
         return self.api_clusters_mgmt_v1_cloud_providers_cloud_provider_id_regions_region_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_cloud_providers_get(
@@ -9537,6 +11845,8 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_addon_inquiry_id_get(
         self,
+        cluster_id,
+        addon_inquiry_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_addon_inquiry_id_get  # noqa: E501
@@ -9544,13 +11854,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_addon_inquiry_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_addon_inquiry_id_get(cluster_id, addon_inquiry_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            addon_inquiry_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            addon_inquiry_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -9612,10 +11923,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addon_inquiry_id'] = \
+            addon_inquiry_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_addon_inquiry_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_get  # noqa: E501
@@ -9623,12 +11939,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             order (str): Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the add-on instead of the names of the columns of a table. For example, in order to sort the add-ons descending by name the value should be:  ```sql name desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined.. [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             search (str): Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, but using the names of the attributes of the add-on instead of the names of the columns of a table. For example, in order to retrieve all the add-ons with a name starting with `my` the value should be:  ```sql name like 'my%' ```  If the parameter isn't provided, or if the value is empty, then all the add-ons that the user has permission to see will be returned.. [optional]
@@ -9694,25 +12011,30 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_inquiries_get_endpoint.call_with_http_info(**kwargs)
 
-    def api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete(
+    def api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_delete(
         self,
+        cluster_id,
+        addon_upgrade_policy_id,
         **kwargs
     ):
-        """api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete  # noqa: E501
+        """api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_delete  # noqa: E501
 
-        Delete an add-on installation and remove it from the collection of add-on installations on the cluster.  # noqa: E501
+        Deletes the addon upgrade policy.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_delete(cluster_id, addon_upgrade_policy_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            addon_upgrade_policy_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            addoninstallation_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -9774,10 +12096,622 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addon_upgrade_policy_id'] = \
+            addon_upgrade_policy_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_delete_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_get(
+        self,
+        cluster_id,
+        addon_upgrade_policy_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_get  # noqa: E501
+
+        Retrieves the details of the addon upgrade policy.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_get(cluster_id, addon_upgrade_policy_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            addon_upgrade_policy_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AddonUpgradePolicy
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addon_upgrade_policy_id'] = \
+            addon_upgrade_policy_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_patch(
+        self,
+        cluster_id,
+        addon_upgrade_policy_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_patch  # noqa: E501
+
+        Update the addon upgrade policy.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_patch(cluster_id, addon_upgrade_policy_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            addon_upgrade_policy_id (str):
+
+        Keyword Args:
+            addon_upgrade_policy (AddonUpgradePolicy): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AddonUpgradePolicy
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addon_upgrade_policy_id'] = \
+            addon_upgrade_policy_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_patch_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_get(
+        self,
+        cluster_id,
+        addon_upgrade_policy_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_get  # noqa: E501
+
+        Retrieves the details of the upgrade policy state.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_get(cluster_id, addon_upgrade_policy_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            addon_upgrade_policy_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AddonUpgradePolicyState
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addon_upgrade_policy_id'] = \
+            addon_upgrade_policy_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_patch(
+        self,
+        cluster_id,
+        addon_upgrade_policy_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_patch  # noqa: E501
+
+        Update the upgrade policy state.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_patch(cluster_id, addon_upgrade_policy_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            addon_upgrade_policy_id (str):
+
+        Keyword Args:
+            addon_upgrade_policy_state (AddonUpgradePolicyState): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AddonUpgradePolicyState
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addon_upgrade_policy_id'] = \
+            addon_upgrade_policy_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_addon_upgrade_policy_id_state_patch_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_get  # noqa: E501
+
+        Retrieves the list of addon upgrade policies.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            page (int): Index of the requested page, where one corresponds to the first page.. [optional]
+            size (int): Number of items contained in the returned page.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ApiClustersMgmtV1ClustersClusterIdAddonUpgradePoliciesGet200Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_post(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_post  # noqa: E501
+
+        Adds a new addon upgrade policy to the cluster.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_post(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            addon_upgrade_policy (AddonUpgradePolicy): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AddonUpgradePolicy
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_addon_upgrade_policies_post_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete(
+        self,
+        cluster_id,
+        addoninstallation_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete  # noqa: E501
+
+        Delete an add-on installation and remove it from the collection of add-on installations on the cluster.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete(cluster_id, addoninstallation_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            addoninstallation_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addoninstallation_id'] = \
+            addoninstallation_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_get(
         self,
+        cluster_id,
+        addoninstallation_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_get  # noqa: E501
@@ -9786,13 +12720,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_get(cluster_id, addoninstallation_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            addoninstallation_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            addoninstallation_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -9854,10 +12789,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addoninstallation_id'] = \
+            addoninstallation_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_patch(
         self,
+        cluster_id,
+        addoninstallation_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_patch  # noqa: E501
@@ -9866,13 +12807,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_patch(cluster_id, addoninstallation_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            addoninstallation_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            addoninstallation_id (str): [optional]
             add_on_installation (AddOnInstallation): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -9935,10 +12877,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['addoninstallation_id'] = \
+            addoninstallation_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_addons_addoninstallation_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_addons_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_addons_get  # noqa: E501
@@ -9947,12 +12894,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             order (str): Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the add-on installation instead of the names of the columns of a table. For example, in order to sort the add-on installations descending by name the value should be:  ```sql name desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined.. [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             search (str): Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, but using the names of the attributes of the add-on installation instead of the names of the columns of a table. For example, in order to retrieve all the add-on installations with a name starting with `my` the value should be:  ```sql name like 'my%' ```  If the parameter isn't provided, or if the value is empty, then all the add-on installations that the user has permission to see will be returned.. [optional]
@@ -10018,10 +12966,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_addons_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_addons_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_addons_post  # noqa: E501
@@ -10030,12 +12981,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_addons_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             add_on_installation (AddOnInstallation): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -10098,10 +13050,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_addons_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_delete(
         self,
+        cluster_id,
+        aws_infrastructure_access_role_grant_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_delete  # noqa: E501
@@ -10110,13 +13066,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_delete(cluster_id, aws_infrastructure_access_role_grant_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            aws_infrastructure_access_role_grant_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            aws_infrastructure_access_role_grant_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -10178,10 +13135,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['aws_infrastructure_access_role_grant_id'] = \
+            aws_infrastructure_access_role_grant_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_get(
         self,
+        cluster_id,
+        aws_infrastructure_access_role_grant_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_get  # noqa: E501
@@ -10190,13 +13153,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_get(cluster_id, aws_infrastructure_access_role_grant_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            aws_infrastructure_access_role_grant_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            aws_infrastructure_access_role_grant_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -10258,10 +13222,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['aws_infrastructure_access_role_grant_id'] = \
+            aws_infrastructure_access_role_grant_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_aws_infrastructure_access_role_grant_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get  # noqa: E501
@@ -10270,12 +13239,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             order (str): Order criteria.  The syntax of this parameter is similar to the syntax of the _order by_ clause of a SQL statement, but using the names of the attributes of the AWS infrastructure access role grant instead of the names of the columns of a table. For example, in order to sort the AWS infrastructure access role grants descending by user ARN the value should be:  ```sql user_arn desc ```  If the parameter isn't provided, or if the value is empty, then the order of the results is undefined.. [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             search (str): Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, but using the names of the attributes of the AWS infrastructure access role grant instead of the names of the columns of a table. For example, in order to retrieve all the AWS infrastructure access role grants with a user ARN starting with `user` the value should be:  ```sql user_arn like '%user' ```  If the parameter isn't provided, or if the value is empty, then all the AWS infrastructure access role grants that the user has permission to see will be returned.. [optional]
@@ -10341,10 +13311,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_post  # noqa: E501
@@ -10353,12 +13326,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             aws_infrastructure_access_role_grant (AWSInfrastructureAccessRoleGrant): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -10421,24 +13395,283 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_infrastructure_access_role_grants_post_endpoint.call_with_http_info(**kwargs)
 
-    def api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete(
+    def api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_get(
         self,
+        cluster_id,
         **kwargs
     ):
-        """api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete  # noqa: E501
+        """api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_get  # noqa: E501
 
-        Deletes the clusterdeployment.  # noqa: E501
+        Retrieves the details of the configuration for the Private Link.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PrivateLinkConfiguration
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_get  # noqa: E501
+
+        Retrieves the list of principals.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            page (int): Index of the requested page, where one corresponds to the first page.. [optional]
+            search (str): Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, but using the names of the attributes of the role binding instead of the names of the columns of a table. For example, in order to retrieve role bindings with role_id AuthenticatedUser:  ```sql role_id = 'AuthenticatedUser' ```  If the parameter isn't provided, or if the value is empty, then all the items that the user has permission to see will be returned.. [optional]
+            size (int): Number of items contained in the returned page.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ApiClustersMgmtV1ClustersClusterIdAwsPrivateLinkConfigurationPrincipalsGet200Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_post(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_post  # noqa: E501
+
+        Adds a new principal for the Private Link.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_post(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            private_link_principal (PrivateLinkPrincipal): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PrivateLinkPrincipal
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_post_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_delete(
+        self,
+        cluster_id,
+        principal_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_delete  # noqa: E501
+
+        Deletes the principal.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_delete(cluster_id, principal_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            principal_id (str):
+
+        Keyword Args:
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -10500,10 +13733,616 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['principal_id'] = \
+            principal_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_delete_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_get(
+        self,
+        cluster_id,
+        principal_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_get  # noqa: E501
+
+        Retrieves the details of the principal.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_get(cluster_id, principal_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            principal_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PrivateLinkPrincipal
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['principal_id'] = \
+            principal_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_aws_private_link_configuration_principals_principal_id_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete  # noqa: E501
+
+        Deletes the clusterdeployment.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_clusterdeployment_delete_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_delete(
+        self,
+        cluster_id,
+        control_plane_upgrade_policy_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_delete  # noqa: E501
+
+        Deletes the upgrade policy for the control plane.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_delete(cluster_id, control_plane_upgrade_policy_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            control_plane_upgrade_policy_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['control_plane_upgrade_policy_id'] = \
+            control_plane_upgrade_policy_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_delete_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_get(
+        self,
+        cluster_id,
+        control_plane_upgrade_policy_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_get  # noqa: E501
+
+        Retrieves the details of the upgrade policy for the control plane.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_get(cluster_id, control_plane_upgrade_policy_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            control_plane_upgrade_policy_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ControlPlaneUpgradePolicy
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['control_plane_upgrade_policy_id'] = \
+            control_plane_upgrade_policy_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_patch(
+        self,
+        cluster_id,
+        control_plane_upgrade_policy_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_patch  # noqa: E501
+
+        Update the upgrade policy for the control plane.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_patch(cluster_id, control_plane_upgrade_policy_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            control_plane_upgrade_policy_id (str):
+
+        Keyword Args:
+            control_plane_upgrade_policy (ControlPlaneUpgradePolicy): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ControlPlaneUpgradePolicy
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['control_plane_upgrade_policy_id'] = \
+            control_plane_upgrade_policy_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_control_plane_upgrade_policy_id_patch_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_get  # noqa: E501
+
+        Retrieves the list of upgrade policies for the control plane.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            page (int): Index of the requested page, where one corresponds to the first page.. [optional]
+            size (int): Number of items contained in the returned page.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ApiClustersMgmtV1ClustersClusterIdControlPlaneUpgradePoliciesGet200Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_post(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_post  # noqa: E501
+
+        Adds a new upgrade policy to the control plane of the cluster.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_post(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            control_plane_upgrade_policy (ControlPlaneUpgradePolicy): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ControlPlaneUpgradePolicy
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_control_plane_upgrade_policies_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_credentials_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_credentials_get  # noqa: E501
@@ -10512,12 +14351,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_credentials_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_credentials_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -10579,10 +14419,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_credentials_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_delete(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_delete  # noqa: E501
@@ -10591,12 +14434,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_delete(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             deprovision (bool): If false it will only delete from OCM but not the actual cluster resources. false is only allowed for OCP clusters. true by default.. [optional]
             dry_run (bool): Dry run flag is used to check if the operation can be completed, but won't delete.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -10660,10 +14504,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_get  # noqa: E501
@@ -10672,12 +14519,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -10739,10 +14587,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get  # noqa: E501
@@ -10751,12 +14602,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -10820,10 +14672,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_delete(
         self,
+        cluster_id,
+        label_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_delete  # noqa: E501
@@ -10832,13 +14688,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_delete(cluster_id, label_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            label_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            label_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -10900,10 +14757,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['label_id'] = \
+            label_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_get(
         self,
+        cluster_id,
+        label_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_get  # noqa: E501
@@ -10912,13 +14775,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_get(cluster_id, label_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            label_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            label_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -10980,10 +14844,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['label_id'] = \
+            label_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_patch(
         self,
+        cluster_id,
+        label_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_patch  # noqa: E501
@@ -10992,13 +14862,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_patch(cluster_id, label_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            label_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            label_id (str): [optional]
             label (Label): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -11061,10 +14932,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['label_id'] = \
+            label_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_label_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_post  # noqa: E501
@@ -11073,12 +14949,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             label (Label): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -11141,10 +15018,444 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_labels_post_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_get  # noqa: E501
+
+        Retrieves the list of manifests.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            page (int): Index of the requested page, where one corresponds to the first page.. [optional]
+            size (int): Number of items contained in the returned page.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ApiClustersMgmtV1ClustersClusterIdExternalConfigurationManifestsGet200Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_delete(
+        self,
+        cluster_id,
+        manifest_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_delete  # noqa: E501
+
+        Deletes the manifest.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_delete(cluster_id, manifest_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            manifest_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['manifest_id'] = \
+            manifest_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_delete_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_get(
+        self,
+        cluster_id,
+        manifest_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_get  # noqa: E501
+
+        Retrieves the details of the manifest.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_get(cluster_id, manifest_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            manifest_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Manifest
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['manifest_id'] = \
+            manifest_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_patch(
+        self,
+        cluster_id,
+        manifest_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_patch  # noqa: E501
+
+        Update the manifest.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_patch(cluster_id, manifest_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            manifest_id (str):
+
+        Keyword Args:
+            manifest (Manifest): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Manifest
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['manifest_id'] = \
+            manifest_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_manifest_id_patch_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_post(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_post  # noqa: E501
+
+        Adds a new manifest to a cluster.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_post(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            manifest (Manifest): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Manifest
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_manifests_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get  # noqa: E501
@@ -11153,12 +15464,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -11222,10 +15534,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_post  # noqa: E501
@@ -11234,12 +15549,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             syncset (Syncset): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -11302,10 +15618,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_delete(
         self,
+        cluster_id,
+        syncset_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_delete  # noqa: E501
@@ -11314,13 +15634,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_delete(cluster_id, syncset_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            syncset_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            syncset_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -11382,10 +15703,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['syncset_id'] = \
+            syncset_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_get(
         self,
+        cluster_id,
+        syncset_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_get  # noqa: E501
@@ -11394,13 +15721,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_get(cluster_id, syncset_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            syncset_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            syncset_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -11462,10 +15790,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['syncset_id'] = \
+            syncset_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_patch(
         self,
+        cluster_id,
+        syncset_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_patch  # noqa: E501
@@ -11474,13 +15808,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_patch(cluster_id, syncset_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            syncset_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            syncset_id (str): [optional]
             syncset (Syncset): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -11543,10 +15878,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['syncset_id'] = \
+            syncset_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_external_configuration_syncsets_syncset_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get  # noqa: E501
@@ -11555,12 +15895,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -11624,10 +15965,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_post  # noqa: E501
@@ -11636,12 +15980,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             version_gate_agreement (VersionGateAgreement): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -11704,10 +16049,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_delete(
         self,
+        cluster_id,
+        version_gate_agreement_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_delete  # noqa: E501
@@ -11716,13 +16065,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_delete(cluster_id, version_gate_agreement_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            version_gate_agreement_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            version_gate_agreement_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -11784,10 +16134,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['version_gate_agreement_id'] = \
+            version_gate_agreement_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_get(
         self,
+        cluster_id,
+        version_gate_agreement_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_get  # noqa: E501
@@ -11796,13 +16152,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_get(cluster_id, version_gate_agreement_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            version_gate_agreement_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            version_gate_agreement_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -11864,10 +16221,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['version_gate_agreement_id'] = \
+            version_gate_agreement_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_gate_agreements_version_gate_agreement_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_get  # noqa: E501
@@ -11876,12 +16238,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -11943,10 +16306,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_groups_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_groups_get  # noqa: E501
@@ -11955,12 +16321,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -12024,10 +16391,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_groups_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_get(
         self,
+        cluster_id,
+        group_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_get  # noqa: E501
@@ -12036,13 +16407,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_get(cluster_id, group_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            group_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            group_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -12104,10 +16476,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['group_id'] = \
+            group_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get(
         self,
+        cluster_id,
+        group_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get  # noqa: E501
@@ -12116,13 +16494,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get(cluster_id, group_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            group_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            group_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -12186,10 +16565,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['group_id'] = \
+            group_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_post(
         self,
+        cluster_id,
+        group_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_post  # noqa: E501
@@ -12198,13 +16583,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_post(cluster_id, group_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            group_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            group_id (str): [optional]
             user (User): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -12267,10 +16653,17 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['group_id'] = \
+            group_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_delete(
         self,
+        cluster_id,
+        group_id,
+        user_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_delete  # noqa: E501
@@ -12279,14 +16672,15 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_delete(cluster_id, group_id, user_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            group_id (str):
+            user_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            group_id (str): [optional]
-            user_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -12348,10 +16742,19 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['group_id'] = \
+            group_id
+        kwargs['user_id'] = \
+            user_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_get(
         self,
+        cluster_id,
+        group_id,
+        user_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_get  # noqa: E501
@@ -12360,14 +16763,15 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_get(cluster_id, group_id, user_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            group_id (str):
+            user_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            group_id (str): [optional]
-            user_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -12429,10 +16833,17 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['group_id'] = \
+            group_id
+        kwargs['user_id'] = \
+            user_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_groups_group_id_users_user_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_hibernate_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_hibernate_post  # noqa: E501
@@ -12441,12 +16852,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_hibernate_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_hibernate_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -12508,10 +16920,96 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_hibernate_post_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_hypershift_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_hypershift_get  # noqa: E501
+
+        Retrieves the Hypershift details for a single cluster.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_hypershift_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            HypershiftConfig
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_hypershift_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get  # noqa: E501
@@ -12520,12 +17018,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -12589,10 +17088,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_delete(
         self,
+        cluster_id,
+        identity_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_delete  # noqa: E501
@@ -12601,13 +17104,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_delete(cluster_id, identity_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -12669,10 +17173,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_get(
         self,
+        cluster_id,
+        identity_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_get  # noqa: E501
@@ -12681,13 +17191,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_get(cluster_id, identity_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -12749,10 +17260,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get(
         self,
+        cluster_id,
+        identity_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get  # noqa: E501
@@ -12761,13 +17278,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get(cluster_id, identity_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -12831,10 +17349,17 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_delete(
         self,
+        cluster_id,
+        identity_provider_id,
+        htpasswd_user_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_delete  # noqa: E501
@@ -12843,14 +17368,15 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_delete(cluster_id, identity_provider_id, htpasswd_user_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
+            htpasswd_user_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
-            htpasswd_user_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -12912,10 +17438,19 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
+        kwargs['htpasswd_user_id'] = \
+            htpasswd_user_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_get(
         self,
+        cluster_id,
+        identity_provider_id,
+        htpasswd_user_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_get  # noqa: E501
@@ -12924,14 +17459,15 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_get(cluster_id, identity_provider_id, htpasswd_user_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
+            htpasswd_user_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
-            htpasswd_user_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -12993,10 +17529,19 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
+        kwargs['htpasswd_user_id'] = \
+            htpasswd_user_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_patch(
         self,
+        cluster_id,
+        identity_provider_id,
+        htpasswd_user_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_patch  # noqa: E501
@@ -13005,14 +17550,15 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_patch(cluster_id, identity_provider_id, htpasswd_user_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
+            htpasswd_user_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
-            htpasswd_user_id (str): [optional]
             ht_passwd_user (HTPasswdUser): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -13075,10 +17621,18 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
+        kwargs['htpasswd_user_id'] = \
+            htpasswd_user_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_htpasswd_user_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post(
         self,
+        cluster_id,
+        identity_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post  # noqa: E501
@@ -13087,13 +17641,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post(cluster_id, identity_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
             api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post_request (ApiClustersMgmtV1ClustersClusterIdIdentityProvidersIdentityProviderIdHtpasswdUsersImportPostRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -13156,10 +17711,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_import_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_post(
         self,
+        cluster_id,
+        identity_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_post  # noqa: E501
@@ -13168,13 +17729,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_post(cluster_id, identity_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
             ht_passwd_user (HTPasswdUser): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -13237,10 +17799,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_htpasswd_users_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_patch(
         self,
+        cluster_id,
+        identity_provider_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_patch  # noqa: E501
@@ -13249,13 +17817,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_patch(cluster_id, identity_provider_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            identity_provider_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            identity_provider_id (str): [optional]
             identity_provider (IdentityProvider): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -13318,10 +17887,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['identity_provider_id'] = \
+            identity_provider_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_identity_provider_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_post  # noqa: E501
@@ -13330,12 +17904,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             identity_provider (IdentityProvider): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -13398,10 +17973,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_identity_providers_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get  # noqa: E501
@@ -13410,12 +17988,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -13479,10 +18058,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_delete(
         self,
+        cluster_id,
+        ingress_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_delete  # noqa: E501
@@ -13491,13 +18074,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_delete(cluster_id, ingress_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            ingress_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            ingress_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -13559,10 +18143,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['ingress_id'] = \
+            ingress_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_get(
         self,
+        cluster_id,
+        ingress_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_get  # noqa: E501
@@ -13571,13 +18161,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_get(cluster_id, ingress_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            ingress_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            ingress_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -13639,10 +18230,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['ingress_id'] = \
+            ingress_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_patch(
         self,
+        cluster_id,
+        ingress_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_patch  # noqa: E501
@@ -13651,13 +18248,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_patch(cluster_id, ingress_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            ingress_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            ingress_id (str): [optional]
             ingress (Ingress): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -13720,10 +18318,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['ingress_id'] = \
+            ingress_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_ingress_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_ingresses_patch(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_ingresses_patch  # noqa: E501
@@ -13732,12 +18335,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_patch(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             ingress ([Ingress]): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -13800,10 +18404,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_ingresses_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_ingresses_post  # noqa: E501
@@ -13812,12 +18419,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             ingress (Ingress): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -13880,10 +18488,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_ingresses_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get  # noqa: E501
@@ -13892,12 +18503,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -13961,10 +18573,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_delete(
         self,
+        cluster_id,
+        limited_support_reason_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_delete  # noqa: E501
@@ -13973,13 +18589,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_delete(cluster_id, limited_support_reason_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            limited_support_reason_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            limited_support_reason_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -14041,10 +18658,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['limited_support_reason_id'] = \
+            limited_support_reason_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_get(
         self,
+        cluster_id,
+        limited_support_reason_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_get  # noqa: E501
@@ -14053,13 +18676,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_get(cluster_id, limited_support_reason_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            limited_support_reason_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            limited_support_reason_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -14121,10 +18745,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['limited_support_reason_id'] = \
+            limited_support_reason_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_limited_support_reason_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_post  # noqa: E501
@@ -14133,12 +18762,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             limited_support_reason (LimitedSupportReason): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -14201,10 +18831,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_limited_support_reasons_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_logs_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_logs_get  # noqa: E501
@@ -14213,12 +18846,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_logs_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_logs_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -14282,10 +18916,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_logs_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_logs_install_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_logs_install_get  # noqa: E501
@@ -14294,12 +18931,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_logs_install_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_logs_install_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             offset (int): Line offset to start logs from. if 0 retreive entire log. If offset > #lines return an empty log.. [optional]
             tail (int): Returns the number of tail lines from the end of the log. If there are no line breaks or the number of lines < tail return the entire log. Either 'tail' or 'offset' can be set. Not both. . [optional]
             _return_http_data_only (bool): response data without head status
@@ -14363,10 +19001,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_logs_install_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_logs_uninstall_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_logs_uninstall_get  # noqa: E501
@@ -14375,12 +19016,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_logs_uninstall_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_logs_uninstall_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             offset (int): Line offset to start logs from. if 0 retreive entire log. If offset > #lines return an empty log.. [optional]
             tail (int): Returns the number of tail lines from the end of the log. If there are no line breaks or the number of lines < tail return the entire log. Either 'tail' or 'offset' can be set. Not both. . [optional]
             _return_http_data_only (bool): response data without head status
@@ -14444,10 +19086,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_logs_uninstall_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get  # noqa: E501
@@ -14456,12 +19101,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -14525,10 +19171,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_delete(
         self,
+        cluster_id,
+        machine_pool_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_delete  # noqa: E501
@@ -14537,13 +19187,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_delete(cluster_id, machine_pool_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            machine_pool_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            machine_pool_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -14605,10 +19256,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['machine_pool_id'] = \
+            machine_pool_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_get(
         self,
+        cluster_id,
+        machine_pool_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_get  # noqa: E501
@@ -14617,13 +19274,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_get(cluster_id, machine_pool_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            machine_pool_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            machine_pool_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -14685,10 +19343,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['machine_pool_id'] = \
+            machine_pool_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_patch(
         self,
+        cluster_id,
+        machine_pool_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_patch  # noqa: E501
@@ -14697,13 +19361,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_patch(cluster_id, machine_pool_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            machine_pool_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            machine_pool_id (str): [optional]
             machine_pool (MachinePool): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -14766,10 +19431,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['machine_pool_id'] = \
+            machine_pool_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_machine_pool_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_post  # noqa: E501
@@ -14778,12 +19448,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             machine_pool (MachinePool): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -14846,10 +19517,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_machine_pools_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_alerts_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_alerts_get  # noqa: E501
@@ -14857,12 +19531,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_alerts_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_alerts_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -14924,10 +19599,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_alerts_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cluster_operators_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cluster_operators_get  # noqa: E501
@@ -14935,12 +19613,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cluster_operators_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cluster_operators_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -15002,10 +19681,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cluster_operators_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cpu_total_by_node_roles_os_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cpu_total_by_node_roles_os_get  # noqa: E501
@@ -15014,12 +19696,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cpu_total_by_node_roles_os_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cpu_total_by_node_roles_os_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -15081,10 +19764,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_cpu_total_by_node_roles_os_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_nodes_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_nodes_get  # noqa: E501
@@ -15092,12 +19778,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_nodes_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_nodes_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -15159,10 +19846,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_nodes_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_socket_total_by_node_roles_os_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_socket_total_by_node_roles_os_get  # noqa: E501
@@ -15171,12 +19861,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_socket_total_by_node_roles_os_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_socket_total_by_node_roles_os_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -15238,10 +19929,444 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_metric_queries_socket_total_by_node_roles_os_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_node_pools_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_node_pools_get  # noqa: E501
+
+        Retrieves the list of node pools.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            page (int): Index of the requested page, where one corresponds to the first page.. [optional]
+            size (int): Number of items contained in the returned page.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ApiClustersMgmtV1ClustersClusterIdNodePoolsGet200Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_delete(
+        self,
+        cluster_id,
+        node_pool_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_delete  # noqa: E501
+
+        Deletes the node pool.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_delete(cluster_id, node_pool_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            node_pool_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['node_pool_id'] = \
+            node_pool_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_delete_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_get(
+        self,
+        cluster_id,
+        node_pool_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_get  # noqa: E501
+
+        Retrieves the details of the node pool.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_get(cluster_id, node_pool_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            node_pool_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NodePool
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['node_pool_id'] = \
+            node_pool_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_patch(
+        self,
+        cluster_id,
+        node_pool_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_patch  # noqa: E501
+
+        Updates the node pool.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_patch(cluster_id, node_pool_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+            node_pool_id (str):
+
+        Keyword Args:
+            node_pool (NodePool): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NodePool
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['node_pool_id'] = \
+            node_pool_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_node_pool_id_patch_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_node_pools_post(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_node_pools_post  # noqa: E501
+
+        Adds a new node pool to the cluster.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_post(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            node_pool (NodePool): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NodePool
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_node_pools_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_patch(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_patch  # noqa: E501
@@ -15250,12 +20375,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_patch(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             cluster (Cluster): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -15318,10 +20444,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_product_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_product_get  # noqa: E501
@@ -15330,12 +20459,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_product_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_product_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -15397,261 +20527,28 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_product_get_endpoint.call_with_http_info(**kwargs)
 
-    def api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get(
+    def api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_delete(
         self,
+        cluster_id,
         **kwargs
     ):
-        """api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get  # noqa: E501
+        """api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_delete  # noqa: E501
 
-        Retrieves the details of the provision shard.  # noqa: E501
+        Delete the provision shard.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_delete(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _spec_property_naming (bool): True if the variable names in the input data
-                are serialized names, as specified in the OpenAPI document.
-                False if the variable names in the input data
-                are pythonic names, e.g. snake case (default)
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            ProvisionShard
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_spec_property_naming'] = kwargs.get(
-            '_spec_property_naming', False
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
-        return self.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get_endpoint.call_with_http_info(**kwargs)
-
-    def api_clusters_mgmt_v1_clusters_cluster_id_resources_get(
-        self,
-        **kwargs
-    ):
-        """api_clusters_mgmt_v1_clusters_cluster_id_resources_get  # noqa: E501
-
-        Retrieves a list of resources for a cluster in error state  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_resources_get(async_req=True)
-        >>> result = thread.get()
-
-
-        Keyword Args:
-            cluster_id (str): [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _spec_property_naming (bool): True if the variable names in the input data
-                are serialized names, as specified in the OpenAPI document.
-                False if the variable names in the input data
-                are pythonic names, e.g. snake case (default)
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            ClusterResources
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_spec_property_naming'] = kwargs.get(
-            '_spec_property_naming', False
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
-        return self.api_clusters_mgmt_v1_clusters_cluster_id_resources_get_endpoint.call_with_http_info(**kwargs)
-
-    def api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get(
-        self,
-        **kwargs
-    ):
-        """api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get  # noqa: E501
-
-        Retrieves currently available cluster resources  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get(async_req=True)
-        >>> result = thread.get()
-
-
-        Keyword Args:
-            cluster_id (str): [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _spec_property_naming (bool): True if the variable names in the input data
-                are serialized names, as specified in the OpenAPI document.
-                False if the variable names in the input data
-                are pythonic names, e.g. snake case (default)
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            ClusterResources
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_spec_property_naming'] = kwargs.get(
-            '_spec_property_naming', False
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
-        return self.api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get_endpoint.call_with_http_info(**kwargs)
-
-    def api_clusters_mgmt_v1_clusters_cluster_id_resume_post(
-        self,
-        **kwargs
-    ):
-        """api_clusters_mgmt_v1_clusters_cluster_id_resume_post  # noqa: E501
-
-        Resumes from Hibernation.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_resume_post(async_req=True)
-        >>> result = thread.get()
-
-
-        Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -15713,10 +20610,429 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_delete_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get  # noqa: E501
+
+        Retrieves the details of the provision shard.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ProvisionShard
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_patch(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_patch  # noqa: E501
+
+        Updates the details of the provision shard.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_patch(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            provision_shard (ProvisionShard): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ProvisionShard
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_provision_shard_patch_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_resources_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_resources_get  # noqa: E501
+
+        Retrieves a list of resources for a cluster in error state  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_resources_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ClusterResources
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_resources_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get  # noqa: E501
+
+        Retrieves currently available cluster resources  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ClusterResources
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        return self.api_clusters_mgmt_v1_clusters_cluster_id_resources_live_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_clusters_cluster_id_resume_post(
+        self,
+        cluster_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_clusters_cluster_id_resume_post  # noqa: E501
+
+        Resumes from Hibernation.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_resume_post(cluster_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cluster_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_resume_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_status_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_status_get  # noqa: E501
@@ -15724,12 +21040,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_status_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_status_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -15791,10 +21108,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_status_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get  # noqa: E501
@@ -15803,12 +21123,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items that will be contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -15872,10 +21193,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_operator_iam_role_id_delete(
         self,
+        cluster_id,
+        operator_iam_role_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_operator_iam_role_id_delete  # noqa: E501
@@ -15884,13 +21209,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_operator_iam_role_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_operator_iam_role_id_delete(cluster_id, operator_iam_role_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            operator_iam_role_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            operator_iam_role_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -15952,10 +21278,15 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['operator_iam_role_id'] = \
+            operator_iam_role_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_operator_iam_role_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_post  # noqa: E501
@@ -15964,12 +21295,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             operator_iam_role (OperatorIAMRole): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -16032,10 +21364,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_sts_operator_roles_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get  # noqa: E501
@@ -16044,12 +21379,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
             size (int): Number of items contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
@@ -16113,10 +21449,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_post(
         self,
+        cluster_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_post  # noqa: E501
@@ -16125,12 +21464,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_post(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_post(cluster_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
             upgrade_policy (UpgradePolicy): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -16193,10 +21533,14 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_post_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_delete(
         self,
+        cluster_id,
+        upgrade_policy_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_delete  # noqa: E501
@@ -16205,13 +21549,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_delete(cluster_id, upgrade_policy_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            upgrade_policy_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            upgrade_policy_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -16273,10 +21618,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['upgrade_policy_id'] = \
+            upgrade_policy_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_get(
         self,
+        cluster_id,
+        upgrade_policy_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_get  # noqa: E501
@@ -16285,13 +21636,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_get(cluster_id, upgrade_policy_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            upgrade_policy_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            upgrade_policy_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -16353,10 +21705,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['upgrade_policy_id'] = \
+            upgrade_policy_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_patch(
         self,
+        cluster_id,
+        upgrade_policy_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_patch  # noqa: E501
@@ -16365,13 +21723,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_patch(cluster_id, upgrade_policy_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            upgrade_policy_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            upgrade_policy_id (str): [optional]
             upgrade_policy (UpgradePolicy): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -16434,10 +21793,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['upgrade_policy_id'] = \
+            upgrade_policy_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_get(
         self,
+        cluster_id,
+        upgrade_policy_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_get  # noqa: E501
@@ -16446,13 +21811,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_get(cluster_id, upgrade_policy_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            upgrade_policy_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            upgrade_policy_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -16514,10 +21880,16 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['upgrade_policy_id'] = \
+            upgrade_policy_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_patch(
         self,
+        cluster_id,
+        upgrade_policy_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_patch  # noqa: E501
@@ -16526,13 +21898,14 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_patch(cluster_id, upgrade_policy_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            cluster_id (str):
+            upgrade_policy_id (str):
 
         Keyword Args:
-            cluster_id (str): [optional]
-            upgrade_policy_id (str): [optional]
             upgrade_policy_state (UpgradePolicyState): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -16595,6 +21968,10 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['cluster_id'] = \
+            cluster_id
+        kwargs['upgrade_policy_id'] = \
+            upgrade_policy_id
         return self.api_clusters_mgmt_v1_clusters_cluster_id_upgrade_policies_upgrade_policy_id_state_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_clusters_get(
@@ -16996,6 +22373,7 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_flavours_flavour_id_get(
         self,
+        flavour_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_flavours_flavour_id_get  # noqa: E501
@@ -17004,12 +22382,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_flavours_flavour_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_flavours_flavour_id_get(flavour_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            flavour_id (str):
 
         Keyword Args:
-            flavour_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -17071,10 +22450,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['flavour_id'] = \
+            flavour_id
         return self.api_clusters_mgmt_v1_flavours_flavour_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_flavours_flavour_id_patch(
         self,
+        flavour_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_flavours_flavour_id_patch  # noqa: E501
@@ -17083,12 +22465,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_flavours_flavour_id_patch(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_flavours_flavour_id_patch(flavour_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            flavour_id (str):
 
         Keyword Args:
-            flavour_id (str): [optional]
             flavour (Flavour): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -17151,6 +22534,8 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['flavour_id'] = \
+            flavour_id
         return self.api_clusters_mgmt_v1_flavours_flavour_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_flavours_get(
@@ -17797,6 +23182,7 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_limited_support_reason_templates_limited_support_reason_template_id_get(
         self,
+        limited_support_reason_template_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_limited_support_reason_templates_limited_support_reason_template_id_get  # noqa: E501
@@ -17805,12 +23191,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_limited_support_reason_templates_limited_support_reason_template_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_limited_support_reason_templates_limited_support_reason_template_id_get(limited_support_reason_template_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            limited_support_reason_template_id (str):
 
         Keyword Args:
-            limited_support_reason_template_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -17872,6 +23259,8 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['limited_support_reason_template_id'] = \
+            limited_support_reason_template_id
         return self.api_clusters_mgmt_v1_limited_support_reason_templates_limited_support_reason_template_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_machine_types_get(
@@ -17955,6 +23344,89 @@ class DefaultApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.api_clusters_mgmt_v1_machine_types_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_machine_types_machine_type_id_get(
+        self,
+        machine_type_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_machine_types_machine_type_id_get  # noqa: E501
+
+        Retrieves the details of the machine type.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_machine_types_machine_type_id_get(machine_type_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            machine_type_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            MachineType
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['machine_type_id'] = \
+            machine_type_id
+        return self.api_clusters_mgmt_v1_machine_types_machine_type_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_products_get(
         self,
@@ -18040,6 +23512,7 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_products_product_id_get(
         self,
+        product_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_products_product_id_get  # noqa: E501
@@ -18048,12 +23521,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_products_product_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_products_product_id_get(product_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            product_id (str):
 
         Keyword Args:
-            product_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -18115,6 +23589,8 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['product_id'] = \
+            product_id
         return self.api_clusters_mgmt_v1_products_product_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_provision_shards_get(
@@ -18132,6 +23608,7 @@ class DefaultApi(object):
 
         Keyword Args:
             page (int): Index of the requested page, where one corresponds to the first page.. [optional]
+            search (str): Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of a SQL statement, but using the names of the attributes of the cluster instead of the names of the columns of a table. For example, in order to retrieve all the clusters with a name starting with `my` in the `us-east-1` region the value should be:  ```sql name like 'my%' and region.id = 'us-east-1' ```  If the parameter isn't provided, or if the value is empty, then all the provision shards that the user has permission to see will be returned.. [optional]
             size (int): Maximum number of items that will be contained in the returned page.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -18196,22 +23673,22 @@ class DefaultApi(object):
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.api_clusters_mgmt_v1_provision_shards_get_endpoint.call_with_http_info(**kwargs)
 
-    def api_clusters_mgmt_v1_provision_shards_provision_shard_id_get(
+    def api_clusters_mgmt_v1_provision_shards_post(
         self,
         **kwargs
     ):
-        """api_clusters_mgmt_v1_provision_shards_provision_shard_id_get  # noqa: E501
+        """api_clusters_mgmt_v1_provision_shards_post  # noqa: E501
 
-        Retrieves the details of the provision shard.  # noqa: E501
+        Adds a provision shard.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_provision_shards_provision_shard_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_provision_shards_post(async_req=True)
         >>> result = thread.get()
 
 
         Keyword Args:
-            provision_shard_id (str): [optional]
+            provision_shard (ProvisionShard): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -18273,7 +23750,257 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.api_clusters_mgmt_v1_provision_shards_post_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_provision_shards_provision_shard_id_delete(
+        self,
+        provision_shard_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_provision_shards_provision_shard_id_delete  # noqa: E501
+
+        Delete the provision shard.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_provision_shards_provision_shard_id_delete(provision_shard_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            provision_shard_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['provision_shard_id'] = \
+            provision_shard_id
+        return self.api_clusters_mgmt_v1_provision_shards_provision_shard_id_delete_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_provision_shards_provision_shard_id_get(
+        self,
+        provision_shard_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_provision_shards_provision_shard_id_get  # noqa: E501
+
+        Retrieves the details of the provision shard.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_provision_shards_provision_shard_id_get(provision_shard_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            provision_shard_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ProvisionShard
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['provision_shard_id'] = \
+            provision_shard_id
         return self.api_clusters_mgmt_v1_provision_shards_provision_shard_id_get_endpoint.call_with_http_info(**kwargs)
+
+    def api_clusters_mgmt_v1_provision_shards_provision_shard_id_patch(
+        self,
+        provision_shard_id,
+        **kwargs
+    ):
+        """api_clusters_mgmt_v1_provision_shards_provision_shard_id_patch  # noqa: E501
+
+        Updates the details of the provision shard.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_clusters_mgmt_v1_provision_shards_provision_shard_id_patch(provision_shard_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            provision_shard_id (str):
+
+        Keyword Args:
+            provision_shard (ProvisionShard): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ProvisionShard
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['provision_shard_id'] = \
+            provision_shard_id
+        return self.api_clusters_mgmt_v1_provision_shards_provision_shard_id_patch_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_version_gates_get(
         self,
@@ -18438,6 +24165,7 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_version_gates_version_gate_id_delete(
         self,
+        version_gate_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_version_gates_version_gate_id_delete  # noqa: E501
@@ -18446,12 +24174,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_version_gates_version_gate_id_delete(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_version_gates_version_gate_id_delete(version_gate_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            version_gate_id (str):
 
         Keyword Args:
-            version_gate_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -18513,10 +24242,13 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['version_gate_id'] = \
+            version_gate_id
         return self.api_clusters_mgmt_v1_version_gates_version_gate_id_delete_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_version_gates_version_gate_id_get(
         self,
+        version_gate_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_version_gates_version_gate_id_get  # noqa: E501
@@ -18525,12 +24257,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_version_gates_version_gate_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_version_gates_version_gate_id_get(version_gate_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            version_gate_id (str):
 
         Keyword Args:
-            version_gate_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -18592,6 +24325,8 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['version_gate_id'] = \
+            version_gate_id
         return self.api_clusters_mgmt_v1_version_gates_version_gate_id_get_endpoint.call_with_http_info(**kwargs)
 
     def api_clusters_mgmt_v1_versions_get(
@@ -18678,6 +24413,7 @@ class DefaultApi(object):
 
     def api_clusters_mgmt_v1_versions_version_id_get(
         self,
+        version_id,
         **kwargs
     ):
         """api_clusters_mgmt_v1_versions_version_id_get  # noqa: E501
@@ -18686,12 +24422,13 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_clusters_mgmt_v1_versions_version_id_get(async_req=True)
+        >>> thread = api.api_clusters_mgmt_v1_versions_version_id_get(version_id, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            version_id (str):
 
         Keyword Args:
-            version_id (str): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -18753,5 +24490,7 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['version_id'] = \
+            version_id
         return self.api_clusters_mgmt_v1_versions_version_id_get_endpoint.call_with_http_info(**kwargs)
 

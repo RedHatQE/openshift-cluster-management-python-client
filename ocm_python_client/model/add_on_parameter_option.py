@@ -89,6 +89,7 @@ class AddOnParameterOption(ModelNormal):
         lazy_import()
         return {
             'name': (str,),  # noqa: E501
+            'rank': (int,),  # noqa: E501
             'requirements': ([AddOnRequirement],),  # noqa: E501
             'value': (str,),  # noqa: E501
         }
@@ -100,6 +101,7 @@ class AddOnParameterOption(ModelNormal):
 
     attribute_map = {
         'name': 'name',  # noqa: E501
+        'rank': 'rank',  # noqa: E501
         'requirements': 'requirements',  # noqa: E501
         'value': 'value',  # noqa: E501
     }
@@ -146,6 +148,7 @@ class AddOnParameterOption(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             name (str): Name of the add-on parameter option.. [optional]  # noqa: E501
+            rank (int): Rank of option to be used in cases where editable direction should be restricted.. [optional]  # noqa: E501
             requirements ([AddOnRequirement]): List of add-on requirements for this parameter option.. [optional]  # noqa: E501
             value (str): Value of the add-on parameter option.. [optional]  # noqa: E501
         """
@@ -234,6 +237,7 @@ class AddOnParameterOption(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             name (str): Name of the add-on parameter option.. [optional]  # noqa: E501
+            rank (int): Rank of option to be used in cases where editable direction should be restricted.. [optional]  # noqa: E501
             requirements ([AddOnRequirement]): List of add-on requirements for this parameter option.. [optional]  # noqa: E501
             value (str): Value of the add-on parameter option.. [optional]  # noqa: E501
         """

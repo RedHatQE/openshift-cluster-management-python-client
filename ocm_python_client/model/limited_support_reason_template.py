@@ -146,7 +146,7 @@ class LimitedSupportReasonTemplate(ModelNormal):
             kind (str): Indicates the type of this object. Will be 'LimitedSupportReasonTemplate' if this is a complete object or 'LimitedSupportReasonTemplateLink' if it is just a link.. [optional]  # noqa: E501
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
-            details (str): URL with a link to a detailed description of the reason.. [optional]  # noqa: E501
+            details (str): A detailed description of the reason.. [optional]  # noqa: E501
             summary (str): Summary of the reason.. [optional]  # noqa: E501
         """
 
@@ -236,7 +236,7 @@ class LimitedSupportReasonTemplate(ModelNormal):
             kind (str): Indicates the type of this object. Will be 'LimitedSupportReasonTemplate' if this is a complete object or 'LimitedSupportReasonTemplateLink' if it is just a link.. [optional]  # noqa: E501
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
-            details (str): URL with a link to a detailed description of the reason.. [optional]  # noqa: E501
+            details (str): A detailed description of the reason.. [optional]  # noqa: E501
             summary (str): Summary of the reason.. [optional]  # noqa: E501
         """
 

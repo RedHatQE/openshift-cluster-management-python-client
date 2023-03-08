@@ -34,9 +34,11 @@ def lazy_import():
     from ocm_python_client.model.aws import AWS
     from ocm_python_client.model.cloud_region import CloudRegion
     from ocm_python_client.model.gcp import GCP
+    from ocm_python_client.model.version import Version
     globals()['AWS'] = AWS
     globals()['CloudRegion'] = CloudRegion
     globals()['GCP'] = GCP
+    globals()['Version'] = Version
 
 
 class CloudProviderData(ModelNormal):
@@ -94,9 +96,11 @@ class CloudProviderData(ModelNormal):
         return {
             'aws': (AWS,),  # noqa: E501
             'gcp': (GCP,),  # noqa: E501
+            'availability_zones': ([str],),  # noqa: E501
             'key_location': (str,),  # noqa: E501
             'key_ring_name': (str,),  # noqa: E501
             'region': (CloudRegion,),  # noqa: E501
+            'version': (Version,),  # noqa: E501
         }
 
     @cached_property
@@ -107,9 +111,11 @@ class CloudProviderData(ModelNormal):
     attribute_map = {
         'aws': 'aws',  # noqa: E501
         'gcp': 'gcp',  # noqa: E501
+        'availability_zones': 'availability_zones',  # noqa: E501
         'key_location': 'key_location',  # noqa: E501
         'key_ring_name': 'key_ring_name',  # noqa: E501
         'region': 'region',  # noqa: E501
+        'version': 'version',  # noqa: E501
     }
 
     read_only_vars = {
@@ -155,9 +161,11 @@ class CloudProviderData(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             aws (AWS): [optional]  # noqa: E501
             gcp (GCP): [optional]  # noqa: E501
+            availability_zones ([str]): Availability zone. [optional]  # noqa: E501
             key_location (str): Key location. [optional]  # noqa: E501
             key_ring_name (str): Key ring name. [optional]  # noqa: E501
             region (CloudRegion): [optional]  # noqa: E501
+            version (Version): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -245,9 +253,11 @@ class CloudProviderData(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             aws (AWS): [optional]  # noqa: E501
             gcp (GCP): [optional]  # noqa: E501
+            availability_zones ([str]): Availability zone. [optional]  # noqa: E501
             key_location (str): Key location. [optional]  # noqa: E501
             key_ring_name (str): Key ring name. [optional]  # noqa: E501
             region (CloudRegion): [optional]  # noqa: E501
+            version (Version): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

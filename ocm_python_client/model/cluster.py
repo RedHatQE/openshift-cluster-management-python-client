@@ -35,6 +35,7 @@ def lazy_import():
     from ocm_python_client.model.aws import AWS
     from ocm_python_client.model.aws_infrastructure_access_role_grant import AWSInfrastructureAccessRoleGrant
     from ocm_python_client.model.billing_model import BillingModel
+    from ocm_python_client.model.byo_oidc import ByoOidc
     from ocm_python_client.model.ccs import CCS
     from ocm_python_client.model.cloud_provider import CloudProvider
     from ocm_python_client.model.cloud_region import CloudRegion
@@ -48,15 +49,17 @@ def lazy_import():
     from ocm_python_client.model.external_configuration import ExternalConfiguration
     from ocm_python_client.model.flavour import Flavour
     from ocm_python_client.model.gcp import GCP
+    from ocm_python_client.model.gcp_encryption_key import GCPEncryptionKey
     from ocm_python_client.model.gcp_network import GCPNetwork
     from ocm_python_client.model.group import Group
-    from ocm_python_client.model.hyper_shift import HyperShift
+    from ocm_python_client.model.hypershift import Hypershift
     from ocm_python_client.model.identity_provider import IdentityProvider
     from ocm_python_client.model.inflight_check import InflightCheck
     from ocm_python_client.model.ingress import Ingress
     from ocm_python_client.model.machine_pool import MachinePool
     from ocm_python_client.model.managed_service import ManagedService
     from ocm_python_client.model.network import Network
+    from ocm_python_client.model.node_pool import NodePool
     from ocm_python_client.model.product import Product
     from ocm_python_client.model.provision_shard import ProvisionShard
     from ocm_python_client.model.proxy import Proxy
@@ -67,6 +70,7 @@ def lazy_import():
     globals()['AWSInfrastructureAccessRoleGrant'] = AWSInfrastructureAccessRoleGrant
     globals()['AddOnInstallation'] = AddOnInstallation
     globals()['BillingModel'] = BillingModel
+    globals()['ByoOidc'] = ByoOidc
     globals()['CCS'] = CCS
     globals()['CloudProvider'] = CloudProvider
     globals()['CloudRegion'] = CloudRegion
@@ -80,15 +84,17 @@ def lazy_import():
     globals()['ExternalConfiguration'] = ExternalConfiguration
     globals()['Flavour'] = Flavour
     globals()['GCP'] = GCP
+    globals()['GCPEncryptionKey'] = GCPEncryptionKey
     globals()['GCPNetwork'] = GCPNetwork
     globals()['Group'] = Group
-    globals()['HyperShift'] = HyperShift
+    globals()['Hypershift'] = Hypershift
     globals()['IdentityProvider'] = IdentityProvider
     globals()['InflightCheck'] = InflightCheck
     globals()['Ingress'] = Ingress
     globals()['MachinePool'] = MachinePool
     globals()['ManagedService'] = ManagedService
     globals()['Network'] = Network
+    globals()['NodePool'] = NodePool
     globals()['Product'] = Product
     globals()['ProvisionShard'] = ProvisionShard
     globals()['Proxy'] = Proxy
@@ -160,15 +166,16 @@ class Cluster(ModelNormal):
             'dns': (DNS,),  # noqa: E501
             'fips': (bool,),  # noqa: E501
             'gcp': (GCP,),  # noqa: E501
+            'gcp_encryption_key': (GCPEncryptionKey,),  # noqa: E501
             'gcp_network': (GCPNetwork,),  # noqa: E501
             'additional_trust_bundle': (str,),  # noqa: E501
             'addons': ([AddOnInstallation],),  # noqa: E501
             'billing_model': (BillingModel,),  # noqa: E501
+            'byo_oidc': (ByoOidc,),  # noqa: E501
             'cloud_provider': (CloudProvider,),  # noqa: E501
             'console': (ClusterConsole,),  # noqa: E501
             'creation_timestamp': (datetime,),  # noqa: E501
             'disable_user_workload_monitoring': (bool,),  # noqa: E501
-            'display_name': (str,),  # noqa: E501
             'etcd_encryption': (bool,),  # noqa: E501
             'expiration_timestamp': (datetime,),  # noqa: E501
             'external_id': (str,),  # noqa: E501
@@ -176,9 +183,10 @@ class Cluster(ModelNormal):
             'flavour': (Flavour,),  # noqa: E501
             'groups': ([Group],),  # noqa: E501
             'health_state': (ClusterHealthState,),  # noqa: E501
-            'hypershift': (HyperShift,),  # noqa: E501
+            'hypershift': (Hypershift,),  # noqa: E501
             'identity_providers': ([IdentityProvider],),  # noqa: E501
             'inflight_checks': ([InflightCheck],),  # noqa: E501
+            'infra_id': (str,),  # noqa: E501
             'ingresses': ([Ingress],),  # noqa: E501
             'load_balancer_quota': (int,),  # noqa: E501
             'machine_pools': ([MachinePool],),  # noqa: E501
@@ -188,6 +196,7 @@ class Cluster(ModelNormal):
             'name': (str,),  # noqa: E501
             'network': (Network,),  # noqa: E501
             'node_drain_grace_period': (Value,),  # noqa: E501
+            'node_pools': ([NodePool],),  # noqa: E501
             'nodes': (ClusterNodes,),  # noqa: E501
             'openshift_version': (str,),  # noqa: E501
             'product': (Product,),  # noqa: E501
@@ -218,15 +227,16 @@ class Cluster(ModelNormal):
         'dns': 'dns',  # noqa: E501
         'fips': 'fips',  # noqa: E501
         'gcp': 'gcp',  # noqa: E501
+        'gcp_encryption_key': 'gcp_encryption_key',  # noqa: E501
         'gcp_network': 'gcp_network',  # noqa: E501
         'additional_trust_bundle': 'additional_trust_bundle',  # noqa: E501
         'addons': 'addons',  # noqa: E501
         'billing_model': 'billing_model',  # noqa: E501
+        'byo_oidc': 'byo_oidc',  # noqa: E501
         'cloud_provider': 'cloud_provider',  # noqa: E501
         'console': 'console',  # noqa: E501
         'creation_timestamp': 'creation_timestamp',  # noqa: E501
         'disable_user_workload_monitoring': 'disable_user_workload_monitoring',  # noqa: E501
-        'display_name': 'display_name',  # noqa: E501
         'etcd_encryption': 'etcd_encryption',  # noqa: E501
         'expiration_timestamp': 'expiration_timestamp',  # noqa: E501
         'external_id': 'external_id',  # noqa: E501
@@ -237,6 +247,7 @@ class Cluster(ModelNormal):
         'hypershift': 'hypershift',  # noqa: E501
         'identity_providers': 'identity_providers',  # noqa: E501
         'inflight_checks': 'inflight_checks',  # noqa: E501
+        'infra_id': 'infra_id',  # noqa: E501
         'ingresses': 'ingresses',  # noqa: E501
         'load_balancer_quota': 'load_balancer_quota',  # noqa: E501
         'machine_pools': 'machine_pools',  # noqa: E501
@@ -246,6 +257,7 @@ class Cluster(ModelNormal):
         'name': 'name',  # noqa: E501
         'network': 'network',  # noqa: E501
         'node_drain_grace_period': 'node_drain_grace_period',  # noqa: E501
+        'node_pools': 'node_pools',  # noqa: E501
         'nodes': 'nodes',  # noqa: E501
         'openshift_version': 'openshift_version',  # noqa: E501
         'product': 'product',  # noqa: E501
@@ -311,15 +323,16 @@ class Cluster(ModelNormal):
             dns (DNS): [optional]  # noqa: E501
             fips (bool): Create cluster that uses FIPS Validated / Modules in Process cryptographic libraries.. [optional]  # noqa: E501
             gcp (GCP): [optional]  # noqa: E501
+            gcp_encryption_key (GCPEncryptionKey): [optional]  # noqa: E501
             gcp_network (GCPNetwork): [optional]  # noqa: E501
             additional_trust_bundle (str): Additional trust bundle.. [optional]  # noqa: E501
             addons ([AddOnInstallation]): List of add-ons on this cluster.. [optional]  # noqa: E501
             billing_model (BillingModel): [optional]  # noqa: E501
+            byo_oidc (ByoOidc): [optional]  # noqa: E501
             cloud_provider (CloudProvider): [optional]  # noqa: E501
             console (ClusterConsole): [optional]  # noqa: E501
             creation_timestamp (datetime): Date and time when the cluster was initially created, using the format defined in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt).. [optional]  # noqa: E501
             disable_user_workload_monitoring (bool): Indicates whether the User workload monitoring is enabled or not It is enabled by default. [optional]  # noqa: E501
-            display_name (str): Name of the cluster for display purposes. It can contain any characters, including spaces.. [optional]  # noqa: E501
             etcd_encryption (bool): Indicates whether that etcd is encrypted or not. This is set only during cluster creation.. [optional]  # noqa: E501
             expiration_timestamp (datetime): Date and time when the cluster will be automatically deleted, using the format defined in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt). If no timestamp is provided, the cluster will never expire.  This option is unsupported.. [optional]  # noqa: E501
             external_id (str): External identifier of the cluster, generated by the installer.. [optional]  # noqa: E501
@@ -327,9 +340,10 @@ class Cluster(ModelNormal):
             flavour (Flavour): [optional]  # noqa: E501
             groups ([Group]): Link to the collection of groups of user of the cluster.. [optional]  # noqa: E501
             health_state (ClusterHealthState): [optional]  # noqa: E501
-            hypershift (HyperShift): [optional]  # noqa: E501
+            hypershift (Hypershift): [optional]  # noqa: E501
             identity_providers ([IdentityProvider]): Link to the collection of identity providers of the cluster.. [optional]  # noqa: E501
             inflight_checks ([InflightCheck]): List of inflight checks on this cluster.. [optional]  # noqa: E501
+            infra_id (str): InfraID is used for example to name the VPCs.. [optional]  # noqa: E501
             ingresses ([Ingress]): List of ingresses on this cluster.. [optional]  # noqa: E501
             load_balancer_quota (int): Load Balancer quota to be assigned to the cluster.. [optional]  # noqa: E501
             machine_pools ([MachinePool]): List of machine pools on this cluster.. [optional]  # noqa: E501
@@ -339,6 +353,7 @@ class Cluster(ModelNormal):
             name (str): Name of the cluster. This name is assigned by the user when the cluster is created.. [optional]  # noqa: E501
             network (Network): [optional]  # noqa: E501
             node_drain_grace_period (Value): [optional]  # noqa: E501
+            node_pools ([NodePool]): List of node pools on this cluster. NodePool is a scalable set of worker nodes attached to a hosted cluster.. [optional]  # noqa: E501
             nodes (ClusterNodes): [optional]  # noqa: E501
             openshift_version (str): Version of _OpenShift_ installed in the cluster, for example `4.0.0-0.2`.  When retrieving a cluster this will always be reported.  When provisioning a cluster this will be ignored, as the version to deploy will be determined internally.. [optional]  # noqa: E501
             product (Product): [optional]  # noqa: E501
@@ -446,15 +461,16 @@ class Cluster(ModelNormal):
             dns (DNS): [optional]  # noqa: E501
             fips (bool): Create cluster that uses FIPS Validated / Modules in Process cryptographic libraries.. [optional]  # noqa: E501
             gcp (GCP): [optional]  # noqa: E501
+            gcp_encryption_key (GCPEncryptionKey): [optional]  # noqa: E501
             gcp_network (GCPNetwork): [optional]  # noqa: E501
             additional_trust_bundle (str): Additional trust bundle.. [optional]  # noqa: E501
             addons ([AddOnInstallation]): List of add-ons on this cluster.. [optional]  # noqa: E501
             billing_model (BillingModel): [optional]  # noqa: E501
+            byo_oidc (ByoOidc): [optional]  # noqa: E501
             cloud_provider (CloudProvider): [optional]  # noqa: E501
             console (ClusterConsole): [optional]  # noqa: E501
             creation_timestamp (datetime): Date and time when the cluster was initially created, using the format defined in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt).. [optional]  # noqa: E501
             disable_user_workload_monitoring (bool): Indicates whether the User workload monitoring is enabled or not It is enabled by default. [optional]  # noqa: E501
-            display_name (str): Name of the cluster for display purposes. It can contain any characters, including spaces.. [optional]  # noqa: E501
             etcd_encryption (bool): Indicates whether that etcd is encrypted or not. This is set only during cluster creation.. [optional]  # noqa: E501
             expiration_timestamp (datetime): Date and time when the cluster will be automatically deleted, using the format defined in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt). If no timestamp is provided, the cluster will never expire.  This option is unsupported.. [optional]  # noqa: E501
             external_id (str): External identifier of the cluster, generated by the installer.. [optional]  # noqa: E501
@@ -462,9 +478,10 @@ class Cluster(ModelNormal):
             flavour (Flavour): [optional]  # noqa: E501
             groups ([Group]): Link to the collection of groups of user of the cluster.. [optional]  # noqa: E501
             health_state (ClusterHealthState): [optional]  # noqa: E501
-            hypershift (HyperShift): [optional]  # noqa: E501
+            hypershift (Hypershift): [optional]  # noqa: E501
             identity_providers ([IdentityProvider]): Link to the collection of identity providers of the cluster.. [optional]  # noqa: E501
             inflight_checks ([InflightCheck]): List of inflight checks on this cluster.. [optional]  # noqa: E501
+            infra_id (str): InfraID is used for example to name the VPCs.. [optional]  # noqa: E501
             ingresses ([Ingress]): List of ingresses on this cluster.. [optional]  # noqa: E501
             load_balancer_quota (int): Load Balancer quota to be assigned to the cluster.. [optional]  # noqa: E501
             machine_pools ([MachinePool]): List of machine pools on this cluster.. [optional]  # noqa: E501
@@ -474,6 +491,7 @@ class Cluster(ModelNormal):
             name (str): Name of the cluster. This name is assigned by the user when the cluster is created.. [optional]  # noqa: E501
             network (Network): [optional]  # noqa: E501
             node_drain_grace_period (Value): [optional]  # noqa: E501
+            node_pools ([NodePool]): List of node pools on this cluster. NodePool is a scalable set of worker nodes attached to a hosted cluster.. [optional]  # noqa: E501
             nodes (ClusterNodes): [optional]  # noqa: E501
             openshift_version (str): Version of _OpenShift_ installed in the cluster, for example `4.0.0-0.2`.  When retrieving a cluster this will always be reported.  When provisioning a cluster this will be ignored, as the version to deploy will be determined internally.. [optional]  # noqa: E501
             product (Product): [optional]  # noqa: E501

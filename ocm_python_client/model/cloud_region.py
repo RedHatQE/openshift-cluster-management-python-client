@@ -96,6 +96,7 @@ class CloudRegion(ModelNormal):
             'display_name': (str,),  # noqa: E501
             'enabled': (bool,),  # noqa: E501
             'name': (str,),  # noqa: E501
+            'supports_hypershift': (bool,),  # noqa: E501
             'supports_multi_az': (bool,),  # noqa: E501
         }
 
@@ -113,6 +114,7 @@ class CloudRegion(ModelNormal):
         'display_name': 'display_name',  # noqa: E501
         'enabled': 'enabled',  # noqa: E501
         'name': 'name',  # noqa: E501
+        'supports_hypershift': 'supports_hypershift',  # noqa: E501
         'supports_multi_az': 'supports_multi_az',  # noqa: E501
     }
 
@@ -165,6 +167,7 @@ class CloudRegion(ModelNormal):
             display_name (str): Name of the region for display purposes, for example `N. Virginia`.. [optional]  # noqa: E501
             enabled (bool): Whether the region is enabled for deploying an OSD cluster.. [optional]  # noqa: E501
             name (str): Human friendly identifier of the region, for example `us-east-1`.  NOTE: Currently for all cloud providers and all regions `id` and `name` have exactly the same values.. [optional]  # noqa: E501
+            supports_hypershift (bool): 'true' if the region is supported for Hypershift deployments, 'false' otherwise.. [optional]  # noqa: E501
             supports_multi_az (bool): Whether the region supports multiple availability zones.. [optional]  # noqa: E501
         """
 
@@ -259,6 +262,7 @@ class CloudRegion(ModelNormal):
             display_name (str): Name of the region for display purposes, for example `N. Virginia`.. [optional]  # noqa: E501
             enabled (bool): Whether the region is enabled for deploying an OSD cluster.. [optional]  # noqa: E501
             name (str): Human friendly identifier of the region, for example `us-east-1`.  NOTE: Currently for all cloud providers and all regions `id` and `name` have exactly the same values.. [optional]  # noqa: E501
+            supports_hypershift (bool): 'true' if the region is supported for Hypershift deployments, 'false' otherwise.. [optional]  # noqa: E501
             supports_multi_az (bool): Whether the region supports multiple availability zones.. [optional]  # noqa: E501
         """
 

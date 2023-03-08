@@ -98,7 +98,9 @@ class ClusterNodes(ModelNormal):
             'compute_labels': ({str: (str,)},),  # noqa: E501
             'compute_machine_type': (MachineType,),  # noqa: E501
             'infra': (int,),  # noqa: E501
+            'infra_machine_type': (MachineType,),  # noqa: E501
             'master': (int,),  # noqa: E501
+            'master_machine_type': (MachineType,),  # noqa: E501
             'security_group_filters': ([MachinePoolSecurityGroupFilter],),  # noqa: E501
             'total': (int,),  # noqa: E501
         }
@@ -115,7 +117,9 @@ class ClusterNodes(ModelNormal):
         'compute_labels': 'compute_labels',  # noqa: E501
         'compute_machine_type': 'compute_machine_type',  # noqa: E501
         'infra': 'infra',  # noqa: E501
+        'infra_machine_type': 'infra_machine_type',  # noqa: E501
         'master': 'master',  # noqa: E501
+        'master_machine_type': 'master_machine_type',  # noqa: E501
         'security_group_filters': 'security_group_filters',  # noqa: E501
         'total': 'total',  # noqa: E501
     }
@@ -163,12 +167,14 @@ class ClusterNodes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             autoscale_compute (MachinePoolAutoscaling): [optional]  # noqa: E501
             availability_zones ([str]): The availability zones upon which the nodes are created.. [optional]  # noqa: E501
-            compute (int): Number of compute nodes of the cluster. Compute and AutoscaleCompute cannot be used together.    . [optional]  # noqa: E501
+            compute (int): Number of compute nodes of the cluster. Compute and AutoscaleCompute cannot be used together.. [optional]  # noqa: E501
             compute_labels ({str: (str,)}): The labels set on the \"default\" compute machine pool.. [optional]  # noqa: E501
             compute_machine_type (MachineType): [optional]  # noqa: E501
             infra (int): Number of infrastructure nodes of the cluster.. [optional]  # noqa: E501
+            infra_machine_type (MachineType): [optional]  # noqa: E501
             master (int): Number of master nodes of the cluster.. [optional]  # noqa: E501
-            security_group_filters ([MachinePoolSecurityGroupFilter]): List of security groups to be applied to nodes (Optional). [optional]  # noqa: E501
+            master_machine_type (MachineType): [optional]  # noqa: E501
+            security_group_filters ([MachinePoolSecurityGroupFilter]): List of security groups to be applied to nodes (Optional).. [optional]  # noqa: E501
             total (int): Total number of nodes of the cluster.. [optional]  # noqa: E501
         """
 
@@ -257,12 +263,14 @@ class ClusterNodes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             autoscale_compute (MachinePoolAutoscaling): [optional]  # noqa: E501
             availability_zones ([str]): The availability zones upon which the nodes are created.. [optional]  # noqa: E501
-            compute (int): Number of compute nodes of the cluster. Compute and AutoscaleCompute cannot be used together.    . [optional]  # noqa: E501
+            compute (int): Number of compute nodes of the cluster. Compute and AutoscaleCompute cannot be used together.. [optional]  # noqa: E501
             compute_labels ({str: (str,)}): The labels set on the \"default\" compute machine pool.. [optional]  # noqa: E501
             compute_machine_type (MachineType): [optional]  # noqa: E501
             infra (int): Number of infrastructure nodes of the cluster.. [optional]  # noqa: E501
+            infra_machine_type (MachineType): [optional]  # noqa: E501
             master (int): Number of master nodes of the cluster.. [optional]  # noqa: E501
-            security_group_filters ([MachinePoolSecurityGroupFilter]): List of security groups to be applied to nodes (Optional). [optional]  # noqa: E501
+            master_machine_type (MachineType): [optional]  # noqa: E501
+            security_group_filters ([MachinePoolSecurityGroupFilter]): List of security groups to be applied to nodes (Optional).. [optional]  # noqa: E501
             total (int): Total number of nodes of the cluster.. [optional]  # noqa: E501
         """
 

@@ -91,6 +91,7 @@ class Version(ModelNormal):
             'default': (bool,),  # noqa: E501
             'enabled': (bool,),  # noqa: E501
             'end_of_life_timestamp': (datetime,),  # noqa: E501
+            'hypershift_enabled': (bool,),  # noqa: E501
             'raw_id': (str,),  # noqa: E501
             'release_image': (str,),  # noqa: E501
         }
@@ -110,6 +111,7 @@ class Version(ModelNormal):
         'default': 'default',  # noqa: E501
         'enabled': 'enabled',  # noqa: E501
         'end_of_life_timestamp': 'end_of_life_timestamp',  # noqa: E501
+        'hypershift_enabled': 'hypershift_enabled',  # noqa: E501
         'raw_id': 'raw_id',  # noqa: E501
         'release_image': 'release_image',  # noqa: E501
     }
@@ -164,6 +166,7 @@ class Version(ModelNormal):
             default (bool): Indicates if this should be selected as the default version when a cluster is created without specifying explicitly the version.. [optional]  # noqa: E501
             enabled (bool): Indicates if this version can be used to create clusters.. [optional]  # noqa: E501
             end_of_life_timestamp (datetime): EndOfLifeTimestamp is the date and time when the version will get to End of Life, using the format defined in https://www.ietf.org/rfc/rfc3339.txt[RC3339].. [optional]  # noqa: E501
+            hypershift_enabled (bool): HypershiftEnabled indicates whether this version can be used to create Hypershift clusters.. [optional]  # noqa: E501
             raw_id (str): RawID is the id of the version - without channel group and prefix.. [optional]  # noqa: E501
             release_image (str): ReleaseImage contains the URI of Openshift release image. [optional]  # noqa: E501
         """
@@ -260,6 +263,7 @@ class Version(ModelNormal):
             default (bool): Indicates if this should be selected as the default version when a cluster is created without specifying explicitly the version.. [optional]  # noqa: E501
             enabled (bool): Indicates if this version can be used to create clusters.. [optional]  # noqa: E501
             end_of_life_timestamp (datetime): EndOfLifeTimestamp is the date and time when the version will get to End of Life, using the format defined in https://www.ietf.org/rfc/rfc3339.txt[RC3339].. [optional]  # noqa: E501
+            hypershift_enabled (bool): HypershiftEnabled indicates whether this version can be used to create Hypershift clusters.. [optional]  # noqa: E501
             raw_id (str): RawID is the id of the version - without channel group and prefix.. [optional]  # noqa: E501
             release_image (str): ReleaseImage contains the URI of Openshift release image. [optional]  # noqa: E501
         """

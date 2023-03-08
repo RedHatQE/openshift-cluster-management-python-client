@@ -33,6 +33,7 @@ from ocm_python_client.exceptions import ApiAttributeError
 def lazy_import():
     from ocm_python_client.model.add_on_config import AddOnConfig
     from ocm_python_client.model.add_on_install_mode import AddOnInstallMode
+    from ocm_python_client.model.add_on_namespace import AddOnNamespace
     from ocm_python_client.model.add_on_parameter import AddOnParameter
     from ocm_python_client.model.add_on_requirement import AddOnRequirement
     from ocm_python_client.model.add_on_sub_operator import AddOnSubOperator
@@ -40,6 +41,7 @@ def lazy_import():
     from ocm_python_client.model.credential_request import CredentialRequest
     globals()['AddOnConfig'] = AddOnConfig
     globals()['AddOnInstallMode'] = AddOnInstallMode
+    globals()['AddOnNamespace'] = AddOnNamespace
     globals()['AddOnParameter'] = AddOnParameter
     globals()['AddOnRequirement'] = AddOnRequirement
     globals()['AddOnSubOperator'] = AddOnSubOperator
@@ -103,6 +105,8 @@ class AddOn(ModelNormal):
             'kind': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'href': (str,),  # noqa: E501
+            'common_annotations': ({str: (str,)},),  # noqa: E501
+            'common_labels': ({str: (str,)},),  # noqa: E501
             'config': (AddOnConfig,),  # noqa: E501
             'credentials_requests': ([CredentialRequest],),  # noqa: E501
             'description': (str,),  # noqa: E501
@@ -115,6 +119,7 @@ class AddOn(ModelNormal):
             'label': (str,),  # noqa: E501
             'managed_service': (bool,),  # noqa: E501
             'name': (str,),  # noqa: E501
+            'namespaces': ([AddOnNamespace],),  # noqa: E501
             'operator_name': (str,),  # noqa: E501
             'parameters': ([AddOnParameter],),  # noqa: E501
             'requirements': ([AddOnRequirement],),  # noqa: E501
@@ -134,6 +139,8 @@ class AddOn(ModelNormal):
         'kind': 'kind',  # noqa: E501
         'id': 'id',  # noqa: E501
         'href': 'href',  # noqa: E501
+        'common_annotations': 'common_annotations',  # noqa: E501
+        'common_labels': 'common_labels',  # noqa: E501
         'config': 'config',  # noqa: E501
         'credentials_requests': 'credentials_requests',  # noqa: E501
         'description': 'description',  # noqa: E501
@@ -146,6 +153,7 @@ class AddOn(ModelNormal):
         'label': 'label',  # noqa: E501
         'managed_service': 'managed_service',  # noqa: E501
         'name': 'name',  # noqa: E501
+        'namespaces': 'namespaces',  # noqa: E501
         'operator_name': 'operator_name',  # noqa: E501
         'parameters': 'parameters',  # noqa: E501
         'requirements': 'requirements',  # noqa: E501
@@ -200,6 +208,8 @@ class AddOn(ModelNormal):
             kind (str): Indicates the type of this object. Will be 'AddOn' if this is a complete object or 'AddOnLink' if it is just a link.. [optional]  # noqa: E501
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
+            common_annotations ({str: (str,)}): Common annotations to be applied to all resources created by this addon.. [optional]  # noqa: E501
+            common_labels ({str: (str,)}): Common labels to be applied to all resources created by this addon.. [optional]  # noqa: E501
             config (AddOnConfig): [optional]  # noqa: E501
             credentials_requests ([CredentialRequest]): List of credentials requests to authenticate operators to access cloud resources.. [optional]  # noqa: E501
             description (str): Description of the add-on.. [optional]  # noqa: E501
@@ -212,6 +222,7 @@ class AddOn(ModelNormal):
             label (str): Label used to attach to a cluster deployment when add-on is installed.. [optional]  # noqa: E501
             managed_service (bool): Indicates if add-on is part of a managed service. [optional]  # noqa: E501
             name (str): Name of the add-on.. [optional]  # noqa: E501
+            namespaces ([AddOnNamespace]): Namespaces which are required by this addon.. [optional]  # noqa: E501
             operator_name (str): The name of the operator installed by this add-on.. [optional]  # noqa: E501
             parameters ([AddOnParameter]): List of parameters for this add-on.. [optional]  # noqa: E501
             requirements ([AddOnRequirement]): List of requirements for this add-on.. [optional]  # noqa: E501
@@ -308,6 +319,8 @@ class AddOn(ModelNormal):
             kind (str): Indicates the type of this object. Will be 'AddOn' if this is a complete object or 'AddOnLink' if it is just a link.. [optional]  # noqa: E501
             id (str): Unique identifier of the object.. [optional]  # noqa: E501
             href (str): Self link.. [optional]  # noqa: E501
+            common_annotations ({str: (str,)}): Common annotations to be applied to all resources created by this addon.. [optional]  # noqa: E501
+            common_labels ({str: (str,)}): Common labels to be applied to all resources created by this addon.. [optional]  # noqa: E501
             config (AddOnConfig): [optional]  # noqa: E501
             credentials_requests ([CredentialRequest]): List of credentials requests to authenticate operators to access cloud resources.. [optional]  # noqa: E501
             description (str): Description of the add-on.. [optional]  # noqa: E501
@@ -320,6 +333,7 @@ class AddOn(ModelNormal):
             label (str): Label used to attach to a cluster deployment when add-on is installed.. [optional]  # noqa: E501
             managed_service (bool): Indicates if add-on is part of a managed service. [optional]  # noqa: E501
             name (str): Name of the add-on.. [optional]  # noqa: E501
+            namespaces ([AddOnNamespace]): Namespaces which are required by this addon.. [optional]  # noqa: E501
             operator_name (str): The name of the operator installed by this add-on.. [optional]  # noqa: E501
             parameters ([AddOnParameter]): List of parameters for this add-on.. [optional]  # noqa: E501
             requirements ([AddOnRequirement]): List of requirements for this add-on.. [optional]  # noqa: E501

@@ -54,6 +54,9 @@ class BillingModel(ModelSimple):
     allowed_values = {
         ('value',): {
             'MARKETPLACE': "marketplace",
+            'MARKETPLACE-AWS': "marketplace-aws",
+            'MARKETPLACE-RHM': "marketplace-rhm",
+            'MARKETPLACE-AZURE': "marketplace-azure",
             'STANDARD': "standard",
         },
     }
@@ -106,10 +109,10 @@ class BillingModel(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): Billing model for cluster resources.., must be one of ["marketplace", "standard", ]  # noqa: E501
+            args[0] (str): Billing model for cluster resources.., must be one of ["marketplace", "marketplace-aws", "marketplace-rhm", "marketplace-azure", "standard", ]  # noqa: E501
 
         Keyword Args:
-            value (str): Billing model for cluster resources.., must be one of ["marketplace", "standard", ]  # noqa: E501
+            value (str): Billing model for cluster resources.., must be one of ["marketplace", "marketplace-aws", "marketplace-rhm", "marketplace-azure", "standard", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -200,10 +203,10 @@ class BillingModel(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): Billing model for cluster resources.., must be one of ["marketplace", "standard", ]  # noqa: E501
+            args[0] (str): Billing model for cluster resources.., must be one of ["marketplace", "marketplace-aws", "marketplace-rhm", "marketplace-azure", "standard", ]  # noqa: E501
 
         Keyword Args:
-            value (str): Billing model for cluster resources.., must be one of ["marketplace", "standard", ]  # noqa: E501
+            value (str): Billing model for cluster resources.., must be one of ["marketplace", "marketplace-aws", "marketplace-rhm", "marketplace-azure", "standard", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

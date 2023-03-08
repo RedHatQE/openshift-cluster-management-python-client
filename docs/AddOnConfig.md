@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **id** | **str** | Unique identifier of the object. | [optional] 
 **href** | **str** | Self link. | [optional] 
 **add_on_environment_variables** | [**[AddOnEnvironmentVariable]**](AddOnEnvironmentVariable.md) | List of environment variables for the addon | [optional] 
+**secret_propagations** | [**[AddOnSecretPropagation]**](AddOnSecretPropagation.md) | List of secret propagations for the addon | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

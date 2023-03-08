@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **href** | **str** | Self link. | [optional] 
 **addon** | [**AddOn**](AddOn.md) |  | [optional] 
 **addon_version** | [**AddOnVersion**](AddOnVersion.md) |  | [optional] 
+**billing** | [**AddOnInstallationBilling**](AddOnInstallationBilling.md) |  | [optional] 
 **cluster** | [**Cluster**](Cluster.md) |  | [optional] 
 **creation_timestamp** | **datetime** | Date and time when the add-on was initially installed in the cluster. | [optional] 
 **operator_version** | **str** | Version of the operator installed by the add-on. | [optional] 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **dns_ready** | **bool** | DNSReady from Provisioner | [optional] 
 **oidc_ready** | **bool** | OIDCReady from user configuration. | [optional] 
 **configuration_mode** | [**ClusterConfigurationMode**](ClusterConfigurationMode.md) |  | [optional] 
+**current_compute** | **int** | Current Replicas available for a Hosted Cluster | [optional] 
 **description** | **str** | Detailed description of the cluster status. | [optional] 
 **limited_support_reason_count** | **int** | Limited Support Reason Count | [optional] 
 **provision_error_code** | **str** | Provisioning Error Code | [optional] 
