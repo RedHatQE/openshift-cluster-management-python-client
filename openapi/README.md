@@ -7,6 +7,7 @@ Update openapi/settings.sh, set:
 CLIENT_VERSION - client version
 PACKAGE_NAME  - client package name (will also be used as output dir for the client code under the root output dir)
 
+Run from the root of the repository
 ```bash
-openapi/python.sh <root output dir> openapi/settings.sh
+openapi/python.sh . openapi/settings.sh
 ```
