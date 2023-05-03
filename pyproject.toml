@@ -1,2 +1,59 @@
 [tool.black]
 line-length = 88
+target_version = ['py38', 'py39', 'py310', "py311"]
+exclude = '''
+(
+  /(
+    | \.git
+    | \.venv
+    | \.mypy_cache
+    | \.tox
+  )/
+)
+'''
+
+[tool.isort]
+line_length = 88
+profile = "black"
+
+
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openshift-cluster-management-python-client"
+authors = [
+    {name = "Meni Yakove", email = "myakove@gmail.com"},
+    {name = "Ruth Netser", email = "rnetser@gmail.com"}
+]
+description = "A python client for https://api.openshift.com/api/ APIs"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+keywords = ["Openshift", "OCM"]
+dependencies = [
+    "urllib3 >= 1.25.3",
+    "python-dateutil",
+]
+dynamic = ["version"]
+# ...
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = "https://github.com/RedHatQE/openshift-cluster-management-python-client"
+Download = "https://pypi.org/project/openshift-cluster-management-python-client/"
+Documentation = "https://github.com/RedHatQE/openshift-cluster-management-python-client/blob/main/README.md"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["ocm_python_client"]
