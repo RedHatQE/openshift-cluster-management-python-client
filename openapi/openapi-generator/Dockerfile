@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM maven:3.8.2-jdk-8-slim
+FROM maven:3.8.6-jdk-8-slim
 
 # Install preprocessing script requirements
 RUN apt-get update && apt-get -y install git python3-pip && pip install urllib3==1.24.2
