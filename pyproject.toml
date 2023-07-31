@@ -18,42 +18,46 @@ profile = "black"
 
 
 [build-system]
-requires = ["setuptools>=61.2"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
 
-[project]
+
+[tool.poetry]
 name = "openshift-cluster-management-python-client"
-authors = [
-    {name = "Meni Yakove", email = "myakove@gmail.com"},
-    {name = "Ruth Netser", email = "rnetser@gmail.com"}
-]
+authors = ["Meni Yakove <myakove@gmail.com>", "Ruth Netser <rnetser@gmail.com>"]
 description = "A python client for https://api.openshift.com/api/ APIs"
+readme = "README.md"
+version = "1.0.23"
+license = "Apache-2.0"
+homepage = "https://github.com/RedHatQE/openshift-cluster-management-python-client"
+documentation = "https://github.com/RedHatQE/openshift-cluster-management-python-client/blob/main/README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
-requires-python = ">=3.8"
+packages = [{include = "ocm_python_client"}]
 keywords = ["Openshift", "OCM"]
-dependencies = [
-    "urllib3 >= 1.25.3",
-    "python-dateutil",
-]
-dynamic = ["version"]
-# ...
-[tool.setuptools.dynamic]
-version = {file = "VERSION"}
 
-[project.readme]
-file = "README.md"
-content-type = "text/markdown"
+[tool.poetry-dynamic-versioning.substitution]
+files = ["VERSION"]
 
-[project.urls]
-Homepage = "https://github.com/RedHatQE/openshift-cluster-management-python-client"
-Download = "https://pypi.org/project/openshift-cluster-management-python-client/"
-Documentation = "https://github.com/RedHatQE/openshift-cluster-management-python-client/blob/main/README.md"
+[tool.poetry.dependencies]
+python = "^3.8"
+urllib3 = "^1.25.3"
+python-dateutil = "^2.8.2"
 
-[tool.setuptools]
-include-package-data = true
+[tool.poetry.urls]
+download = "https://pypi.org/project/openshift-cluster-management-python-client/"
+"Bug Tracker" = "https://github.com/RedHatQE/openshift-cluster-management-python-client/issues"
 
-[tool.setuptools.packages.find]
-include = ["ocm_python_client", "ocm_python_client.*"]
+[tool.poetry-dynamic-versioning]
+enable = true
+pattern = "((?P<epoch>\\d+)!)?(?P<base>\\d+(\\.\\d+)*)"
+
+[tool.poetry.group.dev.dependencies]
+ipdb = "^0.13.13"
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.4.0"
+requests = "^2.31.0"
+
