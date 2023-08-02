@@ -471,19 +471,6 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
-name = "self"
-version = "2020.12.3"
-description = "@self decorator makes method return self (jQuery-like chaining)"
-optional = false
-python-versions = "*"
-files = [
-    {file = "self-2020.12.3.tar.gz", hash = "sha256:a0c408138257e0ba6188f2a7ad80cb3f61c3e48c3f85d1f973a160f6f887dc53"},
-]
-
-[package.dependencies]
-decorator = "*"
-
-[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -580,4 +567,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "b4716e5198d6683c4c3c66870b303f1ad99ed33cbd28b44a1e53fcb3f16d84e5"
+content-hash = "79f89900b9c03c611b4f4c02f6f1bf399f8564f96873e86673901fc131b894b0"
