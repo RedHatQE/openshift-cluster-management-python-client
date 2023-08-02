@@ -41,6 +41,17 @@ Then import the package:
 import ocm_python_client
 ```
 
+### Release
+
+* [release-it](https://github.com/release-it/release-it)
+
+Run the following once (execute outside repository dir, for example `~/`):
+```bash
+sudo npm install --global release-it
+npm install --save-dev @j-ulrich/release-it-regex-bumper
+rm -f package.json package-lock.json
+```
+
 ## Getting Started
 
 Please follow the [installation procedure](#installation--usage) and then run the following:

@@ -27,7 +27,7 @@ name = "openshift-cluster-management-python-client"
 authors = ["Meni Yakove <myakove@gmail.com>", "Ruth Netser <rnetser@gmail.com>"]
 description = "A python client for https://api.openshift.com/api/ APIs"
 readme = "README.md"
-version = "1.0.23"
+version = "0.0.0"
 license = "Apache-2.0"
 homepage = "https://github.com/RedHatQE/openshift-cluster-management-python-client"
 documentation = "https://github.com/RedHatQE/openshift-cluster-management-python-client/blob/main/README.md"
@@ -56,6 +56,7 @@ pattern = "((?P<epoch>\\d+)!)?(?P<base>\\d+(\\.\\d+)*)"
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
+ipython = "*"
 
 [tool.poetry.group.tests.dependencies]
 pytest = "^7.4.0"
