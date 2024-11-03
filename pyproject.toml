@@ -53,4 +53,4 @@ Documentation = "https://github.com/RedHatQE/openshift-cluster-management-python
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["ocm_python_client.*"]
+include = ["ocm_python_client", "ocm_python_client.*"]
